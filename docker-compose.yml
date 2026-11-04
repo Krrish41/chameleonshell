@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  chameleonshell-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chameleonshell-engine
+    ports:
+      - "8080:8080"    # Web SOC Dashboard & REST/WebSocket API
+      - "2222:2222"    # ChameleonShell Deception SSH Decoy
+      - "8000:80"      # Fake HTTP / IMDSv2 Decoy Gateway
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8080
+      - SSH_PORT=2222
+      - LLM_FALLBACK_MODE=deterministic
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data:/app/data
+      - ./docs/presentations:/app/docs/presentations
+    restart: unless-stopped
+    networks:
+      - honey-net
+
+  cowrie-baseline:
+    image: cowrie/cowrie:latest
+    container_name: chameleonshell-cowrie-baseline
+    ports:
+      - "2223:2222"    # Cowrie Static Baseline SSH for A/B Testing
+    environment:
+      - COWRIE_TELNET_ENABLED=no
+    restart: unless-stopped
+    networks:
+      - honey-net
+
+networks:
+  honey-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

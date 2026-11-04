@@ -1,0 +1,533 @@
+[
+  {
+    "route": "/",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 2314,
+    "screenshot": "platform-desktop.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": true,
+        "valid": true,
+        "width": 484.671875,
+        "height": 418
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2742,
+    "screenshot": "platform-tablet.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": true,
+        "valid": true,
+        "width": 704.5625,
+        "height": 378
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 2751,
+    "screenshot": "platform-mobile.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": true,
+        "valid": true,
+        "width": 438,
+        "height": 378
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/lab",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 2601,
+    "screenshot": "lab-desktop.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/lab",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2690,
+    "screenshot": "lab-tablet.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/lab",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 2800,
+    "screenshot": "lab-mobile.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/architecture",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 2163,
+    "screenshot": "architecture-desktop.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/architecture",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2213,
+    "screenshot": "architecture-tablet.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/architecture",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 2368,
+    "screenshot": "architecture-mobile.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/benchmarks",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 3478,
+    "screenshot": "benchmarks-desktop.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/benchmarks",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2497,
+    "screenshot": "benchmarks-tablet.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/benchmarks",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 2795,
+    "screenshot": "benchmarks-mobile.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/whitepaper",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 2342,
+    "screenshot": "whitepaper-desktop.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/whitepaper",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2419,
+    "screenshot": "whitepaper-tablet.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/whitepaper",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 2759,
+    "screenshot": "whitepaper-mobile.png",
+    "assertions": {
+      "zeroPii": true,
+      "piiMatches": [],
+      "zeroLatex": true,
+      "latexIssues": [],
+      "singleLineNav": true,
+      "navbarIssues": [],
+      "gridAligned": true,
+      "gridDelta": 0,
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "headerPosition": {
+        "isFirstChild": true,
+        "isStickyTop": true,
+        "rectTop": 0,
+        "valid": true
+      },
+      "webglCanvas": {
+        "applicable": false,
+        "valid": true
+      },
+      "noStrayBootText": true
+    },
+    "status": "PASS"
+  }
+]

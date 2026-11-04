@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Virtual Environments
+.venv
+venv/
+
+# Environment Variables & Secrets
+.env
+.env.local
+*.key
+*.pem
+
+# IDEs & System Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Node / Frontend builds
+node_modules/
+dist/
+.cache/
+
+# Docker
+*.log
+
+# LaTeX Auxiliary Files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Offline Academic Archive (Zero Public Footprint)
+_academic_offline/
+/_academic_offline/

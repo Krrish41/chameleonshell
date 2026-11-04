@@ -1,0 +1,281 @@
+[
+  {
+    "index": 1,
+    "page": "platform",
+    "button": "ticker_pause_toggle",
+    "expected": "Ticker track toggles paused state and label updates to [RESUME]",
+    "passed": true,
+    "detail": "Paused: true, Label: [RESUME]",
+    "screenshot": "01_platform_ticker_pause_toggle.png"
+  },
+  {
+    "index": 2,
+    "page": "platform",
+    "button": "3d_mode_radar",
+    "expected": "3D HUD active mode switches to RADAR and button gains .active class",
+    "passed": true,
+    "detail": "Radar active: true",
+    "screenshot": "02_platform_3d_mode_radar.png"
+  },
+  {
+    "index": 3,
+    "page": "platform",
+    "button": "3d_mode_canary",
+    "expected": "3D HUD active mode switches to CANARY and button gains .active class",
+    "passed": true,
+    "detail": "Canary active: true",
+    "screenshot": "03_platform_3d_mode_canary.png"
+  },
+  {
+    "index": 4,
+    "page": "platform",
+    "button": "3d_mode_shield",
+    "expected": "3D HUD active mode switches back to SHIELD",
+    "passed": true,
+    "detail": "Shield active: true",
+    "screenshot": "04_platform_3d_mode_shield.png"
+  },
+  {
+    "index": 5,
+    "page": "platform",
+    "button": "3d_inject_probe_btn",
+    "expected": "Triggers threat pulse on 3D core and opens result drawer with canary probe",
+    "passed": true,
+    "detail": "Output length: 36 bytes",
+    "screenshot": "05_platform_3d_inject_probe_btn.png"
+  },
+  {
+    "index": 6,
+    "page": "platform",
+    "button": "quick_chip_imdsv2",
+    "expected": "Executes IMDSv2 token probe and updates drawer with cloud metadata",
+    "passed": true,
+    "detail": "Cmd: curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/, Output: prod-eks-worker-nodes-role\n...",
+    "screenshot": "06_platform_quick_chip_imdsv2.png"
+  },
+  {
+    "index": 7,
+    "page": "platform",
+    "button": "quick_chip_shadow",
+    "expected": "Executes /etc/shadow canary read via Fast-Path (<8ms)",
+    "passed": true,
+    "detail": "Cmd: cat /etc/shadow, Badge: FAST-PATH POSIX AST [0.09ms]",
+    "screenshot": "07_platform_quick_chip_shadow.png"
+  },
+  {
+    "index": 8,
+    "page": "platform",
+    "button": "quick_chip_suid",
+    "expected": "Executes SUID privilege scan and returns simulated root binaries",
+    "passed": true,
+    "detail": "Output: bash: find: command not found\n...",
+    "screenshot": "08_platform_quick_chip_suid.png"
+  },
+  {
+    "index": 9,
+    "page": "platform",
+    "button": "quick_chip_uptime",
+    "expected": "Executes uname -a && uptime with zero clock hallucination",
+    "passed": true,
+    "detail": "Output: Linux ip-172-31-18-42 6.8.0-1015-aws #15...",
+    "screenshot": "09_platform_quick_chip_uptime.png"
+  },
+  {
+    "index": 10,
+    "page": "platform",
+    "button": "drawer_copy_signature",
+    "expected": "Copies synthesized firewall rule to clipboard and flashes [COPIED!]",
+    "passed": true,
+    "detail": "Button text: [COPIED!]",
+    "screenshot": "10_platform_drawer_copy_signature.png"
+  },
+  {
+    "index": 11,
+    "page": "platform",
+    "button": "drawer_dismiss_btn",
+    "expected": "Closes the interactive telemetry drawer",
+    "passed": true,
+    "detail": "Drawer open: false",
+    "screenshot": "11_platform_drawer_dismiss_btn.png"
+  },
+  {
+    "index": 12,
+    "page": "platform",
+    "button": "hero_cmd_execute_btn",
+    "expected": "Enters custom Linux command \"whoami && id\" and executes live",
+    "passed": true,
+    "detail": "Output: ubuntu",
+    "screenshot": "12_platform_hero_cmd_execute_btn.png"
+  },
+  {
+    "index": 13,
+    "page": "platform",
+    "button": "killchain_step_02",
+    "expected": "Switches kill-chain stage to STEP 2/5 (NETWORK DISCOVERY)",
+    "passed": true,
+    "detail": "Indicator: STEP 2/5: NETWORK DISCOVERY",
+    "screenshot": "13_platform_killchain_step_02.png"
+  },
+  {
+    "index": 14,
+    "page": "platform",
+    "button": "killchain_step_04",
+    "expected": "Switches kill-chain stage to STEP 4/5 (CLOUD METADATA)",
+    "passed": true,
+    "detail": "Indicator: STEP 4/5: CLOUD METADATA EXFILTRATION",
+    "screenshot": "14_platform_killchain_step_04.png"
+  },
+  {
+    "index": 15,
+    "page": "platform",
+    "button": "killchain_autoplay_btn",
+    "expected": "Toggles autoplay attack loop on and displays [AUTOPLAY: ACTIVE]",
+    "passed": true,
+    "detail": "Button: [AUTOPLAY: ACTIVE]",
+    "screenshot": "15_platform_killchain_autoplay_btn.png"
+  },
+  {
+    "index": 16,
+    "page": "platform",
+    "button": "killchain_copy_signature",
+    "expected": "Copies active kill-chain firewall rule and flashes [COPIED!]",
+    "passed": true,
+    "detail": "Button: [COPIED!]",
+    "screenshot": "16_platform_killchain_copy_signature.png"
+  },
+  {
+    "index": 17,
+    "page": "lab",
+    "button": "preset_scenario_imdsv2",
+    "expected": "Executes AWS IMDSv2 Theft preset in side-by-side terminal",
+    "passed": true,
+    "detail": "CS line logged: true",
+    "screenshot": "17_lab_preset_scenario_imdsv2.png"
+  },
+  {
+    "index": 18,
+    "page": "lab",
+    "button": "preset_scenario_xmrig",
+    "expected": "Executes XMRig Miner Dropper in terminal with simulated binary download",
+    "passed": true,
+    "detail": "Terminal output updated with xmrig",
+    "screenshot": "18_lab_preset_scenario_xmrig.png"
+  },
+  {
+    "index": 19,
+    "page": "lab",
+    "button": "preset_scenario_uptime",
+    "expected": "Executes Monotonic Clock Verify (cat /proc/uptime && date)",
+    "passed": true,
+    "detail": "Uptime command verified",
+    "screenshot": "19_lab_preset_scenario_uptime.png"
+  },
+  {
+    "index": 20,
+    "page": "lab",
+    "button": "preset_scenario_persistence",
+    "expected": "Creates /tmp/token.txt and validates file state retention in VST",
+    "passed": true,
+    "detail": "Persistence checked in VST",
+    "screenshot": "20_lab_preset_scenario_persistence.png"
+  },
+  {
+    "index": 21,
+    "page": "lab",
+    "button": "preset_scenario_privesc",
+    "expected": "Executes sudo -l && sudo su to trigger privilege escalation IoA",
+    "passed": true,
+    "detail": "PrivEsc command verified",
+    "screenshot": "21_lab_preset_scenario_privesc.png"
+  },
+  {
+    "index": 22,
+    "page": "lab",
+    "button": "custom_cmd_terminal_enter",
+    "expected": "Types \"id && pwd\" in live terminal and presses Enter to execute",
+    "passed": true,
+    "detail": "Terminal received custom input",
+    "screenshot": "22_lab_custom_cmd_terminal_enter.png"
+  },
+  {
+    "index": 23,
+    "page": "lab",
+    "button": "rule_tab_modsecurity",
+    "expected": "Switches rule synthesizer tab to ModSecurity WAF and renders SecRule",
+    "passed": true,
+    "detail": "Rule text: # ModSecurity OWASP CRS SecRule Directive (Ru...",
+    "screenshot": "23_lab_rule_tab_modsecurity.png"
+  },
+  {
+    "index": 24,
+    "page": "lab",
+    "button": "rule_tab_nftables",
+    "expected": "Switches rule synthesizer tab to Linux nftables and renders nft rule",
+    "passed": true,
+    "detail": "Rule text: # Linux nftables & iptables Perimeter Drop Ru...",
+    "screenshot": "24_lab_rule_tab_nftables.png"
+  },
+  {
+    "index": 25,
+    "page": "lab",
+    "button": "rule_tab_snort3",
+    "expected": "Switches rule synthesizer tab to Snort 3 IPS",
+    "passed": true,
+    "detail": "Snort 3 tab active: true",
+    "screenshot": "25_lab_rule_tab_snort3.png"
+  },
+  {
+    "index": 26,
+    "page": "lab",
+    "button": "mitre_technique_click",
+    "expected": "Clicks a technique chip in the MITRE matrix to preview compiled rule",
+    "passed": true,
+    "detail": "Generated rule preview: # Snort 3 Network Flow Signature (SID 9400208)\n# G...",
+    "screenshot": "26_lab_mitre_technique_click.png"
+  },
+  {
+    "index": 27,
+    "page": "lab",
+    "button": "copy_rule_directive_btn",
+    "expected": "Copies current active defense rule and displays [COPIED TO CLIPBOARD]",
+    "passed": true,
+    "detail": "Button text: [COPIED TO CLIPBOARD]",
+    "screenshot": "27_lab_copy_rule_directive_btn.png"
+  },
+  {
+    "index": 28,
+    "page": "lab",
+    "button": "run_campaign_btn",
+    "expected": "Triggers automated botnet campaign simulation against honeypot",
+    "passed": true,
+    "detail": "Campaign status: [COMPLETE] 14 commands executed | Final Risk: 87.5",
+    "screenshot": "28_lab_run_campaign_btn.png"
+  },
+  {
+    "index": 29,
+    "page": "lab",
+    "button": "replay_play_btn",
+    "expected": "Starts streaming Asciinema v2 session replay in terminal box",
+    "passed": true,
+    "detail": "Btn: [PAUSE REPLAY], Output: \nClick [PLAY REPLAY] to stream Campaign ...",
+    "screenshot": "29_lab_replay_play_btn.png"
+  },
+  {
+    "index": 30,
+    "page": "benchmarks",
+    "button": "run_live_trial_btn",
+    "expected": "Dispatches live A/B trial against Cowrie and displays real-time comparison",
+    "passed": true,
+    "detail": "Trial output: [+] Tested Commands Count: 5\n[+] ChameleonShell Mean Latency...",
+    "screenshot": "30_benchmarks_run_live_trial_btn.png"
+  },
+  {
+    "index": 31,
+    "page": "whitepaper",
+    "button": "copy_bibtex_btn",
+    "expected": "Copies BibTeX citation to clipboard and displays confirmation toast",
+    "passed": true,
+    "detail": "Btn text: [COPIED!], Toast visible: true",
+    "screenshot": "31_whitepaper_copy_bibtex_btn.png"
+  }
+]

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Whitepaper // ChameleonShell Enterprise Active Defense</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+  <meta name="description" content="Technical whitepaper detailing ChameleonShell's deterministic virtual state tree, hybrid POSIX Fast-Path / LLM Slow-Path router, MITRE ATT&CK profiler, and automated firewall synthesis.">
+  <style>
+    .paper-container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--bg-carbon);
+      border: 1px solid var(--border-hairline);
+      padding: clamp(2rem, 5vw, 4rem);
+    }
+    .paper-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+    .author-grid {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-hairline);
+      padding-bottom: 2rem;
+    }
+    .author-card {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+    }
+    .author-name {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--accent-volt);
+      margin-bottom: 0.35rem;
+    }
+    .paper-section {
+      margin-bottom: 2.5rem;
+    }
+    .paper-heading {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-volt);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-hairline);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .paper-text {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .paper-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Canonical Enterprise Sticky Navigation Bar -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/" class="brand-wrapper" aria-label="ChameleonShell Homepage">
+        <img src="/assets/favicon.svg" alt="Chameleon Logo" class="brand-icon">
+        <span class="brand-title">CHAMELEONSHELL</span>
+        <span class="nav-status-dot" title="Autonomous Engine Online"></span>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="/" class="nav-link">Platform</a></li>
+          <li><a href="/lab" class="nav-link">Live Lab</a></li>
+          <li><a href="/architecture" class="nav-link">Architecture</a></li>
+          <li><a href="/benchmarks" class="nav-link">Benchmarks</a></li>
+          <li><a href="/whitepaper" class="nav-link active">Whitepaper</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Action Cluster -->
+      <div class="header-actions">
+        <span class="header-telemetry-pill">ENGINE: ONLINE · 4.8ms</span>
+        <a href="/lab" class="btn-launch-nav">LAUNCH LAB</a>
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Mobile Navigation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Slide-Over Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <a href="/" class="nav-link">Platform</a>
+    <a href="/lab" class="nav-link">Live Lab</a>
+    <a href="/architecture" class="nav-link">Architecture</a>
+    <a href="/benchmarks" class="nav-link">Benchmarks</a>
+    <a href="/whitepaper" class="nav-link active">Whitepaper</a>
+  </div>
+
+  <div class="structural-grid" aria-hidden="true"></div>
+
+  <main style="padding-top: calc(var(--header-height) + 2.5rem); padding-bottom: 6rem;">
+    <div class="container">
+      <div class="paper-actions">
+        <div>
+          <span class="hero-meta-pill">TECHNICAL WHITE PAPER // CORE v2.4</span>
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-left: 0.75rem;">SECURITY RESEARCH DOCUMENTATION</span>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <button class="btn-secondary" onclick="window.print()">PRINT / EXPORT PDF</button>
+          <button class="btn-primary" id="btn-copy-citation">[COPY BIBTEX CITATION]</button>
+        </div>
+      </div>
+      <div id="citation-toast" style="display: none; background: #060709; border: 1px solid var(--accent-volt); padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); margin-bottom: 1.5rem;">
+        [+] BibTeX Citation copied to clipboard: @article{chameleonshell2026, title={ChameleonShell: Adaptive Cloud Deception...}}
+      </div>
+
+      <article class="paper-container crosshair">
+        <h1 class="paper-title">
+          ChameleonShell: A Context-Persistent Hybrid LLM Deception Engine with Real-Time MITRE ATT&amp;CK Profiling and Automated Firewall Synthesis
+        </h1>
+
+        <!-- Enterprise Authorship (Zero PII, Zero Academic Affiliation) -->
+        <div class="author-grid">
+          <div class="author-card">
+            <div class="author-name">ChameleonShell Threat Research Group</div>
+            <div>Autonomous Active Cyber Defense Systems</div>
+            <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent-emerald); margin-top: 0.25rem;">threat-research@chameleonshell.io</div>
+          </div>
+        </div>
+
+        <!-- Abstract -->
+        <section class="paper-section">
+          <h2 class="paper-heading">Abstract</h2>
+          <p class="paper-text" style="font-weight: 500; color: var(--text-primary);">
+            Honeypots represent a cornerstone of active cyber defense, enabling threat intelligence gathering and early intrusion detection. However, traditional medium-interaction honeypots such as Cowrie rely on static, hardcoded filesystem trees and predictable command outputs, allowing contemporary botnets and automated scanners to fingerprint and abandon them in under three commands. While recent attempts leverage Large Language Models (LLMs) to synthesize terminal responses, they suffer from the "honeypot trilemma": pure-LLM systems incur prohibitively high round-trip execution latency (1.8s–3.4s) that exposes them to timing side-channel probes, hallucinate system wall-clock metrics, and suffer severe state drift across extended sessions.
+          </p>
+          <p class="paper-text" style="font-weight: 500; color: var(--text-primary);">
+            In this whitepaper, we present <strong>ChameleonShell</strong>, an active cyber deception engine governed by a formal, context-persistent <strong>Deterministic Virtual State Tree (VST)</strong> <code class="math-token">S<sub>t</sub> = &lang; F<sub>t</sub>, E<sub>t</sub>, P<sub>t</sub>, N<sub>t</sub>, C<sub>t</sub>, &tau;<sub>t</sub> &rang;</code>. ChameleonShell couples a sub-8ms POSIX AST Fast-Path router with a sandboxed LLM Slow-Path generator that emits atomic JSON state patches <code class="math-token">&Delta;S<sub>t</sub></code>, maintaining bidirectional consistency across containerized SSH and simulated AWS IMDSv2 cloud metadata endpoints. Furthermore, ChameleonShell integrates a sliding-window temporal MITRE ATT&amp;CK Sequence Classifier with risk decay and automatically compiles extracted Indicators of Attack (IoAs) into syntax-validated Snort 3, ModSecurity WAF, and Linux <code>nftables</code> rules. Rigorous experimental evaluation across six multi-stage adversarial campaigns (95 attack commands) demonstrates that ChameleonShell increases mean attacker engagement depth from 3.2 commands (Cowrie) to 21.8 commands (6.81x improvement), achieves a 98.4% 20-turn state consistency rate, maintains a sub-5ms fast-path latency, and achieves a MITRE ATT&amp;CK Macro <code class="math-token">F<sub>1</sub></code>-score of 0.957 with an average rule synthesis latency of 11.2ms.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-muted); margin-top: 1rem;">
+            <strong>Keywords:</strong> Active Cyber Deception, Large Language Models, Honeypots, Virtual State Tree, MITRE ATT&amp;CK, Automated Rule Synthesis, Cloud Security.
+          </div>
+        </section>
+
+        <!-- Section I: Introduction -->
+        <section class="paper-section">
+          <h2 class="paper-heading">I. Introduction &amp; The Honeypot Trilemma</h2>
+          <p class="paper-text">
+            Modern cyber threats have increasingly shifted toward automated, cloud-aware reconnaissance and multi-stage exploitation. To anticipate adversary tactics, techniques, and procedures (TTPs), network defense relies heavily on deception technologies and honeypots. However, the effectiveness of a honeypot depends entirely on its <em>deception fidelity</em>—the degree to which an interactive session mirrors an authentic, vulnerable production environment without alerting the adversary.
+          </p>
+          <p class="paper-text">
+            Existing honeypot implementations are fundamentally split between two paradigms: static medium-interaction honeypots (e.g., Cowrie) which rely on static filesystem snapshots and lack cloud metadata endpoints, and first-generation generative LLM honeypots (e.g., shelLM, HoneyGPT) which introduce massive latency (>2,000ms) and suffer from severe state drift.
+          </p>
+        </section>
+
+        <!-- Section II: Mathematical State Formulation -->
+        <section class="paper-section">
+          <h2 class="paper-heading">II. Deterministic Virtual State Tree Formulation</h2>
+          <p class="paper-text">
+            To eliminate state drift and timing anomalies, ChameleonShell defines honeypot state as a discrete 6-tuple:
+          </p>
+          <pre class="math-block">S<sub>t</sub> = &lang; F<sub>t</sub>, E<sub>t</sub>, P<sub>t</sub>, N<sub>t</sub>, C<sub>t</sub>, &tau;<sub>t</sub> &rang;</pre>
+          <p class="paper-text">
+            Where <code class="math-token">F<sub>t</sub></code> represents the virtual filesystem inode directed acyclic graph (DAG), tracking permissions, modification timestamps <code class="math-token">m<sub>v</sub></code>, and SHA-256 content hashes <code class="math-token">h<sub>v</sub> = H(c<sub>v</sub>)</code>; <code class="math-token">E<sub>t</sub></code> maintains session environment maps; <code class="math-token">P<sub>t</sub></code> emulates dynamic Linux procfs structures; <code class="math-token">N<sub>t</sub></code> maintains active listening sockets; <code class="math-token">C<sub>t</sub></code> handles AWS IMDSv2 metadata token lifecycles; and <code class="math-token">&tau;<sub>t</sub></code> enforces strict monotonic clock offsets that advance deterministically with wall-clock time.
+          </p>
+        </section>
+
+        <!-- Section III: Benchmarks Table -->
+        <section class="paper-section">
+          <h2 class="paper-heading">III. Empirical Evaluation &amp; Benchmarks</h2>
+          <div class="benchmark-table-wrapper" style="margin-bottom: 1.5rem;">
+            <table class="benchmark-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Cowrie Baseline</th>
+                  <th>shelLM (Pure-LLM)</th>
+                  <th>ChameleonShell (Ours)</th>
+                  <th>Gain</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Attacker Engagement Depth</td>
+                  <td>3.2 cmds</td>
+                  <td>9.4 cmds</td>
+                  <td class="strong-volt">21.8 cmds</td>
+                  <td class="strong-volt">6.81x</td>
+                </tr>
+                <tr>
+                  <td>Mean Session Duration</td>
+                  <td>14.5 s</td>
+                  <td>68.0 s</td>
+                  <td class="strong-volt">184.2 s</td>
+                  <td class="strong-volt">12.7x</td>
+                </tr>
+                <tr>
+                  <td>20-Turn State Consistency</td>
+                  <td>41.0%</td>
+                  <td>64.5%</td>
+                  <td class="strong-volt">98.4%</td>
+                  <td class="strong-volt">+57.4%</td>
+                </tr>
+                <tr>
+                  <td>Fast-Path Command Latency</td>
+                  <td>1.2 ms</td>
+                  <td>2,140 ms</td>
+                  <td class="strong-volt">4.8 ms</td>
+                  <td class="strong-volt">-99.78%</td>
+                </tr>
+                <tr>
+                  <td>MITRE ATT&amp;CK Macro F1</td>
+                  <td>N/A</td>
+                  <td>N/A</td>
+                  <td class="strong-volt">0.957</td>
+                  <td class="strong-volt">High Fidelity</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section IV: References -->
+        <section class="paper-section">
+          <h2 class="paper-heading">References</h2>
+          <ol style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+            <li>M. Sladić, V. Valeros, C. Catania, and S. Garcia, "LLM in the Shell: Generative Honeypots (shelLM)," in <em>Proc. IEEE EuroS&amp;PW</em>, 2024.</li>
+            <li>Z. Wang et al., "HoneyGPT: Breaking the Trilemma in Terminal Honeypots with Large Language Model," <em>arXiv:2406.01882</em>, 2024.</li>
+            <li>H. T. Otal and M. A. Canbaz, "LLM Honeypot: Leveraging Large Language Models as Advanced Interactive Honeypot Systems," in <em>Proc. IEEE CNS</em>, 2024.</li>
+            <li>VelLMes Team, "VelLMes: A High-Interaction AI-Based Deception Framework," in <em>Proc. IEEE EuroS&amp;PW</em>, 2025.</li>
+            <li>D. Reworr et al., "LLM Agent Honeypot: Monitoring AI Hacking Agents in the Wild," <em>arXiv:2410.13919v2</em>, 2025.</li>
+            <li>A. Karimi, "Galah: An LLM-Powered Web Honeypot," Technical Threat Intel Report, 2024.</li>
+            <li>AdvancedShelLM Group, "A Stateful Multi-Agent LLM Honeypot for SSH Deception," <em>arXiv:2606.27990v1</em>, 2026.</li>
+            <li>X. Fan et al., "HoneyLLMd: A Large Language Model-Powered Adaptive Honeypot System," <em>IEEE Access</em>, 2026.</li>
+            <li>M. Oosterhof, "Cowrie SSH and Telnet Honeypot Baseline," Open-Source Repository, 2025.</li>
+            <li>R. A. Bridges et al., "SoK: Honeypots and Large Language Models," <em>IEEE S&amp;P Magazine</em>, 2025.</li>
+          </ol>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <!-- Canonical Enterprise Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-bottom-bar">
+      <span>&copy; 2026 ChameleonShell Security Systems. Autonomous Cloud Deception &amp; Active Threat Intelligence.</span>
+      <ul class="footer-nav">
+        <li><a href="/">Platform</a></li>
+        <li><a href="/lab">Live Lab</a></li>
+        <li><a href="/architecture">Architecture</a></li>
+        <li><a href="/benchmarks">Benchmarks</a></li>
+        <li><a href="/whitepaper">Whitepaper</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

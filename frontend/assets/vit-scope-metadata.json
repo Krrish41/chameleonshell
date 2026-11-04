@@ -1,0 +1,67 @@
+{
+  "institution": "Vellore Institute of Technology (VIT), Vellore",
+  "school": "School of Computer Science and Engineering (SCOPE)",
+  "programme": "B.Tech. Computer Science and Engineering & Specialization Programmes",
+  "course_code": "BCSE498J Project – II / CBS1904 Capstone Project",
+  "academic_year": "Winter Semester 2026–2027",
+  "project_title": "ChameleonShell: Adaptive Cloud Deception Engine & LLM-Driven Chameleon Honeypot (Active Defense Engineering)",
+  "internal_faculty_guide": {
+    "name": "Prof. Sathya K",
+    "designation": "Assistant Professor Sr. Grade 2",
+    "school": "SCOPE, VIT Vellore",
+    "cabin": "PRP-C BLOCK 218-B",
+    "email": "sathya.k@vit.ac.in",
+    "domain_courses": ["BCSE328L - Cryptocurrency Technologies", "Information Security", "Applied Cryptography"]
+  },
+  "department_project_coordinator": {
+    "department": "Information Security",
+    "coordinator": "Dr. Chandru Vignesh C"
+  },
+  "all_coordinators_reference": [
+    {"dept": "Software Systems", "coordinator": "Dr. Badrinath N"},
+    {"dept": "Quantum AI", "coordinator": "Dr. Deepa D"},
+    {"dept": "Internet of Things", "coordinator": "Dr. Thamizharasan S"},
+    {"dept": "Information Security", "coordinator": "Dr. Chandru Vignesh C"},
+    {"dept": "Analytics", "coordinator": "Dr. Muchenedihari Kishore"},
+    {"dept": "Computational Intelligence", "coordinator": "Dr. Justin Gopinath A"},
+    {"dept": "Database Systems", "coordinator": "Dr. Madhan E S"},
+    {"dept": "Other Schools", "coordinator": "Dr. Dhivya C R"}
+  ],
+  "team_roster": [
+    {
+      "order": 1,
+      "name": "Krrish Ranjan",
+      "registration_number": "23BKT0015",
+      "role": "Member 1 (Deception & State Emulation Engine)",
+      "modules": "Containerized SSH/HTTP and AWS IMDSv2 Decoy Interfaces, Deterministic Virtual State Tree (VST), Hybrid POSIX Fast-Path / Sandboxed Slow-Path Router."
+    },
+    {
+      "order": 2,
+      "name": "Aniket Kumar",
+      "registration_number": "23BCB0071",
+      "role": "Member 2 (MITRE ATT&CK Classifier & Auto-Rule Generator)",
+      "modules": "Real-time Sequence Classification of Shell/API Trajectories into MITRE ATT&CK Enterprise v16 Tactics (TA0043 to TA0040) & Techniques, Dynamic Risk Decay Scoring, and Zero-Touch Snort 3, ModSecurity WAF, and Linux nftables Rule Synthesis."
+    },
+    {
+      "order": 3,
+      "name": "Shivani Kumari",
+      "registration_number": "23BCB0071",
+      "role": "Member 3 (Telemetry Sandbox & Threat Intel SOC Dashboard)",
+      "modules": "Isolated Docker Honey-Network, Automated Multi-Stage Adversarial Botnet Simulator (6 Campaigns / 95 Commands), Asciinema v2 Live Session Replay, and $10,000+ Agency WebGL/GSAP/Lenis Threat Intel SOC Platform."
+    }
+  ],
+  "milestones": [
+    {"code": "M1", "date": "01 Nov 2026", "event": "FFCS Project Registration", "status": "Completed"},
+    {"code": "M2", "date": "10 Nov 2026", "event": "VTOP Guide Approval (Prof. Sathya K)", "status": "Approved"},
+    {"code": "M3", "date": "12 Nov 2026", "event": "Google Form Submission", "status": "Submitted"},
+    {"code": "M4", "date": "05–07 Dec 2026", "event": "Course Add/Drop Window", "status": "Verified"},
+    {"code": "M5", "date": "09–11 Dec 2026", "event": "Review I (With Guide Prof. Sathya K)", "status": "Completed"},
+    {"code": "M6", "date": "16 Dec 2026", "event": "Guide Consent Form Hardcopy to Dr. Chandru Vignesh C", "status": "Submitted"},
+    {"code": "M7", "date": "31 Dec 2026", "event": "Category Change Deadline", "status": "Verified"},
+    {"code": "M8", "date": "23 Jan 2027", "event": "Review II PPT Guide Approval", "status": "Obtained"},
+    {"code": "M9", "date": "28–29 Jan 2027", "event": "Review II (During CAT — Expo Nomination)", "status": "Completed"},
+    {"code": "M10", "date": "17 Mar 2027", "event": "VIT Project Expo (Live Dual-Terminal Demonstration)", "status": "Nominated & Displayed"},
+    {"code": "M11", "date": "16 Apr 2027", "event": "Submission of Final Report hardcopy, Poster, and PPT Approval", "status": "Approved by Guide"},
+    {"code": "M12", "date": "22–23 Apr 2027", "event": "Review III — Final Review (During FAT)", "status": "FAT Capstone Defense"}
+  ]
+}

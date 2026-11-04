@@ -1,0 +1,434 @@
+[
+  {
+    "route": "/",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 3123,
+    "screenshot": "home-desktop.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2715,
+    "screenshot": "home-tablet.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 3072,
+    "screenshot": "home-mobile.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/lab",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 2706,
+    "screenshot": "lab-desktop.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/lab",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2909,
+    "screenshot": "lab-tablet.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/lab",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 3074,
+    "screenshot": "lab-mobile.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/architecture",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 3042,
+    "screenshot": "architecture-desktop.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/architecture",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2922,
+    "screenshot": "architecture-tablet.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/architecture",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 2684,
+    "screenshot": "architecture-mobile.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/paper",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 2334,
+    "screenshot": "paper-desktop.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/paper",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2317,
+    "screenshot": "paper-tablet.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/paper",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 2683,
+    "screenshot": "paper-mobile.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/reviews",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 1991,
+    "screenshot": "reviews-desktop.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/reviews",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2222,
+    "screenshot": "reviews-tablet.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/reviews",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 3458,
+    "screenshot": "reviews-mobile.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/dossier",
+    "viewport": "desktop",
+    "width": 1440,
+    "durationMs": 2195,
+    "screenshot": "dossier-desktop.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/dossier",
+    "viewport": "tablet",
+    "width": 768,
+    "durationMs": 2302,
+    "screenshot": "dossier-tablet.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  },
+  {
+    "route": "/dossier",
+    "viewport": "mobile",
+    "width": 390,
+    "durationMs": 2490,
+    "screenshot": "dossier-mobile.png",
+    "assertions": {
+      "latexClean": true,
+      "latexLeaks": [],
+      "noOverflow": true,
+      "overflowData": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390
+      },
+      "noNavbarWrap": true,
+      "navbarIssues": [],
+      "noCardOverlap": true,
+      "overlaps": [],
+      "gridAligned": true,
+      "gridDelta": 0
+    },
+    "status": "PASS"
+  }
+]
