@@ -73,3 +73,17 @@ _academic_offline/
 /_academic_offline/
 _academic_submissions/
 /_academic_submissions/
+
+# AI Agent Memory, Context, Governance & Prompt Artifacts (Strictly Local Only)
+GEMINI.md
+/GEMINI.md
+GUIDELINES.md
+/GUIDELINES.md
+ANTIGRAVITY_MASTER_PROMPT.md
+/ANTIGRAVITY_MASTER_PROMPT.md
+*.prompt.md
+.gemini/
+.antigravity/
+.claude/
+.cursor/
+.ai/
