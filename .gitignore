@@ -68,6 +68,8 @@ dist/
 *.fls
 *.fdb_latexmk
 
-# Offline Academic Archive (Zero Public Footprint)
+# Offline Academic Archive & Local Institutional Vault (Zero Public / Git Trace)
 _academic_offline/
 /_academic_offline/
+_academic_submissions/
+/_academic_submissions/

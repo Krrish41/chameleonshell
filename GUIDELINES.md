@@ -1,45 +1,19 @@
-# GUIDELINES.md — Engineering, Anti-AI-Slop & Academic Compliance Constitution
+# GUIDELINES.md — Engineering, Anti-AI-Slop & Dual-Zone Architecture Constitution
 
-> **CORE MANDATE:** This document defines the engineering standards, design system rules, academic compliance protocols, and code quality invariants for **ChameleonShell**. Every contributor, subagent, and LLM session must strictly adhere to these rules.
+> **CORE MANDATE:** This document defines the engineering standards, design system rules, dual-zone isolation protocols, and code quality invariants for **ChameleonShell**. Every contributor, subagent, and LLM session must strictly adhere to these rules.
 
 ---
 
-## 1. ACADEMIC COMPLIANCE & TEAM ROSTER (OFFLINE ARCHIVE ONLY)
+## 1. DUAL-ZONE ISOLATION & ZERO-TRACE POLICY (ZONE A VS. ZONE B)
 
 > [!CAUTION]
-> **STRICT ZERO-PII / ZERO-ACADEMIC PUBLIC WEBSITE RULE:**
-> The academic roster, registration numbers, faculty guide, and VIT metadata in Sections 1 & 2 apply **EXCLUSIVELY to offline institutional submission archives** stored in `_academic_offline/`. The public-facing production website (`localhost:8080`), public routes, HTML/CSS/JS DOM, API endpoints, and web assets **MUST REMAIN 100% ANONYMIZED WITH ZERO PII AND ZERO ACADEMIC FOOTPRINT**. Never expose student names, registration numbers, course codes, review titles, or faculty details on the public web platform.
+> **STRICT ZERO-PII / ZERO-ACADEMIC PUBLIC REPO & WEBSITE RULE (ZONE A):**
+> The public web platform (`localhost:8080`), public routes, HTML/CSS/JS DOM, API endpoints, `README.md`, and all git-tracked repository files **MUST REMAIN 100% ANONYMIZED WITH ZERO PII AND ZERO ACADEMIC FOOTPRINT**. Never expose student names, registration numbers, course codes, review titles, or faculty details in any git-tracked file or web page.
 
-For offline reports and institutional capstone documentation only:
-
-| Order | Name | Registration Number | Core Capstone Responsibility |
-| :--- | :--- | :--- | :--- |
-| **1** | **Krrish Ranjan** | `23BKT0015` | **Subsystem 01:** Containerized Deception Engine, Deterministic Virtual State Tree (VST), Hybrid Fast/Slow Path Router, Cloud IMDSv2 Decoys. |
-| **2** | **Aniket Kumar** | `23BCB0071` | **Subsystem 02:** Real-Time MITRE ATT&CK Enterprise v16 Sequence Profiler, Threat Severity Scoring, Zero-Touch Snort 3 / ModSecurity / nftables Rule Synthesizer. |
-| **3** | **Shivani Kumari** | `23BCB0071` | **Subsystem 03:** Isolated Honey-Network Sandbox, Multi-Stage Adversarial Botnet Simulator, Asciinema Session Replay, WebGL / GSAP Threat Intel SOC Dashboard. |
-
-### Compliance Enforcement Rules:
-- **Strict Ordering:** Always render Krrish Ranjan first, Aniket Kumar second, and Shivani Kumari third. Never alphabetize, reorder, or randomize.
-- **Exact Identifiers:** Registration numbers (`23BKT0015`, `23BCB0071`, `23BCB0071`) must be rendered in clean monospace font (`JetBrains Mono`, `Fira Code`, or system monospace) with exact casing and zero truncation.
-- **Visibility:** Team credits must be accessible within 1 click or immediately visible in the application's persistent footer / about bar across all viewport sizes.
-- **Faculty Guide Attribution:** All reports, slide decks, papers, and footer notes must attribute:
-  - **Internal Guide:** **Prof. Sathya K**, Assistant Professor Sr. Grade 2, School of Computer Science and Engineering (SCOPE), VIT Vellore (Cabin: `PRP-C BLOCK 218-B`, Email: `sathya.k@vit.ac.in`).
-  - **Department Project Coordinator (Information Security):** Dr. Chandru Vignesh C.
-
----
-
-## 2. VIT SCOPE DEPARTMENT PROJECT COORDINATORS REFERENCE TABLE
-
-| S. No. | Department of Guide | Project Coordinator |
-| :--- | :--- | :--- |
-| 1 | Software Systems | Dr. Badrinath N |
-| 2 | Quantum AI | Dr. Deepa D |
-| 3 | Internet of Things | Dr. Thamizharasan S |
-| 4 | **Information Security** | **Dr. Chandru Vignesh C** |
-| 5 | Analytics | Dr. Muchenedihari Kishore |
-| 6 | Computational Intelligence | Dr. Justin Gopinath A |
-| 7 | Database Systems | Dr. Madhan E S |
-| 8 | Other Schools | Dr. Dhivya C R |
+### Zone Separation Protocols:
+- **Zone A (Public GitHub Repository):** Contains production source code, unit tests, WebGL frontend, documentation, and Docker compose files. All authorship is attributed to the *ChameleonShell Threat Research Group*.
+- **Zone B (Local Academic Vault `_academic_submissions/`):** Contains the official institutional capstone submission records, the IEEE Conference Paper (`IEEEtran`), presentation slide decks, and guide meeting records. This directory is strictly git-ignored via `.gitignore`.
+- For internal university submission requirements and team rosters, refer to `_academic_submissions/ACADEMIC_CONTEXT_PRIVATE.md`.
 
 ---
 
@@ -177,7 +151,7 @@ The ChameleonShell web platform strictly separates commercial product presentati
 - All platform builds are verified programmatically via Playwright headless browser automation.
 - **Scope:** 5 routes (`/`, `/lab`, `/architecture`, `/benchmarks`, `/whitepaper`) across 3 responsive viewports (`Desktop 1440x900`, `Tablet 768x1024`, `Mobile 390x844`) = 15 test runs.
 - **Hard Assertions Enforced (100% Pass Required):**
-  1. **Zero PII / Academic Leaks:** Asserts that `document.documentElement.innerHTML` matches 0 occurrences of `vit|vellore|bcse|capstone|dossier|sathya|krrish|aniket|shivani|23bkt|23bcb|member 1|member 2|member 3|review deck`.
+  1. **Zero PII / Academic Leaks:** Asserts that `document.documentElement.innerHTML` matches 0 occurrences of blacklisted academic, institutional, or personal identifiers.
   2. **Zero Raw LaTeX:** Asserts that `document.body.innerText` contains 0 occurrences of `$` or `\mathcal`.
   3. **Single-Line Navbar:** Asserts that every header link and CTA button has `clientHeight <= 44px` and `white-space: nowrap` on desktop.
   4. **Strict 12-Column Grid Alignment:** On `/architecture` Desktop, asserts that Card 1 and Subsystem 03 right bounding-box edges align (`delta <= 2px`).

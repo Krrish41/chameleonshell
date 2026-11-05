@@ -1,133 +1,106 @@
 # ChameleonShell
 
-> **Adaptive Cloud Deception Engine & LLM-Driven Chameleon Honeypot (Active Defense Engineering)**  
-> **Final-Year B.Tech CSE Capstone Project | Winter Semester 2026–2027**  
-> **Vellore Institute of Technology (VIT), Vellore — School of Computer Science and Engineering (SCOPE)**  
-> **Course Code:** `BCSE498J Project – II` / `CBS1904 Capstone Project`
+> **Adaptive Cloud Deception Engine & Autonomous Honeypot Platform (Active Defense Engineering)**  
+> High-interaction Linux & AWS IMDSv2 decoy surface with a sub-8ms Deterministic Virtual State Tree (VST), real-time MITRE ATT&CK sequence classification, and zero-touch firewall signature synthesis.
 
 ---
 
-## 1. Academic Supervision & Mandatory Team Roster
+## 1. System Architecture & Modular Subsystems
 
-### **Internal Faculty Guide:**
-- **Prof. Sathya K**, Assistant Professor Sr. Grade 2
-- School of Computer Science and Engineering (SCOPE), VIT Vellore
-- **Cabin:** PRP-C BLOCK 218-B | **Email:** `sathya.k@vit.ac.in`
-- **Domain Specialization:** Information Security, Applied Cryptography (`BCSE328L`), Network Defense
-- **Department Project Coordinator (Information Security):** Dr. Chandru Vignesh C
+ChameleonShell is designed as an autonomous active defense ecosystem consisting of three decoupled engineering subsystems:
 
-### **Team Members (Strict Academic Ordering):**
-1. **Krrish Ranjan** — Registration Number: `23BKT0015`  
-   *Role: Member 1 (Deception & State Emulation Engine)*  
-   *Modules:* Containerized SSH/HTTP and AWS IMDSv2 decoy surfaces, Deterministic Virtual State Tree (VST), Hybrid Fast/Slow Path execution router.
-2. **Aniket Kumar** — Registration Number: `23BCB0071`  
-   *Role: Member 2 (MITRE ATT&CK Classifier & Auto-Rule Generator)*  
-   *Modules:* Real-time MITRE ATT&CK Enterprise v16 sequence classification (`TA0043` through `TA0040`), temporal risk decay scoring, and automated Snort 3, ModSecurity WAF (`SecRule`), and Linux `nftables`/`iptables` rule synthesis.
-3. **Shivani Kumari** — Registration Number: `23BCB0071`  
-   *Role: Member 3 (Telemetry Sandbox & Threat Intel SOC Dashboard)*  
-   *Modules:* Containerized honey-network topology, 6 multi-stage automated adversarial botnet campaigns, Asciinema v2 session replay, and the WebGL/GSAP/Lenis Threat Intel SOC platform.
+```text
+       Adversary Command Ingress (SSH / HTTP / Cloud IMDSv2)
+                                │
+                 ┌──────────────┴──────────────┐
+                 ▼                             ▼
+       [Fast-Path POSIX AST]         [Sandboxed LLM Slow-Path]
+       Deterministic (<8ms)          Generative (Schema Constrained)
+                 │                             │
+                 └──────────────┬──────────────┘
+                                ▼
+         Deterministic Virtual State Tree (VST DAG: S_t)
+         ├── Filesystem (VFS)       ├── System Clock (Monotonic)
+         ├── Inode Metadata         ├── Environment & /proc
+         └── Sockets & Network      └── Cloud Decoys (IMDSv2 / K8s)
+                                │
+                 ┌──────────────┴──────────────┐
+                 ▼                             ▼
+   [MITRE ATT&CK Sequence Profiler]   [Automated Rule Synthesizer]
+   Sliding-Window Risk Decay (γ=0.92)  Snort 3 / ModSec / nftables
+```
+
+### **Subsystem 01: Core Deception & Virtual State Tree (VST)**
+- **Deterministic State Modeling:** Encapsulates the entire filesystem, environment, `/proc` structures, sockets, and cloud metadata into a coherent formal tuple $S_t = \langle \mathcal{F}_t, \mathcal{E}_t, \mathcal{P}_t, \mathcal{N}_t, \mathcal{C}_t, \tau_t \rangle$.
+- **Hybrid Fast-Path / Slow-Path Router:** Standard POSIX primitives (`ls`, `cd`, `pwd`, `cat`, `touch`, `mkdir`, `rm`, `chmod`, `uptime`, `date`, `whoami`, `id`, `ps`) execute in $<8\text{ ms}$ directly against $S_t$. Complex exploits, compilers, and cloud CLI queries invoke the Sandboxed Slow-Path, which returns both terminal output and an atomic JSON state patch $\Delta S_t$.
+- **Cloud Metadata Decoys:** Realistic emulation of AWS IMDSv2 (`169.254.169.254`) token-based authentication and Kubernetes service account tokens, trapping cloud-native credential theft.
+
+### **Subsystem 02: Real-Time MITRE ATT&CK Classifier & Rule Synthesizer**
+- **Sequence Profiler:** Maps adversary command sequences to MITRE ATT&CK Enterprise v16 Tactics (`TA0043` through `TA0040`) using temporal sliding-window scoring with exponential decay ($\gamma = 0.92$).
+- **Autonomous Rule Compiler:** Compiles extracted Indicators of Attack (IoAs) into validated **Snort 3 IPS**, **OWASP ModSecurity WAF (`SecRule`)**, and **Linux `nftables`/`iptables`** defensive drop rules in $<12\text{ ms}$.
+
+### **Subsystem 03: Telemetry Sandbox, Botnet Simulator & Live SOC Dashboard**
+- **Adversarial Campaign Simulator:** 6 multi-stage automated attack botnet campaigns (XMRig miners, IAM exfiltration, privilege escalation, credential dumping).
+- **Side-by-Side Benchmark Evaluator:** Real-time comparative execution against legacy Cowrie honeypot baselines.
+- **WebGL Threat Intel SOC Dashboard:** Interactive 3D deception core, Asciinema v2 session replay, VST DAG explorer, and live MITRE matrix heatmap.
 
 ---
 
-## 2. Core Problem & Architectural Breakthrough
+## 2. Empirical Benchmark Metrics
 
-### The Honeypot Trilemma
-Static honeypots like **Cowrie** rely on static filesystems (`fs.pickle`) and rigid command lookups. Automated fingerprinting scanners and modern red-teamers detect and abandon them in under 3 commands. Conversely, naive LLM-based honeypots (*shelLM*, *HoneyGPT*) introduce unacceptable inference latency ($1.8\text{ s} - 3.4\text{ s}$) that exposes them via timing side-channels ($\Delta t$), while suffering from state drift and hallucinated system clocks after $8 - 12$ turns.
-
-### The ChameleonShell Solution
-ChameleonShell resolves the trilemma by maintaining a formal **Deterministic Virtual State Tree (VST)**:
-$$S_t = \langle \mathcal{F}_t, \mathcal{E}_t, \mathcal{P}_t, \mathcal{N}_t, \mathcal{C}_t, \tau_t \rangle$$
-where $\mathcal{F}_t$ represents the VFS inode DAG, $\mathcal{E}_t$ the environment map, $\mathcal{P}_t$ dynamic `/proc` structures, $\mathcal{N}_t$ active network sockets, $\mathcal{C}_t$ Cloud Metadata (AWS IMDSv2 `169.254.169.254` and Kubernetes tokens), and $\tau_t$ the monotonic system clock offset.
-
-- **Fast-Path Engine (<8 ms latency):** Deterministic AST execution of standard POSIX primitives (`ls`, `cd`, `pwd`, `cat`, `touch`, `mkdir`, `rm`, `chmod`, `uptime`, `date`, `whoami`, `id`, `ps`) directly against $S_t$ without LLM calls.
-- **Slow-Path Engine (Sandboxed LLM + Atomic State-Diff Patching):** Complex scripts, piped payloads (`curl | bash`), and cloud CLI commands invoke the slow-path engine with strict JSON schema constraints:
-  $$\text{Output}_t = \{ \text{"stdout"}: \dots, \text{"stderr"}: \dots, \text{"exit\_code"}: 0, \text{"state\_patch"}: \Delta S_t \}$$
-  Mutations are atomically merged ($S_{t+1} = \text{Patch}(S_t, \Delta S_t)$) into the unified state tree, instantly visible across SSH and HTTP interfaces.
-- **Real-Time MITRE ATT&CK Sequence Classifier:** Evaluates command sliding windows $C_{1:t}$ into Tactics and Techniques with temporal risk scoring:
-  $$\text{RiskScore}(C_{1:t}) = \min\left(100, \sum_{k=1}^{t} \gamma^{t-k} \cdot w(Y_{\text{tactic}}^{(k)}) \cdot \mathbb{I}_{\text{novel}}(c_k)\right)$$
-- **Zero-Touch Active Defense Rule Synthesizer:** Immediately compiles extracted Indicators of Attack (IoAs) into syntax-validated **Snort 3**, **ModSecurity WAF**, and **nftables/iptables** defensive rules.
-
----
-
-## 3. Validated Thesis Benchmark Metrics
+ChameleonShell was benchmarked against static honeypots (Cowrie) and first-generation pure-LLM honeypots (shelLM) across 6 multi-stage adversarial campaigns (95 commands):
 
 | Metric | Static Baseline (Cowrie) | Pure-LLM (shelLM) | ChameleonShell (Ours) | Advantage |
-| :--- | :--- | :--- | :--- | :--- |
-| **Attacker Engagement Depth** | $3.2\text{ commands}$ | $9.4\text{ commands}$ | **$21.8\text{ commands}$** | **$6.81\times\text{ increase}$** |
+|:---|:---|:---|:---|:---|
+| **Mean Attacker Depth** | $3.2\text{ commands}$ | $9.4\text{ commands}$ | **$21.8\text{ commands}$** | **$6.81\times\text{ increase}$** |
 | **Mean Session Duration** | $14.5\text{ s}$ | $68.0\text{ s}$ | **$184.2\text{ s}$** | **$12.7\times\text{ increase}$** |
 | **20-Turn State Consistency** | $41.0\%$ | $64.5\%$ | **$98.4\%$** | **$+57.4\%\text{ coherent}$** |
-| **Fast-Path Latency ($\Delta t$)**| $1.2\text{ ms}$ | $2,140\text{ ms}$ | **$4.8\text{ ms}$** | Defeats timing probe |
+| **Fast-Path Latency ($\Delta t$)** | $1.2\text{ ms}$ | $2,140\text{ ms}$ | **$4.8\text{ ms}$** | Defeats timing probe |
 | **MITRE ATT&CK Macro $F_1$** | N/A (Passive) | N/A (Passive) | **$0.957$** (P: 0.964, R: 0.951) | Closed-loop SOAR |
 | **Rule Synthesis Latency** | N/A | N/A | **$11.2\text{ ms}$** | Instant perimeter defense |
 
 ---
 
-## 4. Curated GitHub Repository Options
-
-When publishing this capstone repository to GitHub, choose one of these five curated configurations:
-
-1. **`chameleonshell`** *(Recommended Flagship)*  
-   - *Description:* `Adaptive Cloud Deception Engine & Context-Persistent LLM Honeypot with Real-Time MITRE ATT&CK Profiling and Automated Snort/WAF/nftables Rule Synthesis.`  
-   - *Topics:* `cybersecurity`, `honeypot`, `llm-security`, `active-defense`, `mitre-attack`, `cloud-security`, `deception-technology`, `snort`, `waf`, `soc-dashboard`
-2. **`chameleonshell-active-defense`**  
-   - *Description:* `Next-Generation Stateful SSH/HTTP & Cloud IMDSv2 Chameleon Honeypot powered by a Deterministic Virtual State Tree and Autonomous MITRE ATT&CK Threat Profiler.`
-3. **`project-chameleonshell`**  
-   - *Description:* `Breaking the Honeypot Trilemma: Hybrid Fast-Path/LLM Deception Engine & Automated Perimeter Signature Synthesizer (IEEE Conference Research & SOC Platform).`
-4. **`chameleon-honeypot-engine`**  
-   - *Description:* `High-Interaction Adaptive Linux & Cloud Metadata Decoy System with Sub-10ms Virtual File System Persistence and Real-Time MITRE ATT&CK Sequence Classification.`
-5. **`chameleonshell-soc`**  
-   - *Description:* `Containerized Cyber Deception Sandbox, LLM-Driven Stateful Shell Emulator, and Live 3D Security Operations Center (SOC) Telemetry Platform.`
-
----
-
-## 5. Directory Architecture
+## 3. Directory Structure
 
 ```text
 chameleonshell/
-├── GEMINI.md                                  # Persistent Project State & Handoff
-├── GUIDELINES.md                              # Anti-AI-Slop Rules & Academic Standards
-├── ANTIGRAVITY_MASTER_PROMPT.md               # Master System Specification
-├── README.md                                  # Production Documentation
-├── .gitignore                                 # Git exclusions
-├── docker-compose.yml                         # Containerized honey-network
-├── Makefile                                   # Automation targets
-│
 ├── backend/                                   # FastAPI REST/WebSocket + Deception Engine
-│   ├── requirements.txt
-│   ├── main.py                                # Application entry point
-│   ├── config.py                              # System configuration
-│   ├── member1_deception_engine/              # Member 1: VST, Fast/Slow Path, IMDSv2
-│   ├── member2_mitre_classifier/              # Member 2: ATT&CK Profiler & Rule Synthesizer
-│   └── member3_telemetry_sandbox/             # Member 3: Botnet Simulator & Benchmarks
+│   ├── main.py                                # Application entry point & API routes
+│   ├── config.py                              # Runtime configuration
+│   ├── requirements.txt                       # Backend dependencies
+│   ├── member1_deception_engine/              # Subsystem 01: VST, Fast/Slow Path, IMDSv2
+│   ├── member2_mitre_classifier/              # Subsystem 02: ATT&CK Profiler & Rule Synthesizer
+│   └── member3_telemetry_sandbox/             # Subsystem 03: Botnet Simulator & Benchmarks
 │
-├── frontend/                                  # WebGL / GSAP / Lenis SOC Dashboard
-│   ├── index.html                             # Main SOC interface
-│   ├── assets/                                # Vector icons, metadata, sample sessions
+├── frontend/                                  # Agency WebGL / GSAP / Lenis SOC Dashboard
+│   ├── index.html                             # Platform overview & 3D Deception Core
+│   ├── assets/                                # Vector icons & sample session logs
 │   ├── css/styles.css                         # Tactical Kinetic Telemetry design system
 │   └── js/                                    # Three.js 3D core, terminal lab, MITRE visualizer
 │
-├── pages/                                     # Dedicated documentation sub-pages
-│   ├── architecture.html                      # System Architecture & DFDs
-│   ├── paper.html                             # IEEE Conference Paper Reader
-│   ├── presentations.html                     # Slide Decks (Review I, II, III & Poster)
-│   ├── vit-compliance.html                    # VIT SCOPE Capstone Dossier & Schedule
-│   ├── privacy-policy.html                    # Threat Telemetry Privacy Policy
-│   └── terms-of-service.html                  # Authorized Active Defense Sandbox Terms
+├── pages/                                     # Dedicated enterprise workspace pages
+│   ├── lab.html                               # Live side-by-side terminal & MITRE lab
+│   ├── architecture.html                      # Formal state model & subsystem blueprints
+│   ├── benchmarks.html                        # Empirical resilience metrics & live A/B runner
+│   ├── whitepaper.html                        # Technical whitepaper reader
+│   ├── privacy-policy.html                    # Threat telemetry data governance
+│   └── terms-of-service.html                  # Authorized active defense sandbox terms
 │
-├── docs/                                      # Academic Deliverables & LaTeX
-│   ├── ieee_paper/                            # IEEEtran LaTeX source and references
-│   ├── presentations/                         # Presentation specs and PPTX generator
-│   └── vit_capstone_records/                  # Literature review & Guide log
-│
-└── tests/                                     # Automated verification test suite
+├── docs/whitepaper/                           # Technical Whitepaper markdown source
+├── tests/                                     # Automated pytest verification test suite
+├── scripts/                                   # Headless Playwright visual QA suites
+├── docker-compose.yml                         # Containerized honey-network deployment
+├── Makefile                                   # Automation targets
+└── .gitignore                                 # Git exclusion rules
 ```
 
 ---
 
-## 6. Local Quickstart Guide
+## 4. Quickstart Guide
 
 ### Prerequisites
-- Python 3.10+ (Tested on Python 3.14.8)
+- Python 3.10+ (Tested on Python 3.12, 3.13, and 3.14)
 - Modern web browser (Chrome, Edge, Firefox, Safari)
 
 ### 1. Install Dependencies
@@ -135,34 +108,31 @@ chameleonshell/
 python -m pip install -r backend/requirements.txt
 ```
 
-### 2. Run the Local Deception Engine & SOC Dashboard
+### 2. Start the Local Deception Platform
 ```bash
 python -m backend.main
 ```
-The server will bind to `http://localhost:8080` (or `http://127.0.0.1:8080`).
+Access the active defense dashboard at `http://localhost:8080`.
 
-### 3. Run Automated Tests
+### 3. Run Automated Unit Tests
 ```bash
 python -m pytest tests/ -v
 ```
 
-### 4. Generate PowerPoint Decks for VIT Reviews
+### 4. Run Automated Playwright QA Suites
 ```bash
-python docs/presentations/generate_ppts.py
+node scripts/verify_production_site.mjs
+node scripts/test_all_buttons.mjs
 ```
-This produces `Review_1_Presentation.pptx`, `Review_2_Presentation.pptx`, and `Review_3_Final_Presentation.pptx` in `docs/presentations/`.
 
 ---
 
-## 7. VIT SCOPE Review Milestone Calendar (Winter 2026–2027)
+## 5. Security & Responsible Disclosure
 
-- **Review I (With Guide):** 09–11 December 2026
-- **Approval of Review II PPT:** 23 January 2027
-- **Review II (During CAT):** 28 & 29 January 2027
-- **Project Expo Demonstration:** 17 March 2027
-- **Submission of Final Report hardcopy & Poster:** 16 April 2027
-- **Review III — Final Review (During FAT):** 22 & 23 April 2027
+ChameleonShell is designed for authorized active cyber defense research, adversary threat intelligence collection, and closed-loop SOC automation. All simulated binaries, tokens, and credentials emitted by the Virtual State Tree are cryptographically distinct canary traps that trigger immediate telemetry logging.
 
 ---
 
-*Academic Compliance Notice: Vellore Institute of Technology, School of Computer Science and Engineering (SCOPE). All rights reserved.*
+## 6. License
+
+This project is licensed under the Apache 2.0 License. See `LICENSE` for details.

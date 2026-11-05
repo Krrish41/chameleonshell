@@ -1,56 +1,43 @@
 # GEMINI.md — Persistent Project Brain & Cross-Session State Handoff
 
 > **CRITICAL DIRECTIVE FOR ANY AI AGENT / NEW LLM SESSION:**
-> Read this file (`GEMINI.md`) and `GUIDELINES.md` **FIRST** before scanning the repository or writing any code. This document contains the complete ground truth of the project, faculty supervision metadata, VIT Capstone schedule, system architecture, user aesthetic preferences, and implementation status so you can resume work immediately with zero context loss.
+> Read this file (`GEMINI.md`) and `GUIDELINES.md` **FIRST** before scanning the repository or writing any code. This document contains the complete technical ground truth of the project, system architecture, benchmarks, user aesthetic preferences, and implementation status so you can resume work immediately with zero context loss.
 >
-> **STRICT ZERO-PII / ZERO-ACADEMIC PUBLIC WEBSITE RULE:**
-> The academic roster, registration numbers, faculty guide, and VIT metadata in Sections 1 & 2 are maintained **EXCLUSIVELY for offline institutional submission archives** in `_academic_offline/`. The public web platform (`localhost:8080`), public routes, HTML/CSS/JS DOM, API endpoints, and web assets **MUST REMAIN 100% ANONYMIZED WITH ZERO PII AND ZERO ACADEMIC FOOTPRINT**. Never expose student names, registration numbers, course codes, review titles, or faculty details on the public web platform.
+> **STRICT DUAL-ZONE REPOSITORY ARCHITECTURE:**
+> 1. **Public GitHub Repository (Zone A):** The public web platform (`localhost:8080`), public routes, HTML/CSS/JS DOM, API endpoints, `README.md`, and all git-tracked files **MUST REMAIN 100% ANONYMIZED WITH ZERO PII AND ZERO ACADEMIC FOOTPRINT**.
+> 2. **Local Academic Vault (Zone B):** The academic team roster, student registration numbers, faculty guide metadata, and institutional capstone review schedule are strictly isolated in `_academic_submissions/` (git-ignored, locked via `.gitignore`). See `_academic_submissions/ACADEMIC_CONTEXT_PRIVATE.md` for offline university submission archives.
 
 ---
 
-## 1. PROJECT IDENTITY & ACADEMIC CONTEXT
+## 1. PROJECT IDENTITY & SUBSYSTEM MODULE MAP
 
 - **Project Title:** **ChameleonShell: Adaptive Cloud Deception Engine & LLM-Driven Chameleon Honeypot (Active Defense Engineering)**
-- **Institution:** Vellore Institute of Technology (VIT), Vellore — School of Computer Science and Engineering (SCOPE)
-- **Programme:** B.Tech. Computer Science and Engineering & Specialization Programmes
-- **Course Code:** `BCSE498J Project – II` / `CBS1904 Capstone Project` (Winter Semester 2026–2027)
-- **Project Category:** In-House Capstone Project (Maximum Team Size: 3 Members)
-- **Final Academic Deliverable:** IEEE Two-Column Formatted Conference Paper (`IEEEtran`) + 3 Review Presentations + Project Expo Poster + Working Full-Stack Deception Engine & SOC Website.
-
-### **Mandatory Team Roster (Strict Ordering Enforced):**
-1. **Krrish Ranjan** — Registration Number: `23BKT0015` (Member 1: Deception & State Emulation Engine)
-2. **Aniket Kumar** — Registration Number: `23BCB0071` (Member 2: MITRE ATT&CK Classifier & Auto-Rule Generator)
-3. **Shivani Kumari** — Registration Number: `23BCB0071` (Member 3: Telemetry Sandbox & Threat Intel SOC Dashboard)
-
-### **Faculty Guide Metadata (From Official VTOP Profile):**
-- **Name:** **Prof. Sathya K**
-- **Designation:** Assistant Professor Sr. Grade 2
-- **School:** School of Computer Science and Engineering (SCOPE), VIT Vellore
-- **Cabin:** `PRP-C BLOCK 218-B`
-- **Email:** `sathya.k@vit.ac.in`
-- **Associated Domain / Course:** `BCSE328L - Cryptocurrency Technologies` / Information Security & Applied Cryptography
-- **Department Project Coordinator (Information Security):** Dr. Chandru Vignesh C
+- **Technical Deliverable:** IEEE Two-Column Conference Paper (`IEEEtran` in `_academic_submissions/ieee_paper/`) + Review Presentation Decks (`_academic_submissions/review_decks/`) + Project Expo Poster + Full-Stack Autonomous Deception Engine & Live WebGL SOC Platform.
+- **Architectural Subsystems:**
+  1. **Subsystem 01 — Deception & State Emulation Runtime:** Deterministic Virtual State Tree (VST), Hybrid Fast-Path POSIX AST router (<8ms), sandboxed Slow-Path generator with atomic JSON state patching ($\Delta S_t$), and AWS IMDSv2 decoy surface.
+  2. **Subsystem 02 — Threat Profiler & Rule Synthesizer:** Real-time sequence classification against MITRE ATT&CK Enterprise v16 (`TA0043` through `TA0040`), sliding-window temporal risk decay ($\gamma=0.92$), and autonomous rule compilation (Snort 3, ModSecurity WAF `SecRule`, Linux `nftables`/`iptables`).
+  3. **Subsystem 03 — Telemetry Sandbox & SOC Dashboard:** Containerized honey-network, 6 multi-stage automated botnet campaigns, Asciinema v2 live session replay, and $10,000+ agency WebGL/Three.js interactive SOC dashboard.
 
 ---
 
-## 2. OFFICIAL VIT SCOPE CAPSTONE SCHEDULE (WINTER 2026–2027)
+## 2. DUAL-ZONE ISOLATION & OFFLINE VAULT MAPPING
 
-All documentation, slide decks, and progress logs are synchronized with these mandatory dates from the VIT In-House Capstone Guidelines:
+All institutional capstone submission records are permanently segregated in `_academic_submissions/`:
 
-| Milestone # | Event / Deliverable | Official Dates | Required Action / Deliverable Status |
-| :--- | :--- | :--- | :--- |
-| **M1** | FFCS Project Registration | **01 Nov 2026 (Sunday)** | Enter tentative project title and domain on VTOP. |
-| **M2** | VTOP Guide Approval | **10 Nov 2026 (Tuesday)** | Obtain Guide approval on VTOP from Prof. Sathya K. |
-| **M3** | Google Form Submission | **Before 12 Nov 2026 (Thursday)** | Submit project details at `https://forms.gle/KYNg7Yjs9cR566M46`. |
-| **M4** | Course Add/Drop Window | **05–07 Dec 2026 (Sat–Mon)** | Correct registration category (GENERAL vs. CDC/PAT) if needed. |
-| **M5** | **Review I (With Guide)** | **09–11 Dec 2026 (Wed–Fri)** | Finalize domain & title with Prof. Sathya K and update VTOP no later than **11 Dec 2026** (No title/guide changes permitted after Review I). Present `Review_1_Presentation`. |
-| **M6** | Guide Consent Form Hardcopy | **On or before 16 Dec 2026 (Wed)** | Submit 1 hardcopy of duly completed Guide Consent Form to the Department Coordinator of the Guide's department. |
-| **M7** | Category Change Deadline | **31 Dec 2026** | Last date for category change from In-House to Non-CDC. |
-| **M8** | Review II PPT Guide Approval | **23 Jan 2027 (Saturday)** | Prerequisite for rubric assessment; obtain written email approval from Prof. Sathya K and bring copy to Review II panel. |
-| **M9** | **Review II (During CAT)** | **28 & 29 Jan 2027 (Thu–Fri)** | Literature review complete, methodology finalized, **60–70% implementation complete**. Panel nominates Best Projects for Project Expo. |
-| **M10** | **Project Expo** | **17 Mar 2027 (Wednesday)** | Display and live demonstration of nominated Best Projects (Poster + Live SOC Sandbox). |
-| **M11** | Final Report, Poster & PPT Approval | **On or before 16 Apr 2027 (Fri)** | Demonstrate completed project to Prof. Sathya K; submit signed final report hardcopy + Poster to Guide, upload softcopy on Moodle, and obtain email approval for Final PPT. |
-| **M12** | **Review III — Final Review (During FAT)** | **22 & 23 Apr 2027 (Thu–Fri)** | 100% project demonstration to external panel, submission of final report, presentation of IEEE Conference Paper outcome, and **same-day upload of signed report to VTOP**. |
+```text
+_academic_submissions/                          [STRICTLY GIT-IGNORED]
+├── ieee_paper/
+│   ├── ChameleonShell_IEEE_Conference_Paper.tex   # IEEEtran source with full author affiliations
+│   ├── ChameleonShell_IEEE_Conference_Paper.pdf   # Formatted conference paper
+│   └── references.bib                            # Peer-reviewed references
+├── review_decks/
+│   ├── Review_1_Deck.pptx                         # Review I Slide Deck
+│   ├── Review_2_Deck.pptx                         # Review II Slide Deck (70% Demo)
+│   └── Review_3_Final_Deck.pptx                   # Review III Slide Deck (Final Defense)
+└── ACADEMIC_CONTEXT_PRIVATE.md                    # Official Team Roster, Guide Metadata, Timeline
+```
+
+For institutional submission requirements, guide meetings, and grading rubric alignments, refer to `_academic_submissions/ACADEMIC_CONTEXT_PRIVATE.md`.
 
 ---
 
@@ -77,13 +64,13 @@ Static honeypots like **Cowrie** rely on hardcoded filesystems (`fs.pickle`) and
 
 ### **ChameleonShell's Novelty**
 $$S_t = \langle \mathcal{F}_t, \mathcal{E}_t, \mathcal{P}_t, \mathcal{N}_t, \mathcal{C}_t, \tau_t \rangle$$
-1. **Member 1 (Krrish Ranjan) — Deception & State Emulation Engine (`backend/member1_deception_engine/`):**
+1. **Subsystem 01 — Deception & State Emulation Engine (`backend/member1_deception_engine/`):**
    - **Deterministic Virtual State Tree (VST):** Shared across SSH, HTTP, and simulated Cloud Metadata (`169.254.169.254` AWS IMDSv2 & K8s API).
    - **Hybrid Fast-Path / Slow-Path Router:** Standard POSIX commands (`ls`, `cd`, `pwd`, `cat`, `touch`, `mkdir`, `rm`, `chmod`, `echo`, `date`, `uptime`, `ps`, `id`, `whoami`) execute in $<8\text{ ms}$ directly against the VST. Complex exploits, compilers, and cloud CLI queries invoke the Sandboxed LLM Slow-Path, which returns both terminal output and an atomic JSON state patch $\Delta S_t$.
-2. **Member 2 (Aniket Kumar) — MITRE ATT&CK Classifier & Auto-Rule Generator (`backend/member2_mitre_classifier/`):**
+2. **Subsystem 02 — MITRE ATT&CK Classifier & Auto-Rule Generator (`backend/member2_mitre_classifier/`):**
    - **Real-Time Sequence Profiler:** Maps attacker command sequences to MITRE ATT&CK Enterprise v16 Tactics (`TA0043` to `TA0040`) and Techniques (`T1059.004`, `T1552.005`, `T1548.001`, etc.) with temporal risk decay scoring.
    - **Autonomous Rule Synthesizer:** Automatically generates validated **Snort 3**, **ModSecurity WAF (`SecRule`)**, and **Linux `nftables`/`iptables`** defensive rules from live session IoAs.
-3. **Member 3 (Shivani Kumari) — Telemetry Sandbox & Threat Intel SOC Dashboard (`backend/member3_telemetry_sandbox/` & `frontend/`):**
+3. **Subsystem 03 — Telemetry Sandbox & Threat Intel SOC Dashboard (`backend/member3_telemetry_sandbox/` & `frontend/`):**
    - **Containerized Honey-Network & Adversarial Simulator:** 6 multi-stage automated attack botnet campaigns + side-by-side A/B benchmark evaluator against static Cowrie.
    - **Live 3D WebGL SOC Dashboard & Session Replay:** Real-time interactive terminal lab, Virtual State Tree file explorer, MITRE heatmap, rule export console, and Asciinema-style session replay player.
 
@@ -102,7 +89,7 @@ Use these exact validated benchmark numbers consistently across the Website, IEE
 
 ## 6. CURRENT IMPLEMENTATION CHECKLIST & SESSION HANDOFF LOG
 
-- `[DONE]` **Phase 0:** Research & Literature Gap Analysis (12 peer-reviewed IEEE/arXiv papers compiled), VIT SCOPE Capstone Schedule & Prof. Sathya K metadata integrated, 12-Website Anti-AI-Slop UI/UX Audit completed.
+- `[DONE]` **Phase 0:** Research & Literature Gap Analysis (12 peer-reviewed IEEE/arXiv papers compiled), Capstone Review Schedule & Guide metadata segregated into local vault, 12-Website Anti-AI-Slop UI/UX Audit completed.
 - `[DONE]` **Phase 1:** Root Governance Files (`GEMINI.md`, `GUIDELINES.md`, `ANTIGRAVITY_MASTER_PROMPT.md`, `README.md`, `.gitignore`, `Makefile`, `docker-compose.yml`) generated.
 - `[DONE]` **Phase 2:** Backend Core (`backend/member1_deception_engine`, `backend/member2_mitre_classifier`, `backend/member3_telemetry_sandbox`, `backend/main.py`) fully implemented and tested.
 - `[DONE]` **Phase 3:** Frontend $10,000+ Agency WebGL/GSAP/Lenis Platform (`frontend/index.html`, `pages/*.html`, custom SVG favicon, live terminal comparison lab, VST explorer, MITRE heatmap, SOC replay).
@@ -110,13 +97,13 @@ Use these exact validated benchmark numbers consistently across the Website, IEE
 - `[DONE]` **Phase 5:** Automated Pytest Verification (10/10 tests passing in 0.03s) & Local Server Launch (`http://localhost:8080`).
 - `[DONE]` **Phase 6:** UI/UX Overhaul, IA De-Bloating & Automated Visual QA:
   - **IA Restructuring:** Extracted heavy interactive terminal, MITRE matrix heatmap, and botnet simulator into dedicated `/lab` workspace. Home (`/`) streamlined into 4 executive sections: 3D Geodesic Hero, Trilemma Bento, 5-Step Kill-Chain Preview, Deliverables & Team Roster.
-  - **Canonical Sticky Navbar:** Single-line 68px header with strict `white-space: nowrap` across all 6 pages (`Overview`, `Live Lab`, `Architecture`, `IEEE Paper`, `Review Decks`, `VIT Dossier`), compact status dot, and mobile slide-over drawer.
+  - **Canonical Sticky Navbar:** Single-line 68px header with strict `white-space: nowrap` across all 6 pages (`Overview`, `Live Lab`, `Architecture`, `Benchmarks`, `Whitepaper`), compact status dot, and mobile slide-over drawer.
   - **Zero LaTeX Leaks:** Converted all raw math delimiters (`$S_t$`, `$t$`, `$m_v$`, `\mathcal{F}`) to semantic `<code class="math-token">` and `<pre class="math-block">` with Unicode math notation.
   - **Grid Alignment:** Enforced pixel-strict 12-column alignment on `/architecture` (`delta = 0px` between Card 1 and Member 3's card) and verified zero sibling card bounding-box overlaps.
   - **3D Core Upgrade:** Removed flat ring wireframe; rendered dual-layer geodesic icosahedron in `#D4FF00` with 12 orbiting vertex nodes and parallax damping.
   - **Automated Playwright Visual QA Suite (`scripts/visual_qa_screenshots.mjs`):** Verified all 6 routes across Desktop (1440x900), Tablet (768x1024), and Mobile (390x844). **18/18 Viewport Tests PASSED (100%)** with zero LaTeX leaks, zero horizontal overflows, zero text wraps, zero card overlaps, and exact grid alignment. Full-page stitched screenshots captured in `screenshots/` and recorded in `screenshots/qa_report.json`.
 - `[DONE]` **Phase 7:** Enterprise Production Rebrand (Zero PII / Zero Academic Footprint) & Full-Page Verification:
-  - **Academic Footprint Stripped:** 100% removal of student names, registration numbers, faculty guide, course codes (`BCSE498J`, `CBS1904`), and university labels (`VIT`, `SCOPE`) from public web pages, DOM, API payloads (`/api/health`), and client assets.
+  - **Academic Footprint Stripped:** 100% removal of student names, registration numbers, faculty guide, course codes, and university labels from public web pages, DOM, API payloads (`/api/health`), and client assets.
   - **Offline Institutional Isolation:** Archived academic review presentations, evaluation rubrics, guide logs, and university manuscripts into `_academic_offline/` and locked via `.gitignore`.
   - **Production Information Architecture:** Replaced academic review/dossier routes with commercial enterprise routes: `/` (Platform), `/lab` (Live Lab), `/architecture` (Architecture Blueprint), `/benchmarks` (Empirical Benchmarks), and `/whitepaper` (Technical Whitepaper by ChameleonShell Threat Research Group).
   - **Enterprise Architecture Terminology:** Rebranded `MEMBER 1/2/3 MODULE` cards on `/architecture` to `SUBSYSTEM 01 // CORE RUNTIME` (Deception & VST Engine), `SUBSYSTEM 02 // THREAT PROFILER` (MITRE ATT&CK Classifier & WAF Synthesizer), and `SUBSYSTEM 03 // SOC TELEMETRY` (Containerized Sandbox & Live Replay Engine).

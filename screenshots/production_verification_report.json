@@ -3,7 +3,7 @@
     "route": "/",
     "viewport": "desktop",
     "width": 1440,
-    "durationMs": 2314,
+    "durationMs": 3034,
     "screenshot": "platform-desktop.png",
     "assertions": {
       "zeroPii": true,
@@ -40,7 +40,7 @@
     "route": "/",
     "viewport": "tablet",
     "width": 768,
-    "durationMs": 2742,
+    "durationMs": 2784,
     "screenshot": "platform-tablet.png",
     "assertions": {
       "zeroPii": true,
@@ -77,7 +77,7 @@
     "route": "/",
     "viewport": "mobile",
     "width": 390,
-    "durationMs": 2751,
+    "durationMs": 2763,
     "screenshot": "platform-mobile.png",
     "assertions": {
       "zeroPii": true,
@@ -114,7 +114,7 @@
     "route": "/lab",
     "viewport": "desktop",
     "width": 1440,
-    "durationMs": 2601,
+    "durationMs": 2615,
     "screenshot": "lab-desktop.png",
     "assertions": {
       "zeroPii": true,
@@ -149,7 +149,7 @@
     "route": "/lab",
     "viewport": "tablet",
     "width": 768,
-    "durationMs": 2690,
+    "durationMs": 2731,
     "screenshot": "lab-tablet.png",
     "assertions": {
       "zeroPii": true,
@@ -184,7 +184,7 @@
     "route": "/lab",
     "viewport": "mobile",
     "width": 390,
-    "durationMs": 2800,
+    "durationMs": 2777,
     "screenshot": "lab-mobile.png",
     "assertions": {
       "zeroPii": true,
@@ -219,7 +219,7 @@
     "route": "/architecture",
     "viewport": "desktop",
     "width": 1440,
-    "durationMs": 2163,
+    "durationMs": 2201,
     "screenshot": "architecture-desktop.png",
     "assertions": {
       "zeroPii": true,
@@ -254,7 +254,7 @@
     "route": "/architecture",
     "viewport": "tablet",
     "width": 768,
-    "durationMs": 2213,
+    "durationMs": 2214,
     "screenshot": "architecture-tablet.png",
     "assertions": {
       "zeroPii": true,
@@ -289,7 +289,7 @@
     "route": "/architecture",
     "viewport": "mobile",
     "width": 390,
-    "durationMs": 2368,
+    "durationMs": 2459,
     "screenshot": "architecture-mobile.png",
     "assertions": {
       "zeroPii": true,
@@ -324,7 +324,7 @@
     "route": "/benchmarks",
     "viewport": "desktop",
     "width": 1440,
-    "durationMs": 3478,
+    "durationMs": 2398,
     "screenshot": "benchmarks-desktop.png",
     "assertions": {
       "zeroPii": true,
@@ -359,7 +359,7 @@
     "route": "/benchmarks",
     "viewport": "tablet",
     "width": 768,
-    "durationMs": 2497,
+    "durationMs": 2625,
     "screenshot": "benchmarks-tablet.png",
     "assertions": {
       "zeroPii": true,
@@ -394,7 +394,7 @@
     "route": "/benchmarks",
     "viewport": "mobile",
     "width": 390,
-    "durationMs": 2795,
+    "durationMs": 2896,
     "screenshot": "benchmarks-mobile.png",
     "assertions": {
       "zeroPii": true,
@@ -429,7 +429,7 @@
     "route": "/whitepaper",
     "viewport": "desktop",
     "width": 1440,
-    "durationMs": 2342,
+    "durationMs": 2407,
     "screenshot": "whitepaper-desktop.png",
     "assertions": {
       "zeroPii": true,
@@ -464,7 +464,7 @@
     "route": "/whitepaper",
     "viewport": "tablet",
     "width": 768,
-    "durationMs": 2419,
+    "durationMs": 2463,
     "screenshot": "whitepaper-tablet.png",
     "assertions": {
       "zeroPii": true,
@@ -499,7 +499,7 @@
     "route": "/whitepaper",
     "viewport": "mobile",
     "width": 390,
-    "durationMs": 2759,
+    "durationMs": 2784,
     "screenshot": "whitepaper-mobile.png",
     "assertions": {
       "zeroPii": true,
