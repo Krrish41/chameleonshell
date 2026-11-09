@@ -52,6 +52,7 @@ Desktop.ini
 # Node / Frontend builds
 node_modules/
 dist/
+_site/
 .cache/
 
 # Docker

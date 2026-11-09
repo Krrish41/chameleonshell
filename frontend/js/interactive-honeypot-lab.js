@@ -50,8 +50,9 @@ class InteractiveHoneypotLab {
     this.appendTerminalLine(this.csTerminalBody, `${this.csPromptLabel ? this.csPromptLabel.innerText : "root@ip-172-31-18-42:~# "} ${cmd}`, "cmd-echo");
     this.appendTerminalLine(this.cowrieTerminalBody, `root@svr04:~# ${cmd}`, "cmd-echo");
 
+    const basePath = window.__BASE_PATH__ || (window.location.pathname.startsWith("/chameleonshell") ? "/chameleonshell" : "");
     try {
-      const res = await fetch("/api/terminal/execute", {
+      const res = await fetch(`${basePath}/api/terminal/execute`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ command: cmd, target: "both" })
@@ -116,12 +117,101 @@ class InteractiveHoneypotLab {
       this.refreshVSTTree();
 
     } catch (err) {
-      this.appendTerminalLine(this.csTerminalBody, `[ERR] Terminal execution communication fault: ${err.message}`, "error");
+      // Offline / Static GitHub Pages Emulation Fallback
+      this.handleOfflineExecution(cmd);
     }
 
     // Scroll terminals to bottom
     this.scrollToBottom(this.csTerminalBody);
     this.scrollToBottom(this.cowrieTerminalBody);
+  }
+
+  handleOfflineExecution(cmd) {
+    const isShadow = cmd.includes("shadow");
+    const isPasswd = cmd.includes("passwd");
+    const isCloud = cmd.includes("169.254.169.254");
+    const isSuid = cmd.includes("perm") || cmd.includes("suid");
+    const isUname = cmd.includes("uname");
+    const isWhoami = cmd.includes("whoami");
+    const isId = cmd.trim() === "id";
+    const isUptime = cmd.includes("uptime");
+    const isLs = cmd.startsWith("ls");
+    const isPwd = cmd.trim() === "pwd";
+
+    let csStdout = "";
+    let csStderr = "";
+    let cowrieStdout = "";
+    let cowrieStderr = "";
+    let latencyMs = 4.8;
+    let pathLabel = "Fast-Path (Deterministic VST)";
+    let mitre = { tactic_id: "TA0007", tactic_name: "Discovery", technique_id: "T1059.004", severity: "LOW" };
+    let rules = {
+      nftables: `# Autonomous nftables Rule (Simulated)\ntable inet filter {\n    chain input { type filter hook input priority 0; drop; }\n}`,
+      snort3: `drop tcp any any -> any any (msg:"[ChameleonShell Trapped]"; sid:100001; rev:1;)`,
+      modsecurity: `SecRule REQUEST_URI "@contains /" "id:10001,phase:1,deny,status:403"`
+    };
+
+    if (isShadow) {
+      csStdout = "root:$6$K7xG4J3q$m5...:19245:0:99999:7:::\ndaemon:*:19000:0:99999:7:::\nwww-data:*:19000:0:99999:7:::";
+      cowrieStderr = "cat: /etc/shadow: Permission denied";
+      latencyMs = 4.2;
+      mitre = { tactic_id: "TA0006", tactic_name: "Credential Access", technique_id: "T1003.008", severity: "HIGH" };
+      rules.nftables = `table inet filter {\n    chain input {\n        ip saddr 185.220.101.4 drop comment "[T1003.008] /etc/shadow credential harvest"\n    }\n}`;
+    } else if (isCloud) {
+      csStdout = "ami-id\ninstance-type\niam/\nsecurity-credentials/production-cluster-node-role";
+      cowrieStderr = "curl: (7) Failed to connect to 169.254.169.254 port 80: Connection timed out";
+      latencyMs = 18.2;
+      pathLabel = "Slow-Path (Sandboxed Generative)";
+      mitre = { tactic_id: "TA0007", tactic_name: "Discovery", technique_id: "T1580", severity: "HIGH" };
+      rules.modsecurity = `SecRule REQUEST_URI "@contains 169.254.169.254" "id:1002,phase:1,deny,status:403,msg:'AWS IMDS Decoy Intercept'"`;
+    } else if (isSuid) {
+      csStdout = "/usr/bin/sudo\n/usr/bin/pkexec\n/usr/bin/passwd\n/usr/bin/gpasswd\n/usr/bin/chsh";
+      cowrieStdout = "/bin/su";
+      latencyMs = 5.1;
+      mitre = { tactic_id: "TA0004", tactic_name: "Privilege Escalation", technique_id: "T1548.001", severity: "MEDIUM" };
+    } else if (isUname) {
+      csStdout = "Linux ip-172-31-18-42 5.15.0-1031-aws #35-Ubuntu SMP Fri Feb 11 02:08:44 UTC 2022 x86_64 GNU/Linux";
+      cowrieStdout = "Linux svr04 3.2.0-4-amd64 #1 SMP Debian 3.2.51-1 x86_64 GNU/Linux";
+      latencyMs = 3.9;
+    } else if (isWhoami) {
+      csStdout = "root";
+      cowrieStdout = "root";
+      latencyMs = 3.6;
+    } else if (isId) {
+      csStdout = "uid=0(root) gid=0(root) groups=0(root)";
+      cowrieStdout = "uid=0(root) gid=0(root) groups=0(root)";
+      latencyMs = 3.8;
+    } else if (isUptime) {
+      csStdout = " 07:22:19 up 14 days,  3:18,  1 user,  load average: 0.08, 0.03, 0.01";
+      cowrieStdout = " 07:22:19 up 10 min,  1 user,  load average: 0.00, 0.00, 0.00";
+      latencyMs = 3.9;
+    } else if (isLs) {
+      csStdout = "total 28\ndrwx------ 4 root root 4096 Nov 5 00:00 .\ndrwxr-xr-x 23 root root 4096 Nov 5 00:00 ..\n-rw------- 1 root root  420 Nov 5 00:00 .bash_history\n-rw-r--r-- 1 root root 3106 Nov 5 00:00 .bashrc\ndrwx------ 2 root root 4096 Nov 5 00:00 .ssh\n-rw-r--r-- 1 root root  161 Nov 5 00:00 .profile\n-rw-r--r-- 1 root root  820 Nov 5 00:00 deploy_credentials.env";
+      cowrieStdout = "deploy_credentials.env";
+      latencyMs = 4.4;
+    } else if (isPwd) {
+      csStdout = "/root";
+      cowrieStdout = "/root";
+      latencyMs = 3.5;
+    } else {
+      csStdout = `[SIMULATED POSIX AST] ${cmd}: command executed successfully (VST state persistent).`;
+      cowrieStderr = `bash: ${cmd.split(" ")[0]}: command not found`;
+      latencyMs = 4.8;
+    }
+
+    if (csStdout) this.appendTerminalLine(this.csTerminalBody, csStdout);
+    if (csStderr) this.appendTerminalLine(this.csTerminalBody, csStderr, "error");
+    this.appendTerminalLine(this.csTerminalBody, `[TELEMETRY] Delta t = ${latencyMs} ms [${pathLabel}]`, "meta");
+
+    if (cowrieStdout) this.appendTerminalLine(this.cowrieTerminalBody, cowrieStdout);
+    if (cowrieStderr) this.appendTerminalLine(this.cowrieTerminalBody, cowrieStderr, "error");
+    this.appendTerminalLine(this.cowrieTerminalBody, `[BASELINE] Delta t = 14.5 ms [Static fs.pickle]`, "meta");
+
+    if (this.csLatencyBadge) this.csLatencyBadge.innerText = `${latencyMs} ms`;
+    if (this.cowrieLatencyBadge) this.cowrieLatencyBadge.innerText = "14.5 ms";
+
+    if (window.webglCore) window.webglCore.triggerThreatShift(mitre.severity);
+    if (window.mitreVisualizer) window.mitreVisualizer.updateTelemetry(mitre, rules);
   }
 
   appendTerminalLine(targetEl, text, className = "") {
@@ -140,13 +230,55 @@ class InteractiveHoneypotLab {
 
   async refreshVSTTree() {
     if (!this.vstTreeView) return;
+    const basePath = window.__BASE_PATH__ || (window.location.pathname.startsWith("/chameleonshell") ? "/chameleonshell" : "");
     try {
-      const res = await fetch("/api/vst/tree");
-      if (!res.ok) return;
+      let res = await fetch(`${basePath}/api/vst/tree`);
+      if (!res.ok) res = await fetch(`${basePath}/api/vst/tree.json`);
+      if (!res.ok) throw new Error("VST fetch failed");
       const data = await res.json();
       this.renderVSTNodes(data.tree, this.vstTreeView);
     } catch (e) {
-      console.warn("VST tree poll error:", e);
+      // Fallback static tree for GitHub Pages
+      const fallbackTree = {
+        name: "/",
+        is_dir: true,
+        permissions: "rwxr-xr-x",
+        children: [
+          {
+            name: "root",
+            is_dir: true,
+            permissions: "rwx------",
+            children: [
+              { name: ".bashrc", is_dir: false, permissions: "rw-r--r--", size: 3106, sha256: "b94d27b9" },
+              { name: "deploy_credentials.env", is_dir: false, permissions: "rw-r--r--", size: 820, sha256: "7a8f9c11" },
+              { name: ".ssh", is_dir: true, permissions: "rwx------", children: [
+                { name: "authorized_keys", is_dir: false, permissions: "rw-------", size: 564, sha256: "c3d4e5f6" }
+              ]}
+            ]
+          },
+          {
+            name: "etc",
+            is_dir: true,
+            permissions: "rwxr-xr-x",
+            children: [
+              { name: "shadow", is_dir: false, permissions: "rw-------", size: 1240, sha256: "98fa10bc" },
+              { name: "passwd", is_dir: false, permissions: "rw-r--r--", size: 2190, sha256: "e4f5a6b7" },
+              { name: "hostname", is_dir: false, permissions: "rw-r--r--", size: 16, sha256: "11223344" }
+            ]
+          },
+          {
+            name: "var",
+            is_dir: true,
+            permissions: "rwxr-xr-x",
+            children: [
+              { name: "log", is_dir: true, permissions: "rwxr-xr-x", children: [
+                { name: "auth.log", is_dir: false, permissions: "rw-r-----", size: 40960, sha256: "d5e6f7a8" }
+              ]}
+            ]
+          }
+        ]
+      };
+      this.renderVSTNodes(fallbackTree, this.vstTreeView);
     }
   }
 
