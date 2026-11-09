@@ -2470,47 +2470,9 @@ header.site-header *, header.site-nav *, nav.navbar * {
 .interactive-cyber-callout {
   background: radial-gradient(
     420px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-    rgba(212, 255, 0, 0.05),
+    rgba(212, 255, 0, 0.04),
     transparent 70%
   ), var(--bg-carbon);
-}
-
-/* Laser Scanline Beam sweeping across cards on hover */
-.cyber-card-laser-scan {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(212, 255, 0, 0.03) 40%,
-    rgba(212, 255, 0, 0.14) 50%,
-    rgba(0, 255, 157, 0.08) 60%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.terminal-card:hover > .cyber-card-laser-scan,
-.arch-subsystem-card:hover > .cyber-card-laser-scan,
-.bench-kpi-card:hover > .cyber-card-laser-scan,
-.trilemma-card:hover > .cyber-card-laser-scan,
-.killchain-preview-card:hover > .cyber-card-laser-scan,
-.deliverable-card:hover > .cyber-card-laser-scan,
-.trial-station-card:hover > .cyber-card-laser-scan,
-.interactive-cyber-callout:hover > .cyber-card-laser-scan {
-  opacity: 1;
-  animation: laserScanAcross 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes laserScanAcross {
-  0% { left: -100%; }
-  100% { left: 200%; }
 }
 
 /* Interactive Cyber Callout Banner (Benchmarks & Architecture CTA) */
