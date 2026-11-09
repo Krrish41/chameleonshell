@@ -241,6 +241,67 @@
           </div>
         </div>
 
+        <!-- Interactive Cyber Action Callout with Kinetic Laser Grid (Spans all 12 columns) -->
+        <div class="interactive-cyber-callout crosshair" style="grid-column: span 12; margin-top: 1rem;">
+          <!-- Perimeter Laser Border Runner -->
+          <div class="cyber-callout-border-beam" aria-hidden="true"></div>
+
+          <!-- Animated SVG Background Circuit Grid & Laser Bus Lines -->
+          <svg class="cyber-callout-circuit" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="arch-circuit-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#D4FF00" stop-opacity="0.1" />
+                <stop offset="50%" stop-color="#00FF9D" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#00F0FF" stop-opacity="0.1" />
+              </linearGradient>
+              <linearGradient id="arch-circuit-beam" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#D4FF00" stop-opacity="0" />
+                <stop offset="50%" stop-color="#D4FF00" stop-opacity="1" />
+                <stop offset="100%" stop-color="#00FF9D" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M 0 50 L 320 50 L 400 130 L 850 130 L 920 200 L 1200 200" stroke="url(#arch-circuit-grad)" stroke-width="1.2" opacity="0.4" />
+            <path d="M 0 240 L 260 240 L 350 150 L 780 150 L 860 70 L 1200 70" stroke="url(#arch-circuit-grad)" stroke-width="1.2" opacity="0.4" />
+            <path class="circuit-pulse-beam" d="M 0 50 L 320 50 L 400 130 L 850 130 L 920 200 L 1200 200" stroke="url(#arch-circuit-beam)" stroke-width="2.5" />
+            <path class="circuit-pulse-beam fast" d="M 0 240 L 260 240 L 350 150 L 780 150 L 860 70 L 1200 70" stroke="url(#arch-circuit-beam)" stroke-width="2.5" />
+            <circle cx="320" cy="50" r="3" fill="#D4FF00" opacity="0.7" />
+            <circle cx="400" cy="130" r="3" fill="#00FF9D" opacity="0.7" />
+            <circle cx="850" cy="130" r="3" fill="#00F0FF" opacity="0.7" />
+            <circle cx="350" cy="150" r="3" fill="#D4FF00" opacity="0.7" />
+          </svg>
+
+          <!-- Top Telemetry Metadata Bar -->
+          <div class="cyber-callout-topbar">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="arch-pulse-dot emerald" style="width: 6px; height: 6px;"></span>
+              <span style="color: var(--accent-emerald); font-weight: 700;">ACTIVE ARCHITECTURE MESH // READY</span>
+            </div>
+            <span style="color: var(--text-muted);">FAST-PATH &lt;8ms · MITRE V16 SEQUENCING: ONLINE</span>
+          </div>
+
+          <!-- Main Content Area -->
+          <div class="cyber-callout-main">
+            <div class="cyber-callout-info">
+              <h3 class="cyber-callout-title">
+                Deploy and Inspect the Virtual State Tree
+              </h3>
+              <p class="cyber-callout-desc">
+                Execute live side-by-side terminal commands against Cowrie, test AWS IMDSv2 metadata deception, and observe real-time atomic state deltas (&Delta;S<sub>t</sub>) in memory.
+              </p>
+              <div class="cyber-callout-tags">
+                <span class="cyber-callout-tag">[FAST-PATH ROUTER &lt;8ms]</span>
+                <span class="cyber-callout-tag">[IN-MEMORY INODE DAG]</span>
+                <span class="cyber-callout-tag">[MITRE ATT&amp;CK V16]</span>
+                <span class="cyber-callout-tag">[EMPIRICAL BENCHMARKS]</span>
+              </div>
+            </div>
+            <div class="cyber-callout-actions">
+              <a href="/lab" class="btn-primary" style="padding: 12px 24px; font-size: 0.8125rem;">LAUNCH LIVE LAB &rarr;</a>
+              <a href="/benchmarks" class="btn-secondary" style="padding: 12px 20px; font-size: 0.8125rem;">VIEW BENCHMARKS</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </main>

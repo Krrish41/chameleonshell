@@ -283,9 +283,19 @@ document.addEventListener("DOMContentLoaded", () => {
   if (metricLatency) animateValue(metricLatency, 24.0, 4.8, 1200, 1, " ms");
   if (metricConsistency) animateValue(metricConsistency, 0, 98.4, 1600, 1, "%");
 
-  // 10. Linear-style Mouse-following Radial Spotlight on Bento Cards
-  const cards = document.querySelectorAll(".trilemma-card, .killchain-preview-card, .deliverable-card");
-  cards.forEach((card) => {
+  // 10. Global Interactive Laser Scanner & Cursor Spotlight on All Cards Across All Pages
+  const allInteractiveCards = document.querySelectorAll(
+    ".terminal-card, .trilemma-card, .killchain-preview-card, .deliverable-card, .arch-subsystem-card, .bench-kpi-card, .trial-station-card, .interactive-cyber-callout"
+  );
+  allInteractiveCards.forEach((card) => {
+    // Inject kinetic laser scanline if not already attached
+    if (!card.querySelector(".cyber-card-laser-scan")) {
+      const laserScan = document.createElement("div");
+      laserScan.className = "cyber-card-laser-scan";
+      laserScan.setAttribute("aria-hidden", "true");
+      card.appendChild(laserScan);
+    }
+
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;

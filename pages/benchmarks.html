@@ -438,19 +438,74 @@ bash: /tmp/.payload_canary: No such file or directory
         </div>
       </div>
 
-      <!-- Action Callout (Without Whitepaper Button) -->
-      <div class="terminal-card crosshair" style="padding: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
-        <div>
-          <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.5rem;">
-            Test Benchmarks Against Real Attacker Payloads
-          </h3>
-          <p style="font-size: 0.875rem; color: var(--text-secondary);">
-            Open the Live Honeypot Lab to execute side-by-side terminal tests against Cowrie or run pre-configured botnet campaigns.
-          </p>
+      <!-- Interactive Cyber Action Callout with Kinetic Laser Grid -->
+      <div class="interactive-cyber-callout crosshair" id="benchmarks-cta-callout">
+        <!-- Perimeter Laser Border Runner -->
+        <div class="cyber-callout-border-beam" aria-hidden="true"></div>
+
+        <!-- Animated SVG Background Circuit Grid & Laser Bus Lines -->
+        <svg class="cyber-callout-circuit" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="circuit-grad-main" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#D4FF00" stop-opacity="0.1" />
+              <stop offset="50%" stop-color="#00FF9D" stop-opacity="0.3" />
+              <stop offset="100%" stop-color="#00F0FF" stop-opacity="0.1" />
+            </linearGradient>
+            <linearGradient id="circuit-beam-pulse" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#D4FF00" stop-opacity="0" />
+              <stop offset="50%" stop-color="#D4FF00" stop-opacity="1" />
+              <stop offset="100%" stop-color="#00FF9D" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+
+          <!-- Topographic structural circuit tracks -->
+          <path d="M 0 50 L 320 50 L 400 130 L 850 130 L 920 200 L 1200 200" stroke="url(#circuit-grad-main)" stroke-width="1.2" opacity="0.4" />
+          <path d="M 0 240 L 260 240 L 350 150 L 780 150 L 860 70 L 1200 70" stroke="url(#circuit-grad-main)" stroke-width="1.2" opacity="0.4" />
+          <path d="M 150 0 L 150 100 L 230 180 L 600 180 L 680 260 L 1200 260" stroke="url(#circuit-grad-main)" stroke-width="0.8" opacity="0.25" stroke-dasharray="4 4" />
+          <path d="M 0 170 L 500 170 L 580 90 L 1100 90 L 1200 190" stroke="url(#circuit-grad-main)" stroke-width="0.8" opacity="0.25" stroke-dasharray="4 4" />
+
+          <!-- Kinetic Pulsing Laser Beams traveling across lines -->
+          <path class="circuit-pulse-beam" d="M 0 50 L 320 50 L 400 130 L 850 130 L 920 200 L 1200 200" stroke="url(#circuit-beam-pulse)" stroke-width="2.5" />
+          <path class="circuit-pulse-beam fast" d="M 0 240 L 260 240 L 350 150 L 780 150 L 860 70 L 1200 70" stroke="url(#circuit-beam-pulse)" stroke-width="2.5" />
+
+          <!-- Circuit Junction Nodes -->
+          <circle cx="320" cy="50" r="3" fill="#D4FF00" opacity="0.7" />
+          <circle cx="400" cy="130" r="3" fill="#00FF9D" opacity="0.7" />
+          <circle cx="850" cy="130" r="3" fill="#00F0FF" opacity="0.7" />
+          <circle cx="350" cy="150" r="3" fill="#D4FF00" opacity="0.7" />
+          <circle cx="780" cy="150" r="3" fill="#00FF9D" opacity="0.7" />
+          <circle cx="860" cy="70" r="3" fill="#00F0FF" opacity="0.7" />
+        </svg>
+
+        <!-- Top Telemetry Metadata Bar -->
+        <div class="cyber-callout-topbar">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="arch-pulse-dot emerald" style="width: 6px; height: 6px;"></span>
+            <span style="color: var(--accent-emerald); font-weight: 700;">ACTIVE DECEPTION MESH // ARMED</span>
+          </div>
+          <span style="color: var(--text-muted);">INGRESS DELTA: &lt;4.8ms · DOCKER SANDBOX: READY</span>
         </div>
-        <div style="display: flex; gap: 1rem;">
-          <a href="/lab" class="btn-primary">LAUNCH LIVE LAB</a>
-          <a href="/architecture" class="btn-secondary">SYSTEM ARCHITECTURE</a>
+
+        <!-- Main Content Area -->
+        <div class="cyber-callout-main">
+          <div class="cyber-callout-info">
+            <h3 class="cyber-callout-title">
+              Test Benchmarks Against Real Attacker Payloads
+            </h3>
+            <p class="cyber-callout-desc">
+              Open the Live Honeypot Lab to dispatch real-time adversarial botnet campaigns, evaluate timing side-channel resistance against Cowrie, and inspect dynamic Inode DAG persistence.
+            </p>
+            <div class="cyber-callout-tags">
+              <span class="cyber-callout-tag">[SSH :2222 DECOY]</span>
+              <span class="cyber-callout-tag">[IMDSv2 169.254.169.254]</span>
+              <span class="cyber-callout-tag">[K8s API CANARY]</span>
+              <span class="cyber-callout-tag">[WAF AUTO-SYNTHESIS]</span>
+            </div>
+          </div>
+          <div class="cyber-callout-actions">
+            <a href="/lab" class="btn-primary" style="padding: 12px 24px; font-size: 0.8125rem;">LAUNCH LIVE LAB &rarr;</a>
+            <a href="/architecture" class="btn-secondary" style="padding: 12px 20px; font-size: 0.8125rem;">SYSTEM ARCHITECTURE</a>
+          </div>
         </div>
       </div>
 

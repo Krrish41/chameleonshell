@@ -59,7 +59,7 @@
     "button": "quick_chip_shadow",
     "expected": "Executes /etc/shadow canary read via Fast-Path (<8ms)",
     "passed": true,
-    "detail": "Cmd: cat /etc/shadow, Badge: FAST-PATH POSIX AST [0.09ms]",
+    "detail": "Cmd: cat /etc/shadow, Badge: FAST-PATH POSIX AST [0.1ms]",
     "screenshot": "07_platform_quick_chip_shadow.png"
   },
   {
@@ -230,7 +230,7 @@
     "button": "mitre_technique_click",
     "expected": "Clicks a technique chip in the MITRE matrix to preview compiled rule",
     "passed": true,
-    "detail": "Generated rule preview: # Snort 3 Network Flow Signature (SID 9400113)\n# G...",
+    "detail": "Generated rule preview: # Snort 3 Network Flow Signature (SID 9400140)\n# G...",
     "screenshot": "26_lab_mitre_technique_click.png"
   },
   {
@@ -248,7 +248,7 @@
     "button": "run_campaign_btn",
     "expected": "Triggers automated botnet campaign simulation against honeypot",
     "passed": true,
-    "detail": "Campaign status: [COMPLETE] 14 commands executed | Final Risk: 100.0",
+    "detail": "Campaign status: [COMPLETE] 14 commands executed | Final Risk: 91.9",
     "screenshot": "28_lab_run_campaign_btn.png"
   },
   {
@@ -284,7 +284,7 @@
     "button": "pulse_route_btn",
     "expected": "Triggers Fast-Path AST router laser pulse animation and measures latency",
     "passed": true,
-    "detail": "Fast-Path latency measured: 4.5ms Measured",
+    "detail": "Fast-Path latency measured: 4.1ms Measured",
     "screenshot": "32_architecture_pulse_route_btn.png"
   },
   {
