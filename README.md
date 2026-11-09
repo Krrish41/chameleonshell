@@ -3,6 +3,11 @@
 > **Adaptive Cloud Deception Engine & Autonomous Honeypot Platform (Active Defense Engineering)**  
 > High-interaction Linux & AWS IMDSv2 decoy surface with a sub-8ms Deterministic Virtual State Tree (VST), real-time MITRE ATT&CK sequence classification, and zero-touch firewall signature synthesis.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Platform-Online-00F59B?style=flat-square&logo=googlechrome&logoColor=white)](https://krrish41.github.io/chameleonshell/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Active-D2FF00?style=flat-square&logo=github&logoColor=black)](https://krrish41.github.io/chameleonshell/)
+
+**Live Platform & WebGL Active Defense Lab:** [https://krrish41.github.io/chameleonshell/](https://krrish41.github.io/chameleonshell/)
+
 ---
 
 ## 1. System Architecture & Modular Subsystems
@@ -97,7 +102,11 @@ chameleonshell/
 
 ## 4. Quickstart Guide
 
-### Prerequisites
+### Live Cloud Platform
+Access the active deception lab and interactive benchmarks directly without local setup:  
+**URL:** [https://krrish41.github.io/chameleonshell/](https://krrish41.github.io/chameleonshell/)
+
+### Local Prerequisites
 - Python 3.10+ (Tested on Python 3.12, 3.13, and 3.14)
 - Modern web browser (Chrome, Edge, Firefox, Safari)
 
