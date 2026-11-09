@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy // ChameleonShell Threat Telemetry</title>
+  <link rel="icon" type="image/svg+xml" href="/chameleonshell/assets/favicon.svg">
+  <link rel="stylesheet" href="/chameleonshell/css/styles.css">
+
+  <script>
+    window.__BASE_PATH__ = "/chameleonshell";
+  </script>
+</head>
+<body>
+  <!-- Canonical Sticky Navigation Bar -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/chameleonshell/" class="brand-wrapper" aria-label="ChameleonShell Homepage">
+        <img src="/chameleonshell/assets/favicon.svg" alt="Chameleon Logo" class="brand-icon">
+        <span class="brand-title">CHAMELEONSHELL</span>
+        <span class="nav-status-dot" title="Virtual State Tree Online"></span>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="/chameleonshell/" class="nav-link">Platform</a></li>
+          <li><a href="/chameleonshell/lab/" class="nav-link">Live Lab</a></li>
+          <li><a href="/chameleonshell/architecture/" class="nav-link">Architecture</a></li>
+          <li><a href="/chameleonshell/benchmarks/" class="nav-link">Benchmarks</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Action Cluster -->
+      <div class="header-actions">
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Mobile Navigation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Slide-Over Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <a href="/chameleonshell/" class="nav-link">Platform</a>
+    <a href="/chameleonshell/lab/" class="nav-link">Live Lab</a>
+    <a href="/chameleonshell/architecture/" class="nav-link">Architecture</a>
+    <a href="/chameleonshell/benchmarks/" class="nav-link">Benchmarks</a>
+  </div>
+
+  <div class="structural-grid" aria-hidden="true"></div>
+
+  <main style="padding-top: calc(var(--header-height) + 3rem); padding-bottom: 6rem;">
+    <div class="container" style="max-width: 860px;">
+      <div class="hero-meta-pill">DATA PROTECTION & ETHICAL COMPLIANCE</div>
+      <h1 class="section-heading">Threat Telemetry & Data Privacy Policy</h1>
+      <p class="section-subheading">
+        Governing honeypot sensor telemetry capture, IP address anonymization, GDPR compliance, and India's Digital Personal Data Protection (DPDP) Act standards.
+      </p>
+
+      <div class="terminal-card crosshair" style="padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div>
+          <h3 style="font-family: var(--font-display); font-size: 1.125rem; color: var(--accent-volt); margin-bottom: 0.5rem;">
+            1. Boundaries of Sensor Telemetry Collection
+          </h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+            ChameleonShell operates as an isolated research deception platform. All inbound network traffic captured on containerized SSH (port 2222), HTTP (port 80), and IMDSv2 metadata endpoints represents unsolicited probing by automated bots, red-team scanners, or authenticated researchers within an authorized sandbox environment.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-display); font-size: 1.125rem; color: var(--accent-volt); margin-bottom: 0.5rem;">
+            2. Anonymization & Cryptographic Hashing
+          </h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+            Attacker IP addresses captured during wild deployments are salted and cryptographically hashed using SHA-256 before ingestion into public telemetry streams or conference paper benchmark evaluations. No personally identifiable information (PII) of legitimate users is captured or stored.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-display); font-size: 1.125rem; color: var(--accent-volt); margin-bottom: 0.5rem;">
+            3. Canary Token Safety & Harmless Decoys
+          </h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+            All credentials, AWS IAM secrets, and database strings hosted in the Virtual State Tree (e.g. <code>/var/www/html/.env</code>, <code>.aws/credentials</code>) are synthetic decoy honeytokens. They possess zero access permissions to external infrastructure and serve purely as detection tripwires.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-display); font-size: 1.125rem; color: var(--accent-volt); margin-bottom: 0.5rem;">
+            4. Enterprise Research & Data Governance
+          </h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+            This platform is maintained by the ChameleonShell Threat Research Group. All threat telemetry and adversarial sequence captures adhere strictly to responsible disclosure standards and active defense best practices.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Canonical Enterprise Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-bottom-bar">
+      <span>&copy; 2026 ChameleonShell Security Systems</span>
+      <ul class="footer-nav">
+        <li><a href="/chameleonshell/privacy/">Privacy Policy</a></li>
+        <li><a href="/chameleonshell/terms/">Terms of Service</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/chameleonshell/js/app.js"></script>
+</body>
+</html>

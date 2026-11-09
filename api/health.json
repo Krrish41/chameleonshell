@@ -1,0 +1,9 @@
+{
+  "status": "healthy",
+  "system": "ChameleonShell: Autonomous Cloud Deception & Active Threat Intelligence",
+  "version": "2.4.0-enterprise",
+  "organization": "ChameleonShell Threat Research Group",
+  "engine_status": "ONLINE (STATIC_SHOWCASE_MODE)",
+  "uptime_seconds": 86400.0,
+  "active_vst_nodes": 19
+}

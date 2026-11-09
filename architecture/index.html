@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture Blueprint // ChameleonShell Enterprise Active Defense</title>
+  <link rel="icon" type="image/svg+xml" href="/chameleonshell/assets/favicon.svg">
+  <link rel="stylesheet" href="/chameleonshell/css/styles.css">
+  <meta name="description" content="Technical engineering blueprint of the ChameleonShell tri-tier autonomous deception architecture, deterministic Virtual State Tree formulation, and automated firewall synthesis.">
+
+  <script>
+    window.__BASE_PATH__ = "/chameleonshell";
+  </script>
+</head>
+<body>
+  <!-- Canonical Enterprise Sticky Navigation Bar -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/chameleonshell/" class="brand-wrapper" aria-label="ChameleonShell Homepage">
+        <img src="/chameleonshell/assets/favicon.svg" alt="Chameleon Logo" class="brand-icon">
+        <span class="brand-title">CHAMELEONSHELL</span>
+        <span class="nav-status-dot" title="Autonomous Engine Online"></span>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="/chameleonshell/" class="nav-link">Platform</a></li>
+          <li><a href="/chameleonshell/lab/" class="nav-link">Live Lab</a></li>
+          <li><a href="/chameleonshell/architecture/" class="nav-link active">Architecture</a></li>
+          <li><a href="/chameleonshell/benchmarks/" class="nav-link">Benchmarks</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Action Cluster -->
+      <div class="header-actions">
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Mobile Navigation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Slide-Over Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <a href="/chameleonshell/" class="nav-link">Platform</a>
+    <a href="/chameleonshell/lab/" class="nav-link">Live Lab</a>
+    <a href="/chameleonshell/architecture/" class="nav-link active">Architecture</a>
+    <a href="/chameleonshell/benchmarks/" class="nav-link">Benchmarks</a>
+  </div>
+
+  <div class="structural-grid" aria-hidden="true"></div>
+
+  <main style="padding-top: calc(var(--header-height) + 2.5rem); padding-bottom: 6rem;">
+    <div class="container">
+      <div class="hero-meta-pill">TECHNICAL ARCHITECTURE SPECIFICATION</div>
+      <h1 class="section-heading">System Architecture &amp; Virtual State Tree Formulation</h1>
+      <p class="section-subheading">
+        Detailed engineering blueprint of the tri-tier autonomous deception architecture, deterministic Virtual State Tree formulation, hybrid Fast-Path/Slow-Path routing mechanics, and zero-touch firewall signature synthesis.
+      </p>
+
+      <!-- 12-Column Grid Architecture Container -->
+      <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;">
+
+        <!-- Card 1: Formal Mathematical Model (Spans all 12 columns) -->
+        <div class="terminal-card crosshair full-width-grid-card" style="grid-column: span 12; padding: 2rem;">
+          <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent-volt); font-weight: 700;">[1. FORMAL MATHEMATICAL MODEL]</span>
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; margin: 0.75rem 0 1rem; color: var(--text-primary);">
+            Virtual State Tree (VST) Discrete Formulation
+          </h2>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem;">
+            Let the honeypot system state at discrete command step <code class="math-token">t</code> be modeled as the tuple:
+          </p>
+          <pre class="math-block" style="margin-bottom: 1.5rem;">S<sub>t</sub> = &lang; F<sub>t</sub>, E<sub>t</sub>, P<sub>t</sub>, N<sub>t</sub>, C<sub>t</sub>, &tau;<sub>t</sub> &rang;</pre>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; color: var(--text-secondary); font-size: 0.875rem;">
+            <li><strong style="color: var(--text-primary); font-family: var(--font-mono);">F<sub>t</sub> (VFS Inode DAG):</strong> Directed acyclic graph tracking file permissions, UID/GID, size, modification timestamp <code class="math-token">m<sub>v</sub></code>, and SHA-256 hash <code class="math-token">h<sub>v</sub> = H(c<sub>v</sub>)</code>.</li>
+            <li><strong style="color: var(--text-primary); font-family: var(--font-mono);">E<sub>t</sub> (Environment Map):</strong> Session environment key-values (<code>USER</code>, <code>HOME</code>, <code>SHELL</code>, <code>PWD</code>, <code>AWS_DEFAULT_REGION</code>).</li>
+            <li><strong style="color: var(--text-primary); font-family: var(--font-mono);">P<sub>t</sub> (Virtual /proc Table):</strong> Synthetic Linux structures (<code>/proc/cpuinfo</code> AMD EPYC, <code>/proc/meminfo</code> 32GB RAM with subtle jitter, and dynamic monotonic <code>/proc/uptime</code>).</li>
+            <li><strong style="color: var(--text-primary); font-family: var(--font-mono);">N<sub>t</sub> (Network Socket Table):</strong> Active listening sockets (ports 22, 80, 5432) and established attacker connections.</li>
+            <li><strong style="color: var(--text-primary); font-family: var(--font-mono);">C<sub>t</sub> (Cloud Metadata):</strong> AWS IMDSv2 (<code>169.254.169.254</code>) session token lifecycle, canary IAM credentials, and Kubernetes secrets.</li>
+            <li><strong style="color: var(--text-primary); font-family: var(--font-mono);">&tau;<sub>t</sub> (Monotonic Clock Offset):</strong> Real monotonic clock advancement that guarantees <code>date</code> and <code>uptime</code> strictly advance without hallucinations.</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Subsystem 01 (Spans 4 columns) -->
+        <div class="arch-subsystem-card crosshair" style="grid-column: span 4;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); font-weight: 700;">SUBSYSTEM 01 // CORE RUNTIME</span>
+              <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-emerald); background: rgba(0,255,157,0.1); padding: 2px 6px; border: 1px solid rgba(0,255,157,0.3); border-radius: 2px;"><span class="arch-pulse-dot emerald" style="width: 5px; height: 5px; margin-right: 4px;"></span>ONLINE</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 0.5rem; color: var(--text-primary);">Deception &amp; VST Engine</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+              High-performance deterministic state emulation with sub-8ms Fast-Path POSIX execution and in-memory DAG state persistence.
+            </p>
+          </div>
+
+          <!-- Interactive DAG Router Pipeline Visualizer -->
+          <div class="arch-visual-container">
+            <div class="arch-visual-header">
+              <span style="color: var(--text-primary); font-weight: 600;">// HYBRID EXECUTION ROUTER</span>
+              <span style="color: var(--accent-emerald);" id="arch-vst-latency">4.8ms Mean</span>
+            </div>
+            <div class="arch-pipeline-track">
+              <div class="arch-pipeline-branch fast" id="arch-fast-branch">
+                <div class="arch-beam-anim"></div>
+                <div><span class="arch-pulse-dot emerald"></span><strong>Fast-Path AST</strong>: <code>POSIX &lt;8ms</code></div>
+                <span style="color: var(--accent-emerald); font-weight: 700;">4.2ms</span>
+              </div>
+              <div class="arch-pipeline-branch slow" id="arch-slow-branch">
+                <div><span class="arch-pulse-dot cyan"></span><strong>Slow-Path LLM</strong>: <code>Atomic &Delta;S<sub>t</sub></code></div>
+                <span style="color: var(--accent-cyan); font-weight: 700;">~1.2s</span>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-hairline); font-family: var(--font-mono); font-size: 0.65rem;">
+              <span style="color: var(--text-muted);">INODES: 1,428 · PERSISTENT</span>
+              <button class="btn-micro" id="btn-test-fastpath" style="background: var(--bg-graphite); border: 1px solid var(--border-hairline); color: var(--accent-volt); font-family: var(--font-mono); font-size: 0.625rem; padding: 2px 8px; cursor: pointer;">[PULSE ROUTE]</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Subsystem 02 (Spans 4 columns) -->
+        <div class="arch-subsystem-card crosshair" style="grid-column: span 4;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); font-weight: 700;">SUBSYSTEM 02 // THREAT PROFILER</span>
+              <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-volt); background: rgba(212,255,0,0.1); padding: 2px 6px; border: 1px solid rgba(212,255,0,0.3); border-radius: 2px;">F1: 0.957</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 0.5rem; color: var(--text-primary);">MITRE ATT&amp;CK Classifier &amp; WAF</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+              Real-time adversary trajectory mapping against Enterprise v16 with temporal risk decay (&gamma; = 0.92) and autonomous rule compilation.
+            </p>
+          </div>
+
+          <!-- Live Auto-Rule Synthesizer Cycler -->
+          <div class="arch-visual-container">
+            <div class="arch-visual-header">
+              <span style="color: var(--text-primary); font-weight: 600;">// ZERO-TOUCH RULE SYNTHESIZER</span>
+              <span style="color: var(--accent-volt);" id="arch-rule-target">SNORT 3</span>
+            </div>
+            <div class="arch-tactic-chips">
+              <span class="arch-tactic-chip active" data-tactic="recon">TA0043 Recon</span>
+              <span class="arch-tactic-chip" data-tactic="cred">TA0006 Creds</span>
+              <span class="arch-tactic-chip" data-tactic="evasion">TA0005 Evasion</span>
+            </div>
+            <pre class="arch-rule-cycler" id="arch-rule-display">alert tcp any any -&gt; HONEYPOT 22 (msg:"T1059.004 Auto-Mitigation"; sid:200914; rev:1;)</pre>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.65rem; padding-top: 0.4rem; border-top: 1px solid var(--border-hairline); font-family: var(--font-mono); font-size: 0.65rem;">
+              <span style="color: var(--text-muted);">SYNTHESIS TIME: 11.2ms</span>
+              <span style="color: var(--accent-emerald);">[VALIDATED]</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Subsystem 03 (Spans 4 columns) -->
+        <div class="arch-subsystem-card crosshair" style="grid-column: span 4;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); font-weight: 700;">SUBSYSTEM 03 // SOC TELEMETRY</span>
+              <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-cyan); background: rgba(0,240,255,0.1); padding: 2px 6px; border: 1px solid rgba(0,240,255,0.3); border-radius: 2px;">6 BOTNETS</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 0.5rem; color: var(--text-primary);">Containerized Sandbox &amp; Replay</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+              Isolated Docker honeynet sandbox running 6 automated botnet campaigns with Asciinema v2 session telemetry recording.
+            </p>
+          </div>
+
+          <!-- Docker Honey-Net Node Topology -->
+          <div class="arch-visual-container">
+            <div class="arch-visual-header">
+              <span style="color: var(--text-primary); font-weight: 600;">// HONEY-NET TOPOLOGY</span>
+              <span style="color: var(--accent-cyan);">4 CONTAINERS</span>
+            </div>
+            <div class="arch-topology-grid">
+              <div class="arch-node-box">
+                <div class="arch-node-name"><span class="arch-pulse-dot emerald" style="width: 5px; height: 5px;"></span>SSH Decoy</div>
+                <div class="arch-node-meta">port :2222 · Fast-Path</div>
+              </div>
+              <div class="arch-node-box">
+                <div class="arch-node-name"><span class="arch-pulse-dot volt" style="width: 5px; height: 5px;"></span>IMDSv2 Decoy</div>
+                <div class="arch-node-meta">169.254.169.254 · Token</div>
+              </div>
+              <div class="arch-node-box">
+                <div class="arch-node-name"><span class="arch-pulse-dot cyan" style="width: 5px; height: 5px;"></span>K8s Decoy</div>
+                <div class="arch-node-meta">port :6443 · RBAC Canary</div>
+              </div>
+              <div class="arch-node-box">
+                <div class="arch-node-name"><span class="arch-pulse-dot emerald" style="width: 5px; height: 5px;"></span>SOC Telemetry</div>
+                <div class="arch-node-meta">Zero-Loss NDJSON Log</div>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.65rem; padding-top: 0.4rem; border-top: 1px solid var(--border-hairline); font-family: var(--font-mono); font-size: 0.65rem;">
+              <span style="color: var(--text-muted);">ACTIVE: Mirai Recon Suite</span>
+              <span style="color: var(--accent-volt);">95 COMMANDS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Pipeline & Data Flow Diagram (Spans all 12 columns) -->
+        <div class="terminal-card crosshair full-width-grid-card" style="grid-column: span 12; padding: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent-volt); font-weight: 700;">[2. SEQUENCE &amp; DATA FLOW PIPELINE]</span>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-emerald);">// END-TO-END ACTIVE DEFENSE LIFECYCLE</span>
+          </div>
+          <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 1rem;">
+            6-Stage Autonomous Deception Lifecycle
+          </h3>
+
+          <div class="arch-dataflow-interactive">
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 01</span>
+              <span class="arch-step-title">Adversary Probe</span>
+              <span class="arch-step-desc">Attacker/botnet initiates TCP handshake on SSH (:2222), HTTP (:80), or AWS IMDSv2.</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-emerald); margin-top: auto;">&Delta;t: &lt;1.0ms</span>
+            </div>
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 02</span>
+              <span class="arch-step-title">Listener Ingress</span>
+              <span class="arch-step-desc">Canary token authenticator captures session context and injects decoy cloud metadata.</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-volt); margin-top: auto;">IMDSv2 Token: OK</span>
+            </div>
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 03</span>
+              <span class="arch-step-title">Hybrid AST Router</span>
+              <span class="arch-step-desc">Routes standard POSIX commands directly to Fast-Path; complex exploits to Slow-Path.</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-emerald); margin-top: auto;">Fast-Path: 4.8ms</span>
+            </div>
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 04</span>
+              <span class="arch-step-title">Virtual State Tree</span>
+              <span class="arch-step-desc">Atomic state mutation &Delta;S<sub>t</sub> on persistent in-memory DAG. Monotonic clock strictly advances.</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-cyan); margin-top: auto;">Consistency: 98.4%</span>
+            </div>
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 05</span>
+              <span class="arch-step-title">MITRE Profiler</span>
+              <span class="arch-step-desc">Sliding-window sequence classifier maps IoAs to Enterprise v16 with temporal decay (&gamma; = 0.92).</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-volt); margin-top: auto;">Macro F1: 0.957</span>
+            </div>
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 06</span>
+              <span class="arch-step-title">WAF Synthesis</span>
+              <span class="arch-step-desc">Autonomous compiler exports validated Snort 3, ModSecurity SecRule, and nftables filters.</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-emerald); margin-top: auto;">Compile: 11.2ms</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Cyber Action Callout with Kinetic Laser Grid (Spans all 12 columns) -->
+        <div class="interactive-cyber-callout crosshair" style="grid-column: span 12; margin-top: 1rem;">
+          <!-- Perimeter Laser Border Runner -->
+          <div class="cyber-callout-border-beam" aria-hidden="true"></div>
+
+          <!-- Animated SVG Background Circuit Grid & Laser Bus Lines -->
+          <svg class="cyber-callout-circuit" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="arch-circuit-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#D4FF00" stop-opacity="0.1" />
+                <stop offset="50%" stop-color="#00FF9D" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#00F0FF" stop-opacity="0.1" />
+              </linearGradient>
+              <linearGradient id="arch-circuit-beam" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#D4FF00" stop-opacity="0" />
+                <stop offset="50%" stop-color="#D4FF00" stop-opacity="1" />
+                <stop offset="100%" stop-color="#00FF9D" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M 0 50 L 320 50 L 400 130 L 850 130 L 920 200 L 1200 200" stroke="url(#arch-circuit-grad)" stroke-width="1.2" opacity="0.4" />
+            <path d="M 0 240 L 260 240 L 350 150 L 780 150 L 860 70 L 1200 70" stroke="url(#arch-circuit-grad)" stroke-width="1.2" opacity="0.4" />
+            <path class="circuit-pulse-beam" d="M 0 50 L 320 50 L 400 130 L 850 130 L 920 200 L 1200 200" stroke="url(#arch-circuit-beam)" stroke-width="2.5" />
+            <path class="circuit-pulse-beam fast" d="M 0 240 L 260 240 L 350 150 L 780 150 L 860 70 L 1200 70" stroke="url(#arch-circuit-beam)" stroke-width="2.5" />
+            <circle cx="320" cy="50" r="3" fill="#D4FF00" opacity="0.7" />
+            <circle cx="400" cy="130" r="3" fill="#00FF9D" opacity="0.7" />
+            <circle cx="850" cy="130" r="3" fill="#00F0FF" opacity="0.7" />
+            <circle cx="350" cy="150" r="3" fill="#D4FF00" opacity="0.7" />
+          </svg>
+
+          <!-- Top Telemetry Metadata Bar -->
+          <div class="cyber-callout-topbar">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="arch-pulse-dot emerald" style="width: 6px; height: 6px;"></span>
+              <span style="color: var(--accent-emerald); font-weight: 700;">ACTIVE ARCHITECTURE MESH // READY</span>
+            </div>
+            <span style="color: var(--text-muted);">FAST-PATH &lt;8ms · MITRE V16 SEQUENCING: ONLINE</span>
+          </div>
+
+          <!-- Main Content Area -->
+          <div class="cyber-callout-main">
+            <div class="cyber-callout-info">
+              <h3 class="cyber-callout-title">
+                Deploy and Inspect the Virtual State Tree
+              </h3>
+              <p class="cyber-callout-desc">
+                Execute live side-by-side terminal commands against Cowrie, test AWS IMDSv2 metadata deception, and observe real-time atomic state deltas (&Delta;S<sub>t</sub>) in memory.
+              </p>
+              <div class="cyber-callout-tags">
+                <span class="cyber-callout-tag">[FAST-PATH ROUTER &lt;8ms]</span>
+                <span class="cyber-callout-tag">[IN-MEMORY INODE DAG]</span>
+                <span class="cyber-callout-tag">[MITRE ATT&amp;CK V16]</span>
+                <span class="cyber-callout-tag">[EMPIRICAL BENCHMARKS]</span>
+              </div>
+            </div>
+            <div class="cyber-callout-actions">
+              <a href="/chameleonshell/lab/" class="btn-primary" style="padding: 12px 24px; font-size: 0.8125rem;">LAUNCH LIVE LAB &rarr;</a>
+              <a href="/chameleonshell/benchmarks/" class="btn-secondary" style="padding: 12px 20px; font-size: 0.8125rem;">VIEW BENCHMARKS</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Canonical Enterprise Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-bottom-bar">
+      <span>&copy; 2026 ChameleonShell Security Systems</span>
+      <ul class="footer-nav">
+        <li><a href="/chameleonshell/privacy/">Privacy Policy</a></li>
+        <li><a href="/chameleonshell/terms/">Terms of Service</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/chameleonshell/js/app.js"></script>
+</body>
+</html>

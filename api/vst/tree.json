@@ -1,0 +1,541 @@
+{
+  "tree": {
+    "name": "/",
+    "is_dir": true,
+    "permissions": "rwxr-xr-x",
+    "owner": "root",
+    "size": 4096,
+    "mtime": 1794219933.6453536,
+    "sha256": "",
+    "children": [
+      {
+        "name": "bin",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.645362,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "boot",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.645366,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "dev",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453683,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "etc",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453693,
+        "sha256": "",
+        "children": [
+          {
+            "name": "ssh",
+            "is_dir": true,
+            "permissions": "rwxr-xr-x",
+            "owner": "root",
+            "size": 4096,
+            "mtime": 1794219933.645371,
+            "sha256": "",
+            "children": []
+          },
+          {
+            "name": "cron.d",
+            "is_dir": true,
+            "permissions": "rwxr-xr-x",
+            "owner": "root",
+            "size": 4096,
+            "mtime": 1794219933.6453726,
+            "sha256": "",
+            "children": []
+          },
+          {
+            "name": "passwd",
+            "is_dir": false,
+            "permissions": "rw-r--r--",
+            "owner": "root",
+            "size": 361,
+            "mtime": 1794219933.6454103,
+            "sha256": "859f384edd0c"
+          },
+          {
+            "name": "shadow",
+            "is_dir": false,
+            "permissions": "rw-r-----",
+            "owner": "root",
+            "size": 242,
+            "mtime": 1794219933.6454484,
+            "sha256": "1a36a61664e1"
+          },
+          {
+            "name": "hosts",
+            "is_dir": false,
+            "permissions": "rw-r--r--",
+            "owner": "root",
+            "size": 254,
+            "mtime": 1794219933.6454542,
+            "sha256": "a8e87e5fe753"
+          },
+          {
+            "name": "os-release",
+            "is_dir": false,
+            "permissions": "rw-r--r--",
+            "owner": "root",
+            "size": 363,
+            "mtime": 1794219933.6454573,
+            "sha256": "eda60b156c45"
+          }
+        ]
+      },
+      {
+        "name": "home",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.645375,
+        "sha256": "",
+        "children": [
+          {
+            "name": "ubuntu",
+            "is_dir": true,
+            "permissions": "rwxr-xr-x",
+            "owner": "root",
+            "size": 4096,
+            "mtime": 1794219933.6453762,
+            "sha256": "",
+            "children": [
+              {
+                "name": ".ssh",
+                "is_dir": true,
+                "permissions": "rwxr-xr-x",
+                "owner": "root",
+                "size": 4096,
+                "mtime": 1794219933.6453779,
+                "sha256": "",
+                "children": [
+                  {
+                    "name": "authorized_keys",
+                    "is_dir": false,
+                    "permissions": "rw-------",
+                    "owner": "ubuntu",
+                    "size": 114,
+                    "mtime": 1794219933.6454616,
+                    "sha256": "9f3b7db7493e"
+                  }
+                ]
+              },
+              {
+                "name": ".aws",
+                "is_dir": true,
+                "permissions": "rwxr-xr-x",
+                "owner": "root",
+                "size": 4096,
+                "mtime": 1794219933.645379,
+                "sha256": "",
+                "children": [
+                  {
+                    "name": "credentials",
+                    "is_dir": false,
+                    "permissions": "rw-------",
+                    "owner": "ubuntu",
+                    "size": 135,
+                    "mtime": 1794219933.6454694,
+                    "sha256": "d644e2ff8a7c"
+                  }
+                ]
+              },
+              {
+                "name": ".bash_history",
+                "is_dir": false,
+                "permissions": "rw-------",
+                "owner": "ubuntu",
+                "size": 200,
+                "mtime": 1794219933.645466,
+                "sha256": "a6e4cc57855f"
+              },
+              {
+                "name": "deploy_k8s.sh",
+                "is_dir": false,
+                "permissions": "rwxr-xr-x",
+                "owner": "ubuntu",
+                "size": 301,
+                "mtime": 1794219933.6454725,
+                "sha256": "4c3703156241"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "lib",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453803,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "lib64",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453815,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "media",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453824,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "mnt",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453834,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "opt",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453846,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "proc",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453853,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "root",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453865,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "run",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453874,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "sbin",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.6453884,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "srv",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.645389,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "sys",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.64539,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "tmp",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.645391,
+        "sha256": "",
+        "children": []
+      },
+      {
+        "name": "usr",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.645392,
+        "sha256": "",
+        "children": [
+          {
+            "name": "bin",
+            "is_dir": true,
+            "permissions": "rwxr-xr-x",
+            "owner": "root",
+            "size": 4096,
+            "mtime": 1794219933.6453931,
+            "sha256": "",
+            "children": []
+          },
+          {
+            "name": "sbin",
+            "is_dir": true,
+            "permissions": "rwxr-xr-x",
+            "owner": "root",
+            "size": 4096,
+            "mtime": 1794219933.645394,
+            "sha256": "",
+            "children": []
+          },
+          {
+            "name": "local",
+            "is_dir": true,
+            "permissions": "rwxr-xr-x",
+            "owner": "root",
+            "size": 4096,
+            "mtime": 1794219933.6453955,
+            "sha256": "",
+            "children": [
+              {
+                "name": "bin",
+                "is_dir": true,
+                "permissions": "rwxr-xr-x",
+                "owner": "root",
+                "size": 4096,
+                "mtime": 1794219933.6453962,
+                "sha256": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "var",
+        "is_dir": true,
+        "permissions": "rwxr-xr-x",
+        "owner": "root",
+        "size": 4096,
+        "mtime": 1794219933.645397,
+        "sha256": "",
+        "children": [
+          {
+            "name": "log",
+            "is_dir": true,
+            "permissions": "rwxr-xr-x",
+            "owner": "root",
+            "size": 4096,
+            "mtime": 1794219933.6453984,
+            "sha256": "",
+            "children": [
+              {
+                "name": "auth.log",
+                "is_dir": false,
+                "permissions": "rw-r-----",
+                "owner": "syslog",
+                "size": 318,
+                "mtime": 1794219933.64548,
+                "sha256": "ef56ee9f359f"
+              }
+            ]
+          },
+          {
+            "name": "run",
+            "is_dir": true,
+            "permissions": "rwxr-xr-x",
+            "owner": "root",
+            "size": 4096,
+            "mtime": 1794219933.6453993,
+            "sha256": "",
+            "children": [
+              {
+                "name": "secrets",
+                "is_dir": true,
+                "permissions": "rwxr-xr-x",
+                "owner": "root",
+                "size": 4096,
+                "mtime": 1794219933.645403,
+                "sha256": "",
+                "children": [
+                  {
+                    "name": "kubernetes.io",
+                    "is_dir": true,
+                    "permissions": "rwxr-xr-x",
+                    "owner": "root",
+                    "size": 4096,
+                    "mtime": 1794219933.6454039,
+                    "sha256": "",
+                    "children": [
+                      {
+                        "name": "serviceaccount",
+                        "is_dir": true,
+                        "permissions": "rwxr-xr-x",
+                        "owner": "root",
+                        "size": 4096,
+                        "mtime": 1794219933.6454043,
+                        "sha256": "",
+                        "children": [
+                          {
+                            "name": "token",
+                            "is_dir": false,
+                            "permissions": "r--r--r--",
+                            "owner": "root",
+                            "size": 276,
+                            "mtime": 1794219933.6454844,
+                            "sha256": "4f15d94d2ff7"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "www",
+            "is_dir": true,
+            "permissions": "rwxr-xr-x",
+            "owner": "root",
+            "size": 4096,
+            "mtime": 1794219933.6454003,
+            "sha256": "",
+            "children": [
+              {
+                "name": "html",
+                "is_dir": true,
+                "permissions": "rwxr-xr-x",
+                "owner": "root",
+                "size": 4096,
+                "mtime": 1794219933.6454017,
+                "sha256": "",
+                "children": [
+                  {
+                    "name": ".env",
+                    "is_dir": false,
+                    "permissions": "rw-r--r--",
+                    "owner": "www-data",
+                    "size": 342,
+                    "mtime": 1794219933.645476,
+                    "sha256": "d602c7e8df37"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "current_working_dir": "/home/ubuntu",
+  "environment": {
+    "USER": "ubuntu",
+    "HOME": "/home/ubuntu",
+    "SHELL": "/bin/bash",
+    "LOGNAME": "ubuntu",
+    "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+    "LANG": "en_US.UTF-8",
+    "TERM": "xterm-256color",
+    "PWD": "/home/ubuntu",
+    "AWS_DEFAULT_REGION": "us-east-1",
+    "HOSTNAME": "ip-172-31-18-42"
+  },
+  "sockets": [
+    {
+      "proto": "tcp",
+      "local_addr": "0.0.0.0:22",
+      "remote_addr": "0.0.0.0:*",
+      "state": "LISTEN",
+      "pid": 724,
+      "program": "sshd"
+    },
+    {
+      "proto": "tcp",
+      "local_addr": "0.0.0.0:80",
+      "remote_addr": "0.0.0.0:*",
+      "state": "LISTEN",
+      "pid": 892,
+      "program": "nginx: master"
+    },
+    {
+      "proto": "tcp",
+      "local_addr": "127.0.0.1:5432",
+      "remote_addr": "0.0.0.0:*",
+      "state": "LISTEN",
+      "pid": 915,
+      "program": "postgres"
+    },
+    {
+      "proto": "tcp",
+      "local_addr": "172.31.18.42:22",
+      "remote_addr": "185.220.101.4:49812",
+      "state": "ESTABLISHED",
+      "pid": 14201,
+      "program": "sshd: ubuntu"
+    }
+  ],
+  "cloud_metadata": {
+    "ami_id": "ami-0c7217cdde317cfec",
+    "instance_id": "i-09f182bc879a11ef4",
+    "instance_type": "c6a.2xlarge",
+    "local_ipv4": "172.31.18.42",
+    "public_ipv4": "54.210.88.194",
+    "iam_role": "prod-eks-worker-nodes-role",
+    "iam_credentials": {
+      "Code": "Success",
+      "LastUpdated": "2026-11-04T12:00:00Z",
+      "Type": "AWS-HMAC",
+      "AccessKeyId": "ASIAV7EXAMPLEKEYHONEY",
+      "SecretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+      "Token": "IQoJb3JpZ2luX2VjEOr//////////wEaCXVzLWVhc3QtMSJHMEUCIQChAMEEXAMPLETOKEN_CHAMELEONSHELL_CANARY",
+      "Expiration": "2026-11-05T06:00:00Z"
+    }
+  }
+}
