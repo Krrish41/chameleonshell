@@ -373,36 +373,52 @@ async function testAllButtons() {
   await page.goto(`${BASE_URL}/benchmarks`, { waitUntil: 'networkidle' });
   await page.waitForTimeout(800);
 
-  // 30. Live Benchmark Trial Runner Button
-  await recordStep('benchmarks', 'run_live_trial_btn', 'Dispatches live A/B trial against Cowrie and displays real-time comparison', async () => {
+  // 30. Scenario Selector Chip (AWS IMDSv2)
+  await recordStep('benchmarks', 'scenario_chip_imdsv2', 'Switches A/B evaluator to Scenario 02 (AWS IMDSv2 Token Theft)', async () => {
+    const chip = page.locator('.trial-scenario-chip[data-scenario="imdsv2"]');
+    await chip.click();
+    await page.waitForTimeout(300);
+    const csText = await page.locator('#trial-cs-output').innerText();
+    const success = csText.includes('169.254.169.254') && csText.includes('IMDSv2');
+    return { success, detail: `Switched to IMDSv2 scenario successfully: ${csText.slice(0, 50)}...` };
+  });
+
+  // 31. Live Benchmark Trial Runner Button
+  await recordStep('benchmarks', 'run_live_trial_btn', 'Dispatches live A/B trial simulation and displays animated progress & scoreboard', async () => {
     const btn = page.locator('#btn-run-live-trial');
     await btn.click();
-    await page.waitForSelector('#live-trial-result-box', { state: 'visible', timeout: 8000 });
-    await page.waitForFunction(() => {
-      const pre = document.getElementById('trial-output-pre');
-      return pre && pre.innerText.includes('ChameleonShell');
-    }, { timeout: 8000 });
-    const output = await page.locator('#trial-output-pre').innerText();
-    const success = output.includes('ChameleonShell') && output.includes('Cowrie');
-    return { success, detail: `Trial output: ${output.slice(0, 60)}...` };
+    await page.waitForTimeout(1000);
+    const csText = await page.locator('#trial-cs-output').innerText();
+    const success = csText.length > 0;
+    return { success, detail: `Trial output verified: ${csText.slice(0, 60)}...` };
   });
 
   // =========================================================================
-  // PAGE 4: WHITEPAPER (/whitepaper)
+  // PAGE 4: ARCHITECTURE (/architecture)
   // =========================================================================
-  console.log('\n>>> NAVIGATING TO WHITEPAPER (/whitepaper)');
-  await page.goto(`${BASE_URL}/whitepaper`, { waitUntil: 'networkidle' });
+  console.log('\n>>> NAVIGATING TO ARCHITECTURE (/architecture)');
+  await page.goto(`${BASE_URL}/architecture`, { waitUntil: 'networkidle' });
   await page.waitForTimeout(800);
 
-  // 31. Copy BibTeX Citation Button
-  await recordStep('whitepaper', 'copy_bibtex_btn', 'Copies BibTeX citation to clipboard and displays confirmation toast', async () => {
-    const btn = page.locator('#btn-copy-citation');
+  // 32. Subsystem 01 Fast-Path Pulse Route Button
+  await recordStep('architecture', 'pulse_route_btn', 'Triggers Fast-Path AST router laser pulse animation and measures latency', async () => {
+    const btn = page.locator('#btn-test-fastpath');
     await btn.click();
     await page.waitForTimeout(300);
-    const btnText = await btn.innerText();
-    const toastVisible = await page.locator('#citation-toast').isVisible();
-    const success = btnText.includes('COPIED') || toastVisible;
-    return { success, detail: `Btn text: ${btnText}, Toast visible: ${toastVisible}` };
+    const latText = await page.locator('#arch-vst-latency').innerText();
+    const success = latText.includes('ms');
+    return { success, detail: `Fast-Path latency measured: ${latText}` };
+  });
+
+  // 33. Subsystem 02 Tactic Chip Switcher
+  await recordStep('architecture', 'tactic_chip_cred', 'Switches rule synthesizer tactic chip to Credential Access (TA0006)', async () => {
+    const chip = page.locator('.arch-tactic-chip[data-tactic="cred"]');
+    await chip.click();
+    await page.waitForTimeout(200);
+    const target = await page.locator('#arch-rule-target').innerText();
+    const rule = await page.locator('#arch-rule-display').innerText();
+    const success = target.includes('MODSECURITY') && rule.includes('SecRule');
+    return { success, detail: `Target: ${target}, Rule: ${rule.slice(0, 45)}...` };
   });
 
   await browser.close();

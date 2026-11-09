@@ -83,11 +83,9 @@ chameleonshell/
 │   ├── lab.html                               # Live side-by-side terminal & MITRE lab
 │   ├── architecture.html                      # Formal state model & subsystem blueprints
 │   ├── benchmarks.html                        # Empirical resilience metrics & live A/B runner
-│   ├── whitepaper.html                        # Technical whitepaper reader
 │   ├── privacy-policy.html                    # Threat telemetry data governance
 │   └── terms-of-service.html                  # Authorized active defense sandbox terms
 │
-├── docs/whitepaper/                           # Technical Whitepaper markdown source
 ├── tests/                                     # Automated pytest verification test suite
 ├── scripts/                                   # Headless Playwright visual QA suites
 ├── docker-compose.yml                         # Containerized honey-network deployment

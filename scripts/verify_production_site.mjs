@@ -15,7 +15,6 @@ const ROUTES = [
   { path: '/lab', name: 'lab' },
   { path: '/architecture', name: 'architecture' },
   { path: '/benchmarks', name: 'benchmarks' },
-  { path: '/whitepaper', name: 'whitepaper' },
 ];
 
 const VIEWPORTS = [

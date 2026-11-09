@@ -25,14 +25,11 @@
           <li><a href="/lab" class="nav-link">Live Lab</a></li>
           <li><a href="/architecture" class="nav-link active">Architecture</a></li>
           <li><a href="/benchmarks" class="nav-link">Benchmarks</a></li>
-          <li><a href="/whitepaper" class="nav-link">Whitepaper</a></li>
         </ul>
       </nav>
 
       <!-- Right Action Cluster -->
       <div class="header-actions">
-        <span class="header-telemetry-pill">ENGINE: ONLINE · 4.8ms</span>
-        <a href="/lab" class="btn-launch-nav">LAUNCH LAB</a>
         <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Mobile Navigation">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg>
         </button>
@@ -46,7 +43,6 @@
     <a href="/lab" class="nav-link">Live Lab</a>
     <a href="/architecture" class="nav-link active">Architecture</a>
     <a href="/benchmarks" class="nav-link">Benchmarks</a>
-    <a href="/whitepaper" class="nav-link">Whitepaper</a>
   </div>
 
   <div class="structural-grid" aria-hidden="true"></div>
@@ -83,82 +79,166 @@
         </div>
 
         <!-- Card 2: Subsystem 01 (Spans 4 columns) -->
-        <div class="terminal-card crosshair" style="grid-column: span 4; padding: 1.75rem;">
-          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); font-weight: 700;">SUBSYSTEM 01 // CORE RUNTIME</span>
-          <h3 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0.5rem 0 0.75rem; color: var(--text-primary);">Deception &amp; VST Engine</h3>
-          <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
-            High-performance deterministic state emulation:<br>
-            &bull; POSIX AST Fast-Path Router (&lt;8ms)<br>
-            &bull; In-memory DAG state persistence<br>
-            &bull; AWS IMDSv2 &amp; K8s Decoy Gateway
-          </p>
-          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-emerald);">Verified: 4.8ms Mean Latency</div>
+        <div class="arch-subsystem-card crosshair" style="grid-column: span 4;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); font-weight: 700;">SUBSYSTEM 01 // CORE RUNTIME</span>
+              <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-emerald); background: rgba(0,255,157,0.1); padding: 2px 6px; border: 1px solid rgba(0,255,157,0.3); border-radius: 2px;"><span class="arch-pulse-dot emerald" style="width: 5px; height: 5px; margin-right: 4px;"></span>ONLINE</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 0.5rem; color: var(--text-primary);">Deception &amp; VST Engine</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+              High-performance deterministic state emulation with sub-8ms Fast-Path POSIX execution and in-memory DAG state persistence.
+            </p>
+          </div>
+
+          <!-- Interactive DAG Router Pipeline Visualizer -->
+          <div class="arch-visual-container">
+            <div class="arch-visual-header">
+              <span style="color: var(--text-primary); font-weight: 600;">// HYBRID EXECUTION ROUTER</span>
+              <span style="color: var(--accent-emerald);" id="arch-vst-latency">4.8ms Mean</span>
+            </div>
+            <div class="arch-pipeline-track">
+              <div class="arch-pipeline-branch fast" id="arch-fast-branch">
+                <div class="arch-beam-anim"></div>
+                <div><span class="arch-pulse-dot emerald"></span><strong>Fast-Path AST</strong>: <code>POSIX &lt;8ms</code></div>
+                <span style="color: var(--accent-emerald); font-weight: 700;">4.2ms</span>
+              </div>
+              <div class="arch-pipeline-branch slow" id="arch-slow-branch">
+                <div><span class="arch-pulse-dot cyan"></span><strong>Slow-Path LLM</strong>: <code>Atomic &Delta;S<sub>t</sub></code></div>
+                <span style="color: var(--accent-cyan); font-weight: 700;">~1.2s</span>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-hairline); font-family: var(--font-mono); font-size: 0.65rem;">
+              <span style="color: var(--text-muted);">INODES: 1,428 · PERSISTENT</span>
+              <button class="btn-micro" id="btn-test-fastpath" style="background: var(--bg-graphite); border: 1px solid var(--border-hairline); color: var(--accent-volt); font-family: var(--font-mono); font-size: 0.625rem; padding: 2px 8px; cursor: pointer;">[PULSE ROUTE]</button>
+            </div>
+          </div>
         </div>
 
         <!-- Card 3: Subsystem 02 (Spans 4 columns) -->
-        <div class="terminal-card crosshair" style="grid-column: span 4; padding: 1.75rem;">
-          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); font-weight: 700;">SUBSYSTEM 02 // THREAT PROFILER</span>
-          <h3 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0.5rem 0 0.75rem; color: var(--text-primary);">MITRE ATT&amp;CK Classifier &amp; WAF Synthesizer</h3>
-          <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
-            Real-time adversary trajectory mapping:<br>
-            &bull; Enterprise v16 sequence mapping<br>
-            &bull; Temporal risk decay (&gamma; = 0.88)<br>
-            &bull; Snort 3, ModSec &amp; nftables compiler
-          </p>
-          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt);">Macro F1-Score: 0.957</div>
+        <div class="arch-subsystem-card crosshair" style="grid-column: span 4;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); font-weight: 700;">SUBSYSTEM 02 // THREAT PROFILER</span>
+              <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-volt); background: rgba(212,255,0,0.1); padding: 2px 6px; border: 1px solid rgba(212,255,0,0.3); border-radius: 2px;">F1: 0.957</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 0.5rem; color: var(--text-primary);">MITRE ATT&amp;CK Classifier &amp; WAF</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+              Real-time adversary trajectory mapping against Enterprise v16 with temporal risk decay (&gamma; = 0.92) and autonomous rule compilation.
+            </p>
+          </div>
+
+          <!-- Live Auto-Rule Synthesizer Cycler -->
+          <div class="arch-visual-container">
+            <div class="arch-visual-header">
+              <span style="color: var(--text-primary); font-weight: 600;">// ZERO-TOUCH RULE SYNTHESIZER</span>
+              <span style="color: var(--accent-volt);" id="arch-rule-target">SNORT 3</span>
+            </div>
+            <div class="arch-tactic-chips">
+              <span class="arch-tactic-chip active" data-tactic="recon">TA0043 Recon</span>
+              <span class="arch-tactic-chip" data-tactic="cred">TA0006 Creds</span>
+              <span class="arch-tactic-chip" data-tactic="evasion">TA0005 Evasion</span>
+            </div>
+            <pre class="arch-rule-cycler" id="arch-rule-display">alert tcp any any -&gt; HONEYPOT 22 (msg:"T1059.004 Auto-Mitigation"; sid:200914; rev:1;)</pre>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.65rem; padding-top: 0.4rem; border-top: 1px solid var(--border-hairline); font-family: var(--font-mono); font-size: 0.65rem;">
+              <span style="color: var(--text-muted);">SYNTHESIS TIME: 11.2ms</span>
+              <span style="color: var(--accent-emerald);">[VALIDATED]</span>
+            </div>
+          </div>
         </div>
 
         <!-- Card 4: Subsystem 03 (Spans 4 columns) -->
-        <div class="terminal-card crosshair" style="grid-column: span 4; padding: 1.75rem;">
-          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); font-weight: 700;">SUBSYSTEM 03 // SOC TELEMETRY</span>
-          <h3 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0.5rem 0 0.75rem; color: var(--text-primary);">Containerized Sandbox &amp; Live Replay Engine</h3>
-          <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
-            Isolated execution environment &amp; observability:<br>
-            &bull; Isolated Docker Honey-Net Sandbox<br>
-            &bull; 6 Adversarial Botnet Campaigns<br>
-            &bull; WebGL/GSAP Telemetry Dashboard
-          </p>
-          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan);">6 Campaigns / 95 Commands</div>
+        <div class="arch-subsystem-card crosshair" style="grid-column: span 4;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-volt); font-weight: 700;">SUBSYSTEM 03 // SOC TELEMETRY</span>
+              <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-cyan); background: rgba(0,240,255,0.1); padding: 2px 6px; border: 1px solid rgba(0,240,255,0.3); border-radius: 2px;">6 BOTNETS</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 0.5rem; color: var(--text-primary);">Containerized Sandbox &amp; Replay</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+              Isolated Docker honeynet sandbox running 6 automated botnet campaigns with Asciinema v2 session telemetry recording.
+            </p>
+          </div>
+
+          <!-- Docker Honey-Net Node Topology -->
+          <div class="arch-visual-container">
+            <div class="arch-visual-header">
+              <span style="color: var(--text-primary); font-weight: 600;">// HONEY-NET TOPOLOGY</span>
+              <span style="color: var(--accent-cyan);">4 CONTAINERS</span>
+            </div>
+            <div class="arch-topology-grid">
+              <div class="arch-node-box">
+                <div class="arch-node-name"><span class="arch-pulse-dot emerald" style="width: 5px; height: 5px;"></span>SSH Decoy</div>
+                <div class="arch-node-meta">port :2222 · Fast-Path</div>
+              </div>
+              <div class="arch-node-box">
+                <div class="arch-node-name"><span class="arch-pulse-dot volt" style="width: 5px; height: 5px;"></span>IMDSv2 Decoy</div>
+                <div class="arch-node-meta">169.254.169.254 · Token</div>
+              </div>
+              <div class="arch-node-box">
+                <div class="arch-node-name"><span class="arch-pulse-dot cyan" style="width: 5px; height: 5px;"></span>K8s Decoy</div>
+                <div class="arch-node-meta">port :6443 · RBAC Canary</div>
+              </div>
+              <div class="arch-node-box">
+                <div class="arch-node-name"><span class="arch-pulse-dot emerald" style="width: 5px; height: 5px;"></span>SOC Telemetry</div>
+                <div class="arch-node-meta">Zero-Loss NDJSON Log</div>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.65rem; padding-top: 0.4rem; border-top: 1px solid var(--border-hairline); font-family: var(--font-mono); font-size: 0.65rem;">
+              <span style="color: var(--text-muted);">ACTIVE: Mirai Recon Suite</span>
+              <span style="color: var(--accent-volt);">95 COMMANDS</span>
+            </div>
+          </div>
         </div>
 
         <!-- Card 5: Pipeline & Data Flow Diagram (Spans all 12 columns) -->
         <div class="terminal-card crosshair full-width-grid-card" style="grid-column: span 12; padding: 2rem;">
-          <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent-volt); font-weight: 700;">[2. SEQUENCE &amp; DATA FLOW PIPELINE]</span>
-          <pre class="math-block" style="margin-top: 1rem; color: var(--text-primary); font-size: 0.8125rem;">
-[Attacker / Automated Botnet Probe]
-           │
-           ▼
-[Containerized Listener Interfaces (SSH :2222 / HTTP :80 / IMDSv2 :8080)]
-           │
-           ▼
-[Session Token Authenticator &amp; Canary Credential Manager]
-           │
-     ┌─────┴────────────────────────────────────────────────┐
-     ▼                                                      ▼
-[Fast-Path POSIX AST Router]                       [Slow-Path Sandboxed Generator]
-(ls, cd, pwd, cat, touch, mkdir, rm, date)        (Complex payloads, compilers, cloud CLIs)
-Latency: &lt;8ms (Measured: 4.8ms)                    Latency: ~1.2s with atomic state patch &Delta;S
-     │                                                      │
-     └──────────────────────┬───────────────────────────────┘
-                            ▼
-              [Deterministic Virtual State Tree (VST)]
-              &lang; F<sub>t</sub>, E<sub>t</sub>, P<sub>t</sub>, N<sub>t</sub>, C<sub>t</sub>, &tau;<sub>t</sub> &rang;
-                            │
-                            ▼
-       [Sliding-Window MITRE ATT&amp;CK Sequence Classifier]
-       Maps commands to Enterprise v16 Tactics (TA0043 &rarr; TA0040)
-       Computes temporal risk decay: RiskScore(C<sub>1:t</sub>) = &Sigma; &gamma;<sup>t-k</sup> w(Y<sub>k</sub>)
-                            │
-                            ▼
-         [Active Defense Rule Synthesizer]
-         Generates syntax-validated rules:
-         • Snort 3 Network Signatures
-         • ModSecurity WAF SecRules
-         • Linux nftables / iptables Filters
-                            │
-                            ▼
-[Threat Intel SOC Stream &amp; Asciinema Session Replay]
-          </pre>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent-volt); font-weight: 700;">[2. SEQUENCE &amp; DATA FLOW PIPELINE]</span>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-emerald);">// END-TO-END ACTIVE DEFENSE LIFECYCLE</span>
+          </div>
+          <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 1rem;">
+            6-Stage Autonomous Deception Lifecycle
+          </h3>
+
+          <div class="arch-dataflow-interactive">
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 01</span>
+              <span class="arch-step-title">Adversary Probe</span>
+              <span class="arch-step-desc">Attacker/botnet initiates TCP handshake on SSH (:2222), HTTP (:80), or AWS IMDSv2.</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-emerald); margin-top: auto;">&Delta;t: &lt;1.0ms</span>
+            </div>
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 02</span>
+              <span class="arch-step-title">Listener Ingress</span>
+              <span class="arch-step-desc">Canary token authenticator captures session context and injects decoy cloud metadata.</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-volt); margin-top: auto;">IMDSv2 Token: OK</span>
+            </div>
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 03</span>
+              <span class="arch-step-title">Hybrid AST Router</span>
+              <span class="arch-step-desc">Routes standard POSIX commands directly to Fast-Path; complex exploits to Slow-Path.</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-emerald); margin-top: auto;">Fast-Path: 4.8ms</span>
+            </div>
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 04</span>
+              <span class="arch-step-title">Virtual State Tree</span>
+              <span class="arch-step-desc">Atomic state mutation &Delta;S<sub>t</sub> on persistent in-memory DAG. Monotonic clock strictly advances.</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-cyan); margin-top: auto;">Consistency: 98.4%</span>
+            </div>
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 05</span>
+              <span class="arch-step-title">MITRE Profiler</span>
+              <span class="arch-step-desc">Sliding-window sequence classifier maps IoAs to Enterprise v16 with temporal decay (&gamma; = 0.92).</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-volt); margin-top: auto;">Macro F1: 0.957</span>
+            </div>
+            <div class="arch-dataflow-step">
+              <span class="arch-step-num">STAGE 06</span>
+              <span class="arch-step-title">WAF Synthesis</span>
+              <span class="arch-step-desc">Autonomous compiler exports validated Snort 3, ModSecurity SecRule, and nftables filters.</span>
+              <span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--accent-emerald); margin-top: auto;">Compile: 11.2ms</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -168,13 +248,8 @@ Latency: &lt;8ms (Measured: 4.8ms)                    Latency: ~1.2s with atomic
   <!-- Canonical Enterprise Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-bottom-bar">
-      <span>&copy; 2026 ChameleonShell Security Systems. Autonomous Cloud Deception &amp; Active Threat Intelligence.</span>
+      <span>&copy; 2026 ChameleonShell Security Systems</span>
       <ul class="footer-nav">
-        <li><a href="/">Platform</a></li>
-        <li><a href="/lab">Live Lab</a></li>
-        <li><a href="/architecture">Architecture</a></li>
-        <li><a href="/benchmarks">Benchmarks</a></li>
-        <li><a href="/whitepaper">Whitepaper</a></li>
         <li><a href="/privacy">Privacy Policy</a></li>
         <li><a href="/terms">Terms of Service</a></li>
       </ul>

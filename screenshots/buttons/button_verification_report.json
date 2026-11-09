@@ -68,7 +68,7 @@
     "button": "quick_chip_suid",
     "expected": "Executes SUID privilege scan and returns simulated root binaries",
     "passed": true,
-    "detail": "Output: bash: find: command not found\n...",
+    "detail": "Output: /usr/bin/passwd\n/usr/bin/chsh\n/usr/bin/newgrp...",
     "screenshot": "08_platform_quick_chip_suid.png"
   },
   {
@@ -104,7 +104,7 @@
     "button": "hero_cmd_execute_btn",
     "expected": "Enters custom Linux command \"whoami && id\" and executes live",
     "passed": true,
-    "detail": "Output: ubuntu",
+    "detail": "Output: [...] Dispatching command to Deterministic Virtual State Tree AST...",
     "screenshot": "12_platform_hero_cmd_execute_btn.png"
   },
   {
@@ -230,7 +230,7 @@
     "button": "mitre_technique_click",
     "expected": "Clicks a technique chip in the MITRE matrix to preview compiled rule",
     "passed": true,
-    "detail": "Generated rule preview: # Snort 3 Network Flow Signature (SID 9400208)\n# G...",
+    "detail": "Generated rule preview: # Snort 3 Network Flow Signature (SID 9400113)\n# G...",
     "screenshot": "26_lab_mitre_technique_click.png"
   },
   {
@@ -248,7 +248,7 @@
     "button": "run_campaign_btn",
     "expected": "Triggers automated botnet campaign simulation against honeypot",
     "passed": true,
-    "detail": "Campaign status: [COMPLETE] 14 commands executed | Final Risk: 87.5",
+    "detail": "Campaign status: [COMPLETE] 14 commands executed | Final Risk: 100.0",
     "screenshot": "28_lab_run_campaign_btn.png"
   },
   {
@@ -263,19 +263,37 @@
   {
     "index": 30,
     "page": "benchmarks",
-    "button": "run_live_trial_btn",
-    "expected": "Dispatches live A/B trial against Cowrie and displays real-time comparison",
+    "button": "scenario_chip_imdsv2",
+    "expected": "Switches A/B evaluator to Scenario 02 (AWS IMDSv2 Token Theft)",
     "passed": true,
-    "detail": "Trial output: [+] Tested Commands Count: 5\n[+] ChameleonShell Mean Latency...",
-    "screenshot": "30_benchmarks_run_live_trial_btn.png"
+    "detail": "Switched to IMDSv2 scenario successfully: root@ip-172-31-18-42:~# TOKEN=`curl -X PUT \"http:/...",
+    "screenshot": "30_benchmarks_scenario_chip_imdsv2.png"
   },
   {
     "index": 31,
-    "page": "whitepaper",
-    "button": "copy_bibtex_btn",
-    "expected": "Copies BibTeX citation to clipboard and displays confirmation toast",
+    "page": "benchmarks",
+    "button": "run_live_trial_btn",
+    "expected": "Dispatches live A/B trial simulation and displays animated progress & scoreboard",
     "passed": true,
-    "detail": "Btn text: [COPIED!], Toast visible: true",
-    "screenshot": "31_whitepaper_copy_bibtex_btn.png"
+    "detail": "Trial output verified: root@ip-172-31-18-42:~# TOKEN=`curl -X PUT \"http://169.254.1...",
+    "screenshot": "31_benchmarks_run_live_trial_btn.png"
+  },
+  {
+    "index": 32,
+    "page": "architecture",
+    "button": "pulse_route_btn",
+    "expected": "Triggers Fast-Path AST router laser pulse animation and measures latency",
+    "passed": true,
+    "detail": "Fast-Path latency measured: 4.5ms Measured",
+    "screenshot": "32_architecture_pulse_route_btn.png"
+  },
+  {
+    "index": 33,
+    "page": "architecture",
+    "button": "tactic_chip_cred",
+    "expected": "Switches rule synthesizer tactic chip to Credential Access (TA0006)",
+    "passed": true,
+    "detail": "Target: MODSECURITY WAF, Rule: SecRule REQUEST_URI \"@contains /latest/meta-d...",
+    "screenshot": "33_architecture_tactic_chip_cred.png"
   }
 ]

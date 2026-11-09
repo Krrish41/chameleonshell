@@ -221,10 +221,18 @@ def build():
         "lab.html": ["lab/index.html", "lab.html"],
         "architecture.html": ["architecture/index.html", "architecture.html"],
         "benchmarks.html": ["benchmarks/index.html", "benchmarks.html"],
-        "whitepaper.html": ["whitepaper/index.html", "whitepaper.html", "paper/index.html"],
         "privacy-policy.html": ["privacy/index.html", "privacy-policy/index.html", "privacy-policy.html"],
         "terms-of-service.html": ["terms/index.html", "terms-of-service/index.html", "terms-of-service.html"]
     }
+
+    # Redirect stubs for legacy /whitepaper and /paper URLs
+    benchmarks_target = f"{base_path}benchmarks/"
+    redirect_html = f'<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url={benchmarks_target}"><script>window.location.replace("{benchmarks_target}");</script></head><body>Redirecting to <a href="{benchmarks_target}">benchmarks</a>...</body></html>'
+    for red_dest in ["whitepaper/index.html", "whitepaper.html", "paper/index.html"]:
+        red_target = out_dir / red_dest
+        red_target.parent.mkdir(parents=True, exist_ok=True)
+        red_target.write_text(redirect_html, encoding="utf-8")
+    print("  [OK] Generated legacy redirect stubs -> benchmarks/")
 
     for page_filename, destinations in page_mappings.items():
         page_path = PAGES_DIR / page_filename

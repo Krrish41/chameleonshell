@@ -316,10 +316,8 @@ def serve_benchmarks():
 @app.get("/whitepaper")
 @app.get("/paper")
 def serve_whitepaper():
-    p = PAGES_DIR / "whitepaper.html"
-    if p.exists():
-        return FileResponse(p)
-    return FileResponse(FRONTEND_DIR / "index.html")
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse(url="/benchmarks", status_code=301)
 
 
 @app.get("/privacy")
