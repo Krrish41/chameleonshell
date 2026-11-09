@@ -106,9 +106,9 @@ function initHeroWebGLCore() {
   const innerMesh = new THREE.Mesh(innerGeo, innerMat);
   coreGroup.add(innerMesh);
 
-  // 6. Interaction State & Continuous Gentle Rotation Mechanics
-  const baseRotationY = 0.0016; // Smooth, calm baseline rotation
-  const baseRotationX = 0.0005;
+  // 6. Interaction State & Continuous Rotation Mechanics
+  const baseRotationY = 0.0024; // Smooth, continuous baseline drift
+  const baseRotationX = 0.0008;
   let cursorSpinBoost = 0;
   let lastMouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   let targetTiltX = 0;
@@ -116,7 +116,7 @@ function initHeroWebGLCore() {
   let currentTiltX = 0;
   let currentTiltY = 0;
 
-  // Track cursor movement to add a very subtle, gentle nudge (never fast or distracting)
+  // Track cursor movement across page to dynamically accelerate rotation
   window.addEventListener('pointermove', (e) => {
     const dx = e.clientX - lastMouse.x;
     const dy = e.clientY - lastMouse.y;
@@ -124,15 +124,15 @@ function initHeroWebGLCore() {
     lastMouse = { x: e.clientX, y: e.clientY };
 
     if (dist > 1.0) {
-      // Extremely subtle, luxurious nudge capped strictly so it never spins wildly
-      const impulse = Math.min(dist * 0.000008, 0.00025);
+      // Responsive kinetic impulse: noticeably faster on mouse move, strictly capped to prevent blur
+      const impulse = Math.min(dist * 0.00022, 0.0035);
       cursorSpinBoost += impulse;
-      cursorSpinBoost = Math.min(cursorSpinBoost, 0.0015); // Strict cap ensures calm, steady motion
+      cursorSpinBoost = Math.min(cursorSpinBoost, 0.022); // Optimal ceiling (~4.3s / revolution at peak)
     }
 
     // Elegant 3D perspective parallax tilt
-    targetTiltX = (e.clientY / window.innerHeight - 0.5) * 0.16;
-    targetTiltY = (e.clientX / window.innerWidth - 0.5) * 0.16;
+    targetTiltX = (e.clientY / window.innerHeight - 0.5) * 0.22;
+    targetTiltY = (e.clientX / window.innerWidth - 0.5) * 0.22;
   }, { passive: true });
 
   // Direct Drag-to-Rotate on Canvas
@@ -171,7 +171,7 @@ function initHeroWebGLCore() {
   window.triggerCoreThreatPulse = function (threatType = 'probe', customText = null) {
     coreState.isThreatPulsing = true;
     coreState.threatDecay = 1.0;
-    cursorSpinBoost += 0.003; // Gentle spin accent on threat inject
+    cursorSpinBoost += 0.012; // Kinetic spin burst on threat inject
 
     if (threatType === 'crimson') {
       outerMat.color.setHex(0xFF2A54);
@@ -190,8 +190,8 @@ function initHeroWebGLCore() {
       innerLatticeMat.color.setHex(0x00FF9D);
     }
 
-    coreGroup.rotation.y += 0.06;
-    coreGroup.rotation.x += 0.03;
+    coreGroup.rotation.y += 0.12;
+    coreGroup.rotation.x += 0.04;
 
     const statusText = document.getElementById('core-status-text');
     if (statusText) {
@@ -225,35 +225,35 @@ function initHeroWebGLCore() {
     }
   };
 
-  // Animation Loop (Always Rotating + Subtle Damped Cursor Response)
+  // Animation Loop (Continuous Rotation + Kinetic Cursor Surge)
   let clock = 0;
   function animate() {
     requestAnimationFrame(animate);
     clock += 0.02;
 
     if (!isDragging) {
-      // Exponential inertia decay for cursor velocity surge
-      cursorSpinBoost *= 0.94;
-      if (cursorSpinBoost < 0.00005) cursorSpinBoost = 0;
+      // Smooth exponential inertia decay for cursor velocity surge (~1.5s recovery)
+      cursorSpinBoost *= 0.952;
+      if (cursorSpinBoost < 0.0001) cursorSpinBoost = 0;
 
-      // Always rotate continuously at calm baseline + subtle damped cursor acceleration
+      // Rotate continuously: baseline speed at rest, dynamic kinetic acceleration on mouse move
       const activeSpeedY = baseRotationY + cursorSpinBoost;
-      const activeSpeedX = baseRotationX + cursorSpinBoost * 0.25;
+      const activeSpeedX = baseRotationX + cursorSpinBoost * 0.3;
 
       coreGroup.rotation.y += activeSpeedY;
       coreGroup.rotation.x += activeSpeedX;
 
       // Parallax damping
-      currentTiltX += (targetTiltX - currentTiltX) * 0.03;
-      currentTiltY += (targetTiltY - currentTiltY) * 0.03;
-      coreGroup.position.x = currentTiltY * 0.18;
-      coreGroup.position.y = -currentTiltX * 0.18;
+      currentTiltX += (targetTiltX - currentTiltX) * 0.035;
+      currentTiltY += (targetTiltY - currentTiltY) * 0.035;
+      coreGroup.position.x = currentTiltY * 0.20;
+      coreGroup.position.y = -currentTiltX * 0.20;
     }
 
-    // Gentle secondary orbits
-    orbitRing.rotation.z += 0.0012;
-    innerLattice.rotation.x -= 0.0012;
-    innerLattice.rotation.y += 0.0015;
+    // Secondary orbits
+    orbitRing.rotation.z += 0.0022;
+    innerLattice.rotation.x -= 0.002;
+    innerLattice.rotation.y += 0.0025;
 
     // Organic core luminescence breathing
     const pulseScale = 1.0 + Math.sin(clock * 2.2) * 0.06;
