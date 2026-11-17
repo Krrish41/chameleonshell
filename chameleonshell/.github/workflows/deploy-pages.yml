@@ -36,7 +36,7 @@ jobs:
 
       - name: Build static distribution for GitHub Pages
         run: |
-          python chameleonshell/scripts/build_pages.py --base-path /chameleonshell/
+          python chameleonshell/scripts/build_pages.py --base-path /chameleonshell/ --out-dir _site
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
