@@ -69,11 +69,23 @@ _site/
 *.fls
 *.fdb_latexmk
 
-# Offline Academic Archive & Local Institutional Vault (Zero Public / Git Trace)
+# Internal Academic Vault & Documentation (Private Student Team Materials - Zero Public/Git Trace)
+docs/
+/docs/
 _academic_offline/
 /_academic_offline/
 _academic_submissions/
 /_academic_submissions/
+
+# Engineering Verification Tools, Test Suites & QA Screenshots (Local Development Only)
+tools/
+/tools/
+screenshots/
+/screenshots/
+scripts/
+/scripts/
+tests/
+/tests/
 
 # AI Agent Memory, Context, Governance & Prompt Artifacts (Strictly Local Only)
 GEMINI.md

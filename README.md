@@ -69,33 +69,36 @@ ChameleonShell was benchmarked against static honeypots (Cowrie) and first-gener
 ## 3. Directory Structure
 
 ```text
-chameleonshell/
-├── backend/                                   # FastAPI REST/WebSocket + Deception Engine
-│   ├── main.py                                # Application entry point & API routes
-│   ├── config.py                              # Runtime configuration
-│   ├── requirements.txt                       # Backend dependencies
-│   ├── member1_deception_engine/              # Subsystem 01: VST, Fast/Slow Path, IMDSv2
-│   ├── member2_mitre_classifier/              # Subsystem 02: ATT&CK Profiler & Rule Synthesizer
-│   └── member3_telemetry_sandbox/             # Subsystem 03: Botnet Simulator & Benchmarks
+.
+├── README.md                                  # Repository overview & system specifications
+├── .gitignore                                 # Strict exclusions (isolates internal docs & test suites)
 │
-├── frontend/                                  # Agency WebGL / GSAP / Lenis SOC Dashboard
-│   ├── index.html                             # Platform overview & 3D Deception Core
-│   ├── assets/                                # Vector icons & sample session logs
-│   ├── css/styles.css                         # Tactical Kinetic Telemetry design system
-│   └── js/                                    # Three.js 3D core, terminal lab, MITRE visualizer
-│
-├── pages/                                     # Dedicated enterprise workspace pages
-│   ├── lab.html                               # Live side-by-side terminal & MITRE lab
-│   ├── architecture.html                      # Formal state model & subsystem blueprints
-│   ├── benchmarks.html                        # Empirical resilience metrics & live A/B runner
-│   ├── privacy-policy.html                    # Threat telemetry data governance
-│   └── terms-of-service.html                  # Authorized active defense sandbox terms
-│
-├── tests/                                     # Automated pytest verification test suite
-├── scripts/                                   # Headless Playwright visual QA suites
-├── docker-compose.yml                         # Containerized honey-network deployment
-├── Makefile                                   # Automation targets
-└── .gitignore                                 # Git exclusion rules
+└── chameleonshell/                            # Core Active Deception Engine & WebGL Platform
+    ├── backend/                               # FastAPI REST/WebSocket + Deception Engine
+    │   ├── main.py                            # Application entry point & API routes
+    │   ├── config.py                          # Runtime configuration
+    │   ├── requirements.txt                   # Backend dependencies
+    │   ├── member1_deception_engine/          # Subsystem 01: VST, Fast/Slow Path, IMDSv2
+    │   ├── member2_mitre_classifier/          # Subsystem 02: ATT&CK Profiler & Rule Synthesizer
+    │   └── member3_telemetry_sandbox/         # Subsystem 03: Botnet Simulator & Benchmarks
+    │
+    ├── frontend/                              # Agency WebGL / GSAP / Lenis SOC Dashboard
+    │   ├── index.html                         # Platform overview & 3D Deception Core
+    │   ├── assets/                            # Vector icons & sample session logs
+    │   ├── css/styles.css                     # Tactical Kinetic Telemetry design system
+    │   └── js/                                # Three.js 3D core, terminal lab, MITRE visualizer
+    │
+    ├── pages/                                 # Dedicated enterprise workspace pages
+    │   ├── lab.html                           # Live side-by-side terminal & MITRE lab
+    │   ├── architecture.html                  # Formal state model & subsystem blueprints
+    │   ├── benchmarks.html                    # Empirical resilience metrics & live A/B runner
+    │   ├── privacy-policy.html                # Threat telemetry data governance
+    │   └── terms-of-service.html              # Authorized active defense sandbox terms
+    │
+    ├── Dockerfile                             # Containerized honeynet image definition
+    ├── docker-compose.yml                     # Multi-container decoy mesh deployment
+    ├── Makefile                               # Build & execution automation
+    └── README.md                              # Subsystem technical guide
 ```
 
 ---
@@ -112,24 +115,24 @@ Access the active deception lab and interactive benchmarks directly without loca
 
 ### 1. Install Dependencies
 ```bash
-python -m pip install -r backend/requirements.txt
+python -m pip install -r chameleonshell/backend/requirements.txt
 ```
 
 ### 2. Start the Local Deception Platform
 ```bash
+python -m chameleonshell.backend.main
+```
+*Or navigate into `chameleonshell/` and run:*
+```bash
+cd chameleonshell
 python -m backend.main
 ```
 Access the active defense dashboard at `http://localhost:8080`.
 
-### 3. Run Automated Unit Tests
+### 3. Containerized Honey-Network Deployment
 ```bash
-python -m pytest tests/ -v
-```
-
-### 4. Run Automated Playwright QA Suites
-```bash
-node scripts/verify_production_site.mjs
-node scripts/test_all_buttons.mjs
+cd chameleonshell
+docker-compose up -d
 ```
 
 ---
