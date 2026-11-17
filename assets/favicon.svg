@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" rx="28" fill="#060709"/>
+  <!-- Hairline Grid Wireframe -->
+  <path d="M16 64h96M64 16v96" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <circle cx="64" cy="64" r="44" fill="none" stroke="rgba(210,255,0,0.15)" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Chameleon Prism Polygon -->
+  <polygon points="64,24 104,48 104,88 64,104 24,88 24,48" fill="#0D0F12" stroke="#D2FF00" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Inner Optical Crystal Core -->
+  <polygon points="64,36 92,54 92,82 64,94 36,82 36,54" fill="rgba(210,255,0,0.06)" stroke="#00F59B" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Crosshair Focus Reticle -->
+  <line x1="64" y1="44" x2="64" y2="84" stroke="#D2FF00" stroke-width="1.5"/>
+  <line x1="44" y1="64" x2="84" y2="64" stroke="#D2FF00" stroke-width="1.5"/>
+  <circle cx="64" cy="64" r="5" fill="#D2FF00"/>
+  <!-- Tactical Corner Nodes -->
+  <circle cx="24" cy="48" r="2.5" fill="#00F59B"/>
+  <circle cx="104" cy="48" r="2.5" fill="#00F59B"/>
+  <circle cx="64" cy="104" r="2.5" fill="#FF2A54"/>
+</svg>

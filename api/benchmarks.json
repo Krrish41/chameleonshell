@@ -1,0 +1,53 @@
+{
+  "thesis_benchmarks": {
+    "mean_attacker_engagement_depth": {
+      "chameleonshell": 21.8,
+      "shellm": 9.4,
+      "cowrie": 3.2,
+      "unit": "commands/session",
+      "delta_vs_cowrie": "+6.81x"
+    },
+    "mean_session_duration": {
+      "chameleonshell": 184.2,
+      "shellm": 76.5,
+      "cowrie": 14.5,
+      "unit": "seconds",
+      "delta_vs_cowrie": "+12.7x"
+    },
+    "state_consistency_20_turns": {
+      "chameleonshell": 98.4,
+      "shellm": 64.5,
+      "cowrie": 41.0,
+      "unit": "percent",
+      "delta_vs_cowrie": "+57.4%"
+    },
+    "fast_path_latency_ms": {
+      "chameleonshell": 4.8,
+      "cowrie": 14.5,
+      "pure_llm": 2140.0,
+      "unit": "milliseconds"
+    },
+    "mitre_classification": {
+      "precision": 96.4,
+      "recall": 95.1,
+      "f1_score": 95.7,
+      "synthesis_latency_ms": 11.2
+    }
+  },
+  "live_trial": {
+    "campaign": "Campaign Foxtrot: Anti-Honeypot Fingerprinting Probe (Cowrie Defeat)",
+    "total_commands_evaluated": 20,
+    "chameleonshell": {
+      "successful_executions": 19,
+      "state_retention_rate": "95.0%",
+      "avg_latency_ms": 0.04,
+      "rules_synthesized": 20
+    },
+    "cowrie": {
+      "successful_executions": 12,
+      "state_retention_rate": "60.0%",
+      "avg_latency_ms": 0.0,
+      "rules_synthesized": 0
+    }
+  }
+}
