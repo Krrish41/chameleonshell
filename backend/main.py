@@ -21,15 +21,15 @@ from .config import (
     HOST, PORT, PROJECT_TITLE, PLATFORM_VERSION,
     ORGANIZATION, ENGINE_STATUS
 )
-from .member1_deception_engine.ssh_honeypot_server import SSHHoneypotSession
-from .member1_deception_engine.cowrie_baseline_emulator import CowrieBaselineEmulator
-from .member1_deception_engine.cloud_metadata_decoy import CloudMetadataDecoy
-from .member2_mitre_classifier.sequence_profiler import MITRESequenceProfiler
-from .member2_mitre_classifier.mitre_knowledge_base import MITRE_TACTICS, MITRE_TECHNIQUES, get_technique_info
-from .member2_mitre_classifier.rule_synthesizer import ActiveDefenseRuleSynthesizer
-from .member3_telemetry_sandbox.attack_botnet_simulator import AttackBotnetSimulator, ATTACK_CAMPAIGNS
-from .member3_telemetry_sandbox.session_recorder import SessionRecorder
-from .member3_telemetry_sandbox.benchmark_evaluator import ThesisBenchmarkEvaluator
+from .deception_engine.ssh_honeypot_server import SSHHoneypotSession
+from .deception_engine.cowrie_baseline_emulator import CowrieBaselineEmulator
+from .deception_engine.cloud_metadata_decoy import CloudMetadataDecoy
+from .mitre_classifier.sequence_profiler import MITRESequenceProfiler
+from .mitre_classifier.mitre_knowledge_base import MITRE_TACTICS, MITRE_TECHNIQUES, get_technique_info
+from .mitre_classifier.rule_synthesizer import ActiveDefenseRuleSynthesizer
+from .telemetry_sandbox.attack_botnet_simulator import AttackBotnetSimulator, ATTACK_CAMPAIGNS
+from .telemetry_sandbox.session_recorder import SessionRecorder
+from .telemetry_sandbox.benchmark_evaluator import ThesisBenchmarkEvaluator
 
 app = FastAPI(
     title=PROJECT_TITLE,

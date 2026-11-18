@@ -22,7 +22,7 @@ test:
 	python -m pytest tests/ -v
 
 benchmark:
-	python -c "from backend.member3_telemetry_sandbox.benchmark_evaluator import run_benchmark_suite; print(run_benchmark_suite())"
+	python -c "from backend.telemetry_sandbox.benchmark_evaluator import run_benchmark_suite; print(run_benchmark_suite())"
 
 presentations:
 	python docs/presentations/generate_ppts.py

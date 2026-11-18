@@ -8,9 +8,9 @@
 ## Architecture & Subsystems
 
 1. **`backend/` (FastAPI REST & WebSocket Server):**
-   - **`member1_deception_engine/`:** Virtual State Tree (VST), POSIX AST Fast-Path router, Sandboxed LLM Slow-Path, AWS IMDSv2 decoy interface.
-   - **`member2_mitre_classifier/`:** Real-time sequence classification against MITRE ATT&CK Enterprise v16, sliding-window temporal risk decay ($\gamma=0.92$), autonomous rule compiler (Snort 3, ModSecurity WAF `SecRule`, Linux `nftables`/`iptables`).
-   - **`member3_telemetry_sandbox/`:** Containerized honey-network, 6 multi-stage automated botnet campaigns, Asciinema v2 live session recorder, and benchmark evaluator.
+   - **`deception_engine/`:** Virtual State Tree (VST), POSIX AST Fast-Path router, Sandboxed LLM Slow-Path, AWS IMDSv2 decoy interface.
+   - **`mitre_classifier/`:** Real-time sequence classification against MITRE ATT&CK Enterprise v16, sliding-window temporal risk decay ($\gamma=0.92$), autonomous rule compiler (Snort 3, ModSecurity WAF `SecRule`, Linux `nftables`/`iptables`).
+   - **`telemetry_sandbox/`:** Containerized honey-network, 6 multi-stage automated botnet campaigns, Asciinema v2 live session recorder, and benchmark evaluator.
 
 2. **`frontend/` (WebGL / Three.js Telemetry SOC Platform):**
    - Interactive 3D Chameleon Deception Core with kinetic velocity impulse dynamics.

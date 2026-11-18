@@ -5,10 +5,10 @@ and Pure-LLM (shelLM) across engagement depth, latency, state consistency, and M
 """
 import time
 from typing import Dict, Any, List
-from ..member1_deception_engine.ssh_honeypot_server import SSHHoneypotSession
-from ..member1_deception_engine.cowrie_baseline_emulator import CowrieBaselineEmulator
-from ..member2_mitre_classifier.sequence_profiler import MITRESequenceProfiler
-from ..member2_mitre_classifier.rule_synthesizer import ActiveDefenseRuleSynthesizer
+from ..deception_engine.ssh_honeypot_server import SSHHoneypotSession
+from ..deception_engine.cowrie_baseline_emulator import CowrieBaselineEmulator
+from ..mitre_classifier.sequence_profiler import MITRESequenceProfiler
+from ..mitre_classifier.rule_synthesizer import ActiveDefenseRuleSynthesizer
 from .attack_botnet_simulator import ATTACK_CAMPAIGNS
 
 

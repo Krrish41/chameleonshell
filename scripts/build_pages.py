@@ -102,7 +102,7 @@ def export_api_fixtures(out_dir: Path):
 
     # 1. MITRE Tactics & Techniques
     try:
-        from backend.member2_mitre_classifier.mitre_knowledge_base import MITRE_TACTICS, MITRE_TECHNIQUES
+        from backend.mitre_classifier.mitre_knowledge_base import MITRE_TACTICS, MITRE_TECHNIQUES
         mitre_data = {
             "tactics": MITRE_TACTICS,
             "techniques": MITRE_TECHNIQUES,
@@ -121,7 +121,7 @@ def export_api_fixtures(out_dir: Path):
 
     # 2. VST Tree Summary
     try:
-        from backend.member1_deception_engine.vst_state_tree import VSTStateTree
+        from backend.deception_engine.vst_state_tree import VSTStateTree
         vst = VSTStateTree()
         vst_data = {
             "tree": vst.get_full_tree_summary(),
@@ -142,7 +142,7 @@ def export_api_fixtures(out_dir: Path):
 
     # 3. Benchmarks Data
     try:
-        from backend.member3_telemetry_sandbox.benchmark_evaluator import ThesisBenchmarkEvaluator
+        from backend.telemetry_sandbox.benchmark_evaluator import ThesisBenchmarkEvaluator
         bench_data = {
             "thesis_benchmarks": {
                 "mean_attacker_engagement_depth": {
