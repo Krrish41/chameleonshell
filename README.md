@@ -3,6 +3,8 @@
 > **Adaptive Cloud Deception Engine & LLM-Driven Autonomous Honeypot**  
 > High-interaction Linux & AWS IMDSv2 decoy surface with a sub-8ms Deterministic Virtual State Tree (VST), real-time MITRE ATT&CK sequence classification, and zero-touch firewall signature synthesis.
 
+**Live demo:** https://krrish41.github.io/chameleonshell/ (pages: [Platform](https://krrish41.github.io/chameleonshell/), [Live Lab](https://krrish41.github.io/chameleonshell/lab/), [Architecture](https://krrish41.github.io/chameleonshell/architecture/), [Benchmarks](https://krrish41.github.io/chameleonshell/benchmarks/)). The hosted site is static and runs in the browser on pre-generated data; the FastAPI honeypot backend runs locally (see [Local Execution](#local-execution)).
+
 ---
 
 ## Architecture & Subsystems
